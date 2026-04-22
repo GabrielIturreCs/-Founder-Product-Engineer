@@ -191,7 +191,7 @@ function ProductRow({ product, index, language }: { product: ProductData; index:
         <Grid.Col span={{ base: 12, md: 7 }} order={{ base: 1, md: index % 2 === 0 ? 2 : 1 }}>
           <motion.div
             whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as any }}
           >
             <Box style={{ 
               position: 'relative',
@@ -229,7 +229,7 @@ function ProductRow({ product, index, language }: { product: ProductData; index:
                       initial={{ opacity: 0, scale: 1.05 }}
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.95 }}
-                      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as any }}
                       style={{ width: '100%', height: '100%' }}
                     >
                       <Box 

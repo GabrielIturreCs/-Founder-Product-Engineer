@@ -243,7 +243,7 @@ export function Experience() {
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
-                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] as any }}
                 >
                   <Box style={{
                     backgroundColor: colorScheme === 'dark' ? '#0A0A0A' : '#fff',

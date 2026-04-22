@@ -70,7 +70,7 @@ export function Hero() {
         <motion.nav 
           initial={{ y: -100, x: '-50%', opacity: 0 }}
           animate={{ y: 24, x: '-50%', opacity: 1 }}
-          transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] as any }}
           className="navbar-pill" 
           style={{ 
             position: 'fixed',
@@ -255,7 +255,7 @@ export function Hero() {
                         initial={{ y: 20, opacity: 0, filter: 'blur(8px)' }}
                         animate={{ y: 0, opacity: 1, filter: 'blur(0px)' }}
                         exit={{ y: -20, opacity: 0, filter: 'blur(8px)' }}
-                        transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] }}
+                        transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] as any }}
                         style={{ filter: 'url(#water-morph)' }}
                       >
                         <Title 
@@ -318,7 +318,7 @@ export function Hero() {
             <Reveal delay={0.4} y={60}>
               <motion.div
                 whileHover={{ y: -10, rotate: 1 }}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as any }}
               >
                 <div style={{ position: 'relative', width: 'min(550px, 85vw)', height: 'min(650px, 100vw)' }}>
                   <MantineImage 
