@@ -306,12 +306,12 @@ export function Hero() {
           </Box>
 
           <Box
+            mt={{ base: 0, md: 40 }}
             style={{ 
               flex: 1, 
               display: 'flex', 
               justifyContent: 'center', 
               paddingRight: 0, 
-              marginTop: { base: 0, md: 40 },
               minWidth: 320
             }}
           >
