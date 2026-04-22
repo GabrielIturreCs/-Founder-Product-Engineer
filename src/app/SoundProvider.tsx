@@ -5,7 +5,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 interface SoundContextType {
   isSoundEnabled: boolean;
   toggleSound: () => void;
-  playSound: (type: 'toggle-on' | 'toggle-off' | 'hover' | 'click') => void;
+  playSound: (type: 'toggle-on' | 'toggle-off' | 'hover' | 'click' | 'nav') => void;
 }
 
 const SoundContext = createContext<SoundContextType | undefined>(undefined);
