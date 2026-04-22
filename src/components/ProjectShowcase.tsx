@@ -99,9 +99,10 @@ function ProductRow({ product, index, language }: { product: ProductData; index:
   const [imgIndex, setImgIndex] = React.useState(0);
 
   React.useEffect(() => {
-    if (product.images && product.images.length > 1) {
+    const images = product.images;
+    if (images && images.length > 1) {
       const timer = setInterval(() => {
-        setImgIndex((prev) => (prev + 1) % product.images.length);
+        setImgIndex((prev) => (prev + 1) % images.length);
       }, 5000);
       return () => clearInterval(timer);
     }
