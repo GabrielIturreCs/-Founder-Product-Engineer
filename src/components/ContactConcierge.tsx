@@ -93,7 +93,7 @@ export function ContactConcierge() {
       borderTop: `1px solid ${colorScheme === 'dark' ? 'rgba(255,255,255,0.05)' : '#EBEBEB'}`
     }}>
       <Container size="xl">
-        <Grid gutter={80} align="center">
+        <Grid gap={80} align="center">
           {/* Left Side */}
           <Grid.Col span={{ base: 12, md: 6 }}>
             <Reveal y={40} delay={0.2}>
@@ -201,7 +201,7 @@ export function ContactConcierge() {
                           <Text fw={700} size="sm" c={colorScheme === 'dark' ? '#fff' : '#222222'}>
                             {language === 'es' ? '¿En qué puedo ayudarte?' : 'How can I help you?'}
                           </Text>
-                          <Grid gutter="xs">
+                          <Grid gap="xs">
                             {contactTypes.slice(0, 6).map((type) => (
                               <Grid.Col span={6} key={type.value}>
                                 <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
@@ -311,7 +311,7 @@ export function ContactConcierge() {
                       <ActionIcon variant="subtle" color="dark" radius="xl"><IconChevronRight size={20} /></ActionIcon>
                     </Group>
                   </Group>
-                  <Grid gutter={4} style={{ textAlign: 'center' }}>
+                  <Grid gap={4} style={{ textAlign: 'center' }}>
                     {(language === 'es' ? ['L', 'M', 'M', 'J', 'V', 'S', 'D'] : ['M', 'T', 'W', 'T', 'F', 'S', 'S']).map((d, i) => (<Grid.Col span={1.7} key={`${d}-${i}`}><Text size="xs" fw={700} c="#717171">{d}</Text></Grid.Col>))}
                     {Array.from({ length: 4 }).map((_, i) => <Grid.Col span={1.7} key={`empty-${i}`} />)}
                     {days.map(d => (

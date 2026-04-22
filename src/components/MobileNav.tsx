@@ -27,7 +27,8 @@ import {
   IconBrandGithub,
   IconBrandLinkedin,
   IconMail,
-  IconChevronRight
+  IconChevronRight,
+  IconCompass
 } from '@tabler/icons-react';
 import { useLanguage } from '../app/LanguageProvider';
 import { useMantineColorScheme } from '@mantine/core';
@@ -58,8 +59,9 @@ export function MobileNav() {
 
   const navItems = [
     { id: 'home', icon: IconSearch, label: language === 'es' ? 'Explorar' : 'Explore', href: '#' },
-    { id: 'experience', icon: IconBriefcase, label: language === 'es' ? 'Experiencia' : 'Experience', href: '#experience' },
     { id: 'projects', icon: IconLayoutGrid, label: language === 'es' ? 'Proyectos' : 'Projects', href: '#projects' },
+    { id: 'experience', icon: IconBriefcase, label: language === 'es' ? 'Experiencia' : 'Experience', href: '#experience' },
+    { id: 'stack', icon: IconCompass, label: language === 'es' ? 'Stack' : 'Stack', href: '#stack' },
     { id: 'contact', icon: IconUserCircle, label: language === 'es' ? 'Contacto' : 'Contact', href: '#contact' },
     { id: 'settings', icon: IconSettings, label: language === 'es' ? 'Ajustes' : 'Settings', onClick: () => { setOpened(true); playSound('click'); } },
   ];
@@ -121,12 +123,12 @@ export function MobileNav() {
                     />
                   </Box>
                   <Text 
-                    size="10px" 
+                    size="9px" 
                     fw={activeTab === item.id ? 700 : 500} 
                     c={activeTab === item.id 
                       ? (colorScheme === 'dark' ? '#FFFFFF' : '#222222') 
                       : '#717171'}
-                    style={{ transition: 'color 0.2s ease' }}
+                    style={{ transition: 'color 0.2s ease', whiteSpace: 'nowrap' }}
                   >
                     {item.label}
                   </Text>

@@ -109,7 +109,7 @@ function ProductRow({ product, index, language }: { product: ProductData; index:
 
   return (
     <Reveal width="100%" y={40} delay={index * 0.1}>
-      <Grid gutter={80} align="center">
+      <Grid gap={80} align="center">
         {/* Text Side */}
         <Grid.Col span={{ base: 12, md: 5 }} order={{ base: 2, md: index % 2 === 0 ? 1 : 2 }}>
           <Stack gap={32}>

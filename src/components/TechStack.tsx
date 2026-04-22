@@ -70,7 +70,7 @@ export function TechStack() {
           </Reveal>
 
           {/* Amenities Grid Refined */}
-          <Grid gutter={80}>
+          <Grid gap={80}>
             {categories.map((cat, idx) => (
               <Grid.Col span={{ base: 12, md: 6 }} key={idx}>
                 <Reveal width="100%" y={40} delay={idx * 0.1}>

@@ -172,7 +172,7 @@ export function Experience() {
             </Text>
           </Stack>
 
-          <Grid gutter={40}>
+          <Grid gap={40}>
             {/* Tabs Sidebar */}
             <Grid.Col span={{ base: 12, md: 4 }}>
               <Stack gap={12}>
