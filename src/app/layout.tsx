@@ -71,6 +71,8 @@ export const metadata: Metadata = {
   },
 };
 
+import { FirebaseAnalytics } from "../components/FirebaseAnalytics";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -91,7 +93,7 @@ export default function RootLayout({
       "@type": "Organization",
       "name": "ZonaJujuy"
     },
-    "description": "Product Engineer y Fundador de KILO y CHEFI, especializado en desarrollo de productos SaaS y Fintech en Jujuy, Argentina.",
+    "description": "Product Engineer y Fundador de KILO y CHEFI, especializado en desarrollo de productos SaaS y Aplicaciones Android Nativas en Jujuy, Argentina.",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Palpalá",
@@ -131,6 +133,7 @@ export default function RootLayout({
       </head>
       <body className={inter.className} suppressHydrationWarning>
         <MantineProvider theme={theme} defaultColorScheme="dark">
+          <FirebaseAnalytics />
           <LanguageProvider>
             <SoundProvider>
               <Notifications position="top-right" zIndex={3000} />

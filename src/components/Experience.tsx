@@ -31,6 +31,7 @@ import {
 } from '@tabler/icons-react';
 import { useLanguage } from '../app/LanguageProvider';
 import { Reveal } from './Reveal';
+import { useSoundEffects } from '../app/SoundProvider';
 
 interface ExperienceItem {
   id: string;
@@ -50,6 +51,7 @@ interface ExperienceItem {
 export function Experience() {
   const { t, language } = useLanguage();
   const { colorScheme } = useMantineColorScheme();
+  const { playSound } = useSoundEffects();
   const [activeTab, setActiveTab] = useState('kilo');
 
   const experiences: ExperienceItem[] = [
@@ -179,17 +181,18 @@ export function Experience() {
                 {experiences.map((exp) => (
                   <UnstyledButton
                     key={exp.id}
-                    onClick={() => setActiveTab(exp.id)}
+                    onClick={() => { setActiveTab(exp.id); playSound('click'); }}
+                    onMouseEnter={() => playSound('exp')}
                     style={{
                       padding: '20px 24px',
                       borderRadius: '16px',
                       backgroundColor: activeTab === exp.id 
-                        ? (colorScheme === 'dark' ? 'rgba(255,255,255,0.05)' : '#fff')
+                        ? (colorScheme === 'dark' ? 'rgba(255,255,255,0.05)' : '#F7F7F9')
                         : 'transparent',
                       border: `1px solid ${activeTab === exp.id 
-                        ? (colorScheme === 'dark' ? 'rgba(255,255,255,0.1)' : '#EBEBEB')
+                        ? (colorScheme === 'dark' ? 'rgba(255,255,255,0.1)' : '#F0F0F0')
                         : 'transparent'}`,
-                      boxShadow: activeTab === exp.id ? '0 10px 30px rgba(0,0,0,0.05)' : 'none',
+                      boxShadow: 'none',
                       transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
                       position: 'relative',
                       overflow: 'hidden'
@@ -199,21 +202,21 @@ export function Experience() {
                       <Box style={{ 
                         width: 48, 
                         height: 48, 
-                        borderRadius: '12px', 
-                        backgroundColor: activeTab === exp.id ? '#059669' : (colorScheme === 'dark' ? 'rgba(255,255,255,0.05)' : '#F7F7F7'),
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        color: activeTab === exp.id ? 'white' : (colorScheme === 'dark' ? '#eee' : '#222'),
+                        color: activeTab === exp.id 
+                          ? (colorScheme === 'dark' ? '#fff' : '#222') 
+                          : (colorScheme === 'dark' ? '#666' : '#717171'),
                         transition: 'all 0.3s ease'
                       }}>
-                        <exp.icon size={22} stroke={activeTab === exp.id ? 2.5 : 2} />
+                        <exp.icon size={26} stroke={activeTab === exp.id ? 2 : 1.5} />
                       </Box>
                       <Stack gap={2}>
-                        <Text fw={700} size="md" c={activeTab === exp.id ? (colorScheme === 'dark' ? '#fff' : '#222') : 'dimmed'}>
+                        <Text fw={700} size="md" c={activeTab === exp.id ? (colorScheme === 'dark' ? '#fff' : '#222') : (colorScheme === 'dark' ? '#666' : '#717171')}>
                           {exp.company}
                         </Text>
-                        <Text size="xs" fw={600} c="dimmed">{exp.period}</Text>
+                        <Text size="xs" fw={600} c={activeTab === exp.id ? (colorScheme === 'dark' ? '#888' : '#717171') : 'dimmed'}>{exp.period}</Text>
                       </Stack>
                     </Group>
                     {activeTab === exp.id && (
@@ -256,10 +259,10 @@ export function Experience() {
                       <Stack gap={12}>
                         <Group justify="space-between" align="flex-start">
                           <Stack gap={4}>
-                            <Title order={3} size="32px" fw={800} style={{ letterSpacing: '-0.03em', color: colorScheme === 'dark' ? '#fff' : '#222' }}>
+                            <Title order={3} size="32px" fw={800} style={{ letterSpacing: '-0.03em', color: colorScheme === 'dark' ? '#fff' : '#222', lineHeight: 1.1 }}>
                               {currentExp.role}
                             </Title>
-                            <Text size="lg" fw={600} c="#059669">{currentExp.type}</Text>
+                            <Text size="md" fw={600} c="#717171" style={{ letterSpacing: '0.01em' }}>{currentExp.type}</Text>
                           </Stack>
                           <Badge variant="outline" color="gray" size="lg" radius="sm">{currentExp.period}</Badge>
                         </Group>
@@ -274,23 +277,21 @@ export function Experience() {
                         {currentExp.bullets.map((bullet, i) => (
                           <Group key={i} align="flex-start" gap="xl" wrap="nowrap">
                             <Box style={{ 
-                              width: 44, 
-                              height: 44, 
-                              borderRadius: '10px', 
-                              backgroundColor: colorScheme === 'dark' ? 'rgba(5, 150, 105, 0.1)' : 'rgba(5, 150, 105, 0.05)',
-                              color: '#059669',
-                              display: 'flex',
-                              alignItems: 'center',
-                              justifyContent: 'center',
-                              flexShrink: 0
-                            }}>
-                              <bullet.icon size={22} stroke={1.8} />
-                            </Box>
+                               width: 44, 
+                               height: 44, 
+                               color: colorScheme === 'dark' ? '#fff' : '#222',
+                               display: 'flex',
+                               alignItems: 'center',
+                               justifyContent: 'center',
+                               flexShrink: 0
+                             }}>
+                               <bullet.icon size={26} stroke={1.5} />
+                             </Box>
                             <Stack gap={4}>
-                              <Text fw={800} size="sm" style={{ textTransform: 'uppercase', letterSpacing: '0.05em', color: colorScheme === 'dark' ? '#fff' : '#222' }}>
+                              <Text fw={800} size="12px" style={{ textTransform: 'uppercase', letterSpacing: '0.12em', color: colorScheme === 'dark' ? '#fff' : '#222', marginBottom: 4 }}>
                                 {bullet.title}
                               </Text>
-                              <Text size="md" c="dimmed" style={{ lineHeight: 1.5, fontWeight: 500 }}>
+                              <Text size="md" style={{ color: '#717171', lineHeight: 1.8, fontWeight: 500 }}>
                                 {bullet.text}
                               </Text>
                             </Stack>

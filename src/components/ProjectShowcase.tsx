@@ -6,17 +6,20 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { IconArrowRight, IconUsers, IconCalendar, IconDeviceMobile, IconCircleCheck, IconBolt } from '@tabler/icons-react';
 import { useLanguage } from '../app/LanguageProvider';
 import { Reveal } from './Reveal';
+import { useSoundEffects } from '../app/SoundProvider';
 
 interface ProductData {
   title: string;
   category: string;
   description: string;
   images?: string[];
+  imageLabels?: string[];
   videoSrc?: string;
   stack: string[];
   stats: { label: string; value: string; icon: React.ElementType }[];
   link?: string;
   playStore?: boolean;
+  playStoreLink?: string;
 }
 
 export function ProjectShowcase() {
@@ -26,22 +29,24 @@ export function ProjectShowcase() {
   const products: ProductData[] = [
     {
       title: "KILO — Founder",
-      category: language === 'es' ? "SaaS Multi-tenant / Comercio" : "SaaS Multi-tenant / Retail",
+      category: language === 'es' ? "Retail ERP" : "Retail ERP",
       description: language === 'es' 
         ? "Plataforma multi-tenant para comercios preparada para +10.000 usuarios. Diseñé el sistema con aislamiento de datos seguro y aprovisionamiento dinámico, transformando flujos complejos en una experiencia moderna orientada a decisiones."
         : "Multi-tenant retail platform built for 10k+ users. Designed the system with secure data isolation and dynamic provisioning, transforming complex workflows into a modern, decision-oriented experience.",
       images: ["/Images/kilo_1.png", "/Images/kilo_2.png"],
+      imageLabels: language === 'es' ? ["Dashboard", "Inventario"] : ["Dashboard", "Inventory"],
       stack: ["React", "NestJS", "PostgreSQL", "Docker", "AFIP API"],
       stats: [
         { label: language === 'es' ? 'Capacidad' : 'User Capacity', value: '+10k', icon: IconUsers },
         { label: language === 'es' ? 'Lanzamiento' : 'Time-to-Market', value: language === 'es' ? '4 Meses' : '4 Months', icon: IconBolt }
       ],
       link: "https://somoskilo.com",
-      playStore: true
+      playStore: true,
+      playStoreLink: "https://play.google.com/store/apps/details?id=com.kilo.app&hl=es_AR"
     },
     {
       title: "CHEFI — Founder",
-      category: language === 'es' ? "SaaS Vertical / Gastronomía" : "Vertical SaaS / Gastronomy",
+      category: language === 'es' ? "Gastronomy SaaS" : "Gastronomy SaaS",
       description: language === 'es'
         ? "SaaS vertical para gastronomía con gestión de mesas y pedidos en tiempo real por QR. Implementé autenticación WhatsApp OTP y automatización de inventario con Evolution API, priorizando la resiliencia en locales de alta rotación."
         : "Vertical SaaS for gastronomy with table management and real-time QR ordering. Implemented WhatsApp OTP authentication and inventory automation with Evolution API, focusing on resilience in high-turnover environments.",
@@ -55,7 +60,7 @@ export function ProjectShowcase() {
     },
     {
       title: "ZonaSalud",
-      category: language === 'es' ? "SaaS para Salud / Gestión de Clínicas" : "Health SaaS / Clinic Management",
+      category: language === 'es' ? "Healthcare SaaS" : "Healthcare SaaS",
       description: language === 'es'
         ? "Gestión médica integral donde especialistas coordinan turnos y pacientes reciben recordatorios por WhatsApp. Permite a secretarias gestionar agendas completas e historiales médicos centralizados en tiempo real."
         : "Comprehensive medical management where specialists coordinate appointments and patients receive WhatsApp reminders. Enables secretaries to manage full agendas and centralized medical records in real-time.",
@@ -96,6 +101,7 @@ export function ProjectShowcase() {
 
 function ProductRow({ product, index, language }: { product: ProductData; index: number; language: string }) {
   const { colorScheme } = useMantineColorScheme();
+  const { playSound } = useSoundEffects();
   const [imgIndex, setImgIndex] = React.useState(0);
 
   React.useEffect(() => {
@@ -115,18 +121,18 @@ function ProductRow({ product, index, language }: { product: ProductData; index:
         <Grid.Col span={{ base: 12, md: 5 }} order={{ base: 2, md: index % 2 === 0 ? 1 : 2 }}>
           <Stack gap={32}>
             <Stack gap={12}>
-              <div className="pill-badge-premium" style={{ 
-                backgroundColor: colorScheme === 'dark' ? 'rgba(5, 150, 105, 0.15)' : '#D1FAE5', 
-                color: colorScheme === 'dark' ? '#10B981' : '#059669',
-                border: 'none',
-                width: 'fit-content',
-                padding: '4px 12px',
-                fontSize: '11px',
-                fontWeight: 800,
-                borderRadius: '4px'
-              }}>
-                {product.category.toUpperCase()}
-              </div>
+              <Text 
+                size="11px" 
+                fw={800} 
+                style={{ 
+                  color: '#717171',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.12em',
+                  marginBottom: 0
+                }}
+              >
+                {product.category}
+              </Text>
               <Title order={2} size="44px" fw={700} style={{ letterSpacing: '-0.04em', lineHeight: 1.1, color: colorScheme === 'dark' ? '#FFFFFF' : '#222222' }}>
                 {product.title}
               </Title>
@@ -164,6 +170,8 @@ function ProductRow({ product, index, language }: { product: ProductData; index:
                   component="a"
                   href={product.link}
                   target={product.link?.startsWith('http') ? "_blank" : "_self"}
+                  onMouseEnter={() => playSound('hover')}
+                  onClick={() => playSound('click')}
                 >
                   <Text size="sm" fw={600}>
                     {language === 'es' ? 'Ver Aplicación' : 'View Application'}
@@ -174,11 +182,19 @@ function ProductRow({ product, index, language }: { product: ProductData; index:
 
               {product.playStore && (
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <a href="#" target="_blank" rel="noopener noreferrer">
+                  <a href={product.playStoreLink || "#"} target="_blank" rel="noopener noreferrer">
                     <img 
-                      src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" 
-                      alt="Get it on Google Play" 
-                      style={{ height: '44px', filter: colorScheme === 'dark' ? 'brightness(0.9)' : 'none' }}
+                      src={language === 'es' 
+                        ? "/Images/google-play-badge-es-300x116.png" 
+                        : "https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                      }
+                      alt={language === 'es' ? "Disponible en Google Play" : "Get it on Google Play"} 
+                      style={{ 
+                        height: '52px', 
+                        width: 'auto',
+                        filter: colorScheme === 'dark' ? 'brightness(0.9)' : 'none',
+                        display: 'block'
+                      }}
                     />
                   </a>
                 </motion.div>
@@ -197,13 +213,13 @@ function ProductRow({ product, index, language }: { product: ProductData; index:
               position: 'relative',
               borderRadius: '32px',
               backgroundColor: colorScheme === 'dark' ? '#0F0F0F' : '#F7F7F7',
-              padding: '40px',
-              border: `1px solid ${colorScheme === 'dark' ? 'rgba(255,255,255,0.05)' : '#EBEBEB'}`,
+              border: `1px solid ${colorScheme === 'dark' ? 'rgba(255,255,255,0.1)' : '#EBEBEB'}`,
               overflow: 'hidden',
-              aspectRatio: '4/3',
+              aspectRatio: '16/10',
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'center'
+              justifyContent: 'center',
+              boxShadow: '0 30px 60px rgba(0,0,0,0.12)'
             }}>
               {product.videoSrc ? (
                 <video 
@@ -215,10 +231,7 @@ function ProductRow({ product, index, language }: { product: ProductData; index:
                   style={{
                     width: '100%',
                     height: '100%',
-                    objectFit: 'cover',
-                    borderRadius: '16px',
-                    boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
-                    border: `1px solid ${colorScheme === 'dark' ? 'rgba(255,255,255,0.1)' : '#EBEBEB'}`
+                    objectFit: 'cover'
                   }}
                 />
               ) : product.images && (
@@ -226,10 +239,10 @@ function ProductRow({ product, index, language }: { product: ProductData; index:
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={product.images[imgIndex]}
-                      initial={{ opacity: 0, scale: 1.05 }}
+                      initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.95 }}
-                      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as any }}
+                      exit={{ opacity: 0, scale: 1.05 }}
+                      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] as any }}
                       style={{ width: '100%', height: '100%' }}
                     >
                       <Box 
@@ -238,30 +251,69 @@ function ProductRow({ product, index, language }: { product: ProductData; index:
                           height: '100%',
                           backgroundImage: `url(${product.images[imgIndex]})`,
                           backgroundSize: 'cover',
-                          backgroundPosition: 'top center',
-                          borderRadius: '16px',
-                          boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
-                          border: `1px solid ${colorScheme === 'dark' ? 'rgba(255,255,255,0.1)' : '#EBEBEB'}`
+                          backgroundPosition: 'center'
                         }}
                       />
                     </motion.div>
                   </AnimatePresence>
 
                   {product.images.length > 1 && (
-                    <Group gap={8} style={{ position: 'absolute', bottom: 20, zIndex: 10 }}>
-                      {product.images.map((_, i) => (
-                        <Box 
-                          key={i}
-                          style={{
-                            width: i === imgIndex ? 24 : 8,
-                            height: 8,
-                            borderRadius: 4,
-                            backgroundColor: i === imgIndex ? (colorScheme === 'dark' ? '#FFFFFF' : '#222222') : (colorScheme === 'dark' ? 'rgba(255,255,255,0.15)' : 'rgba(0,0,0,0.1)'),
-                            transition: 'all 0.3s ease'
-                          }}
-                        />
-                      ))}
-                    </Group>
+                    <Box style={{ 
+                      position: 'absolute', 
+                      bottom: 24, 
+                      left: '50%', 
+                      transform: 'translateX(-50%)',
+                      zIndex: 10,
+                      backgroundColor: colorScheme === 'dark' ? 'rgba(0,0,0,0.4)' : 'rgba(255,255,255,0.4)',
+                      backdropFilter: 'blur(12px)',
+                      WebkitBackdropFilter: 'blur(12px)',
+                      padding: '4px',
+                      borderRadius: '100px',
+                      border: `1px solid ${colorScheme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)'}`
+                    }}>
+                      <Group gap={4}>
+                        {product.images.map((_, i) => (
+                          <UnstyledButton 
+                            key={i}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setImgIndex(i);
+                              playSound('click');
+                            }}
+                            style={{ position: 'relative', padding: '6px 12px', borderRadius: '100px' }}
+                          >
+                            {i === imgIndex && (
+                              <motion.div
+                                layoutId={`pill-${product.title}`}
+                                style={{
+                                  position: 'absolute',
+                                  inset: 0,
+                                  backgroundColor: colorScheme === 'dark' ? '#FFFFFF' : '#000000',
+                                  borderRadius: '100px',
+                                  zIndex: 0
+                                }}
+                              />
+                            )}
+                            <Text 
+                              size="10px" 
+                              fw={700} 
+                              style={{ 
+                                position: 'relative', 
+                                zIndex: 1,
+                                color: i === imgIndex 
+                                  ? (colorScheme === 'dark' ? '#000000' : '#FFFFFF') 
+                                  : (colorScheme === 'dark' ? '#A0A0A0' : '#555555'),
+                                transition: 'color 0.2s ease',
+                                textTransform: 'uppercase',
+                                letterSpacing: '0.05em'
+                              }}
+                            >
+                              {product.imageLabels?.[i] || `Vista ${i + 1}`}
+                            </Text>
+                          </UnstyledButton>
+                        ))}
+                      </Group>
+                    </Box>
                   )}
                 </>
               )}

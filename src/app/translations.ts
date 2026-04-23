@@ -11,7 +11,7 @@ export const translations = {
       craft: 'Diseño y construyo',
       products: 'productos digitales',
       words: ["intuitivos", "rentables", "modernos", "escalables"],
-      subtext: 'Product Engineer especializado en SaaS y Fintech en Argentina. Conecto UX, backend y arquitectura escalable para transformar ideas en sistemas de producción desde Jujuy al mundo.',
+      subtext: 'Product Engineer especializado en SaaS y Aplicaciones Android Nativas en Argentina. Conecto UX, backend y arquitectura escalable para transformar ideas en sistemas de producción desde Jujuy al mundo.',
       cta: 'Ver productos'
     },
     projects: {
@@ -56,7 +56,7 @@ export const translations = {
       craft: 'I design and build',
       products: 'digital products',
       words: ["intuitive", "profitable", "modern", "scalable"],
-      subtext: 'Product Engineer specializing in SaaS and Fintech in Argentina. I connect UX, backend, and scalable architecture to transform ideas into production systems from Jujuy to the world.',
+      subtext: 'Product Engineer specializing in SaaS and Native Android Applications in Argentina. I connect UX, backend, and scalable architecture to transform ideas into production systems from Jujuy to the world.',
       cta: 'View products'
     },
     projects: {

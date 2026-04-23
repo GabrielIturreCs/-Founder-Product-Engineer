@@ -161,7 +161,7 @@ export function Hero() {
                   color={colorScheme === 'dark' ? 'yellow' : 'blue'}
                   onClick={() => {
                     toggleColorScheme();
-                    playSound('click');
+                    playSound(colorScheme === 'dark' ? 'toggle-off' : 'toggle-on');
                   }}
                   onMouseEnter={() => playSound('hover')}
                   size="lg"

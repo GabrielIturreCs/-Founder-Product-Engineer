@@ -10,6 +10,7 @@ import {
 } from '@tabler/icons-react';
 import { motion } from 'framer-motion';
 import { Reveal } from './Reveal';
+import { useSoundEffects } from '../app/SoundProvider';
 
 interface TechCategory {
   title: string;
@@ -20,6 +21,7 @@ interface TechCategory {
 
 export function TechStack() {
   const { colorScheme } = useMantineColorScheme();
+  const { playSound } = useSoundEffects();
 
   const categories: TechCategory[] = [
     {
@@ -105,6 +107,7 @@ export function TechStack() {
                           key={tech}
                           whileHover={{ scale: 1.05, y: -2 }}
                           whileTap={{ scale: 0.95 }}
+                          onMouseEnter={() => playSound('tech')}
                         >
                           <Box
                             className="tech-pill-airbnb"

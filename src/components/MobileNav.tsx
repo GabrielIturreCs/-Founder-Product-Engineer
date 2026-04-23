@@ -28,7 +28,9 @@ import {
   IconBrandLinkedin,
   IconMail,
   IconChevronRight,
-  IconCompass
+  IconCompass,
+  IconHome,
+  IconDownload
 } from '@tabler/icons-react';
 import { useLanguage } from '../app/LanguageProvider';
 import { useMantineColorScheme } from '@mantine/core';
@@ -45,6 +47,22 @@ export function MobileNav() {
   const clipboard = useClipboard({ timeout: 2000 });
   const email = "gabriel13iturre@gmail.com";
 
+  // Native Back Button Handling
+  React.useEffect(() => {
+    const handlePopState = () => {
+      if (opened) {
+        setOpened(false);
+      }
+    };
+
+    if (opened) {
+      window.history.pushState({ drawer: 'open' }, '');
+    }
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, [opened]);
+
   const handleEmailAction = () => {
     playSound('click');
     clipboard.copy(email);
@@ -58,12 +76,11 @@ export function MobileNav() {
   };
 
   const navItems = [
-    { id: 'home', icon: IconSearch, label: language === 'es' ? 'Explorar' : 'Explore', href: '#' },
+    { id: 'home', icon: IconHome, label: language === 'es' ? 'Inicio' : 'Home', href: '#' },
     { id: 'projects', icon: IconLayoutGrid, label: language === 'es' ? 'Proyectos' : 'Projects', href: '#projects' },
     { id: 'experience', icon: IconBriefcase, label: language === 'es' ? 'Experiencia' : 'Experience', href: '#experience' },
-    { id: 'stack', icon: IconCompass, label: language === 'es' ? 'Stack' : 'Stack', href: '#stack' },
     { id: 'contact', icon: IconUserCircle, label: language === 'es' ? 'Contacto' : 'Contact', href: '#contact' },
-    { id: 'settings', icon: IconSettings, label: language === 'es' ? 'Ajustes' : 'Settings', onClick: () => { setOpened(true); playSound('click'); } },
+    { id: 'settings', icon: IconSettings, label: language === 'es' ? 'Más' : 'More', onClick: () => { setOpened(true); playSound('click'); } },
   ];
 
   const iconBg = colorScheme === 'dark' ? 'rgba(255,255,255,0.05)' : '#F7F7F7';
@@ -97,6 +114,7 @@ export function MobileNav() {
                 component={item.href ? 'a' : 'button'}
                 href={item.href}
                 onClick={() => {
+                  setOpened(false); // Close drawer if navigating from bottom bar
                   if (item.onClick) {
                     item.onClick();
                   } else {
@@ -141,7 +159,12 @@ export function MobileNav() {
 
       <Drawer
         opened={opened}
-        onClose={() => setOpened(false)}
+        onClose={() => {
+          setOpened(false);
+          if (window.history.state?.drawer === 'open') {
+            window.history.back();
+          }
+        }}
         position="bottom"
         size="70%"
         radius="24px 24px 0 0"
@@ -161,7 +184,7 @@ export function MobileNav() {
           {/* Header */}
           <Group justify="space-between" align="center">
             <Title order={3} size="24px" fw={700} style={{ letterSpacing: '-0.02em', color: textColor }}>
-              {language === 'es' ? 'Ajustes' : 'Settings'}
+              {language === 'es' ? 'Más' : 'More'}
             </Title>
             <UnstyledButton 
               onClick={() => setOpened(false)}
@@ -179,6 +202,51 @@ export function MobileNav() {
 
           {/* Settings List */}
           <Stack gap={24}>
+            {/* Stack Link */}
+            <UnstyledButton 
+              component="a" 
+              href="#stack" 
+              onClick={() => { setOpened(false); setActiveTab('stack'); playSound('nav'); }}
+            >
+              <Group justify="space-between" align="center">
+                <Group gap="md">
+                  <Box style={{ 
+                    width: 40, height: 40, borderRadius: '10px', 
+                    backgroundColor: iconBg,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    color: textColor
+                  }}>
+                    <IconCompass size={20} stroke={1.5} />
+                  </Box>
+                  <Text fw={600} c={textColor}>{language === 'es' ? 'Tecnologías y Stack' : 'Tech Stack'}</Text>
+                </Group>
+                <IconChevronRight size={16} color={subtextColor} />
+              </Group>
+            </UnstyledButton>
+
+            {/* Download CV */}
+            <UnstyledButton 
+              component="a" 
+              href="/Images/Gabriel%20Iturre%20_%20Full%20Stack%20Product%20Engineer.pdf" 
+              download
+              onClick={() => { setOpened(false); playSound('click'); }}
+            >
+              <Group justify="space-between" align="center">
+                <Group gap="md">
+                  <Box style={{ 
+                    width: 40, height: 40, borderRadius: '10px', 
+                    backgroundColor: iconBg,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    color: textColor
+                  }}>
+                    <IconDownload size={20} stroke={1.5} />
+                  </Box>
+                  <Text fw={600} c={textColor}>{language === 'es' ? 'Descargar CV / Resume' : 'Download CV'}</Text>
+                </Group>
+                <IconChevronRight size={16} color={subtextColor} />
+              </Group>
+            </UnstyledButton>
+
             {/* Theme Toggle */}
             <Group justify="space-between" align="center">
               <Group gap="md">
@@ -194,7 +262,10 @@ export function MobileNav() {
               </Group>
               <Switch 
                 checked={colorScheme === 'dark'} 
-                onChange={() => { toggleColorScheme(); playSound('click'); }} 
+                onChange={() => { 
+                  toggleColorScheme(); 
+                  playSound(colorScheme === 'dark' ? 'toggle-off' : 'toggle-on'); 
+                }} 
                 color="teal"
                 size="md"
               />
@@ -234,7 +305,7 @@ export function MobileNav() {
               </Group>
               <Switch 
                 checked={isSoundEnabled} 
-                onChange={() => { toggleSound(); playSound('click'); }} 
+                onChange={() => { toggleSound(); }} 
                 color="teal"
                 size="md"
               />
