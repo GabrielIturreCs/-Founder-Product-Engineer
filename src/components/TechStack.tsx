@@ -7,10 +7,12 @@ import {
   IconDatabase, 
   IconServer, 
   IconCompass,
+  IconBolt,
 } from '@tabler/icons-react';
 import { motion } from 'framer-motion';
 import { Reveal } from './Reveal';
 import { useSoundEffects } from '../app/SoundProvider';
+import { useLanguage } from '../app/LanguageProvider';
 
 interface TechCategory {
   title: string;
@@ -20,29 +22,30 @@ interface TechCategory {
 }
 
 export function TechStack() {
+  const { language } = useLanguage();
   const { colorScheme } = useMantineColorScheme();
   const { playSound } = useSoundEffects();
 
   const categories: TechCategory[] = [
     {
-      title: "Frontend & UX",
-      icon: <IconLayout2 size={28} stroke={1.5} />,
-      techs: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Mobile-first UX", "PWA"]
-    },
-    {
-      title: "Backend & DB",
-      icon: <IconDatabase size={28} stroke={1.5} />,
-      techs: ["NestJS", "Node.js", "PostgreSQL", "MongoDB", "REST APIs", "Redis"]
-    },
-    {
-      title: "Infrastructure",
+      title: language === 'es' ? "Infraestructura & DevOps" : "Infrastructure & DevOps",
       icon: <IconServer size={28} stroke={1.5} />,
-      techs: ["Docker", "VPS", "Coolify", "Git", "CI/CD", "Linux Server"]
+      techs: ["Docker", "Linux VPS", "Coolify", "Git", "CI/CD", "Arquitectura Multi-tenant"]
     },
     {
-      title: "Product & Architecture",
-      icon: <IconCompass size={28} stroke={1.5} />,
-      techs: ["Multi-tenancy", "API Design", "WhatsApp Automation", "QR Payment Integrations"],
+      title: language === 'es' ? "Backend & Bases de Datos" : "Backend & Databases",
+      icon: <IconDatabase size={28} stroke={1.5} />,
+      techs: ["NestJS", "Node.js", "PostgreSQL", "MongoDB", "Redis", "REST APIs"]
+    },
+    {
+      title: language === 'es' ? "Frontend & Apps" : "Frontend & Apps",
+      icon: <IconLayout2 size={28} stroke={1.5} />,
+      techs: ["React", "Next.js", "TypeScript", "Tailwind CSS", "PWA", "Capacitor"]
+    },
+    {
+      title: language === 'es' ? "AI & Integraciones" : "AI & Integrations",
+      icon: <IconBolt size={28} stroke={1.5} />,
+      techs: ["LLM Orchestration", "Claude/Gemini", "WhatsApp Cloud API", "Mercado Pago", "AFIP", "Resend"],
       highlight: true
     }
   ];
@@ -63,10 +66,12 @@ export function TechStack() {
                 fw={700} 
                 style={{ letterSpacing: '-0.04em', color: colorScheme === 'dark' ? '#fff' : '#222222' }}
               >
-                Tecnologías y Stack
+                {language === 'es' ? 'Arquitectura y Stack Tecnológico' : 'Architecture & Tech Stack'}
               </Title>
               <Text size="lg" style={{ color: '#717171', fontWeight: 500, maxWidth: 600 }}>
-                Herramientas y metodologías que utilizo para construir productos escalables y resilientes.
+                {language === 'es' 
+                  ? 'Ecosistema de herramientas y metodologías diseñadas para la alta disponibilidad y el escalado de productos inteligentes.' 
+                  : 'Ecosystem of tools and methodologies designed for high availability and scaling intelligent products.'}
               </Text>
             </Stack>
           </Reveal>

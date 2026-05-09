@@ -3,7 +3,21 @@
 import React from 'react';
 import { Box, Container, Grid, Stack, Title, Text, Group, UnstyledButton, useMantineColorScheme } from '@mantine/core';
 import { motion, AnimatePresence } from 'framer-motion';
-import { IconArrowRight, IconUsers, IconCalendar, IconDeviceMobile, IconCircleCheck, IconBolt } from '@tabler/icons-react';
+import { 
+  IconArrowRight, 
+  IconUsers, 
+  IconCalendar, 
+  IconDeviceMobile, 
+  IconCircleCheck, 
+  IconBolt,
+  IconRobot,
+  IconBrandGooglePlay,
+  IconLayoutDashboard,
+  IconDeviceLaptop,
+  IconBrandWhatsapp,
+  IconActivity,
+  IconCreditCard
+} from '@tabler/icons-react';
 import { useLanguage } from '../app/LanguageProvider';
 import { Reveal } from './Reveal';
 import { useSoundEffects } from '../app/SoundProvider';
@@ -17,9 +31,11 @@ interface ProductData {
   videoSrc?: string;
   stack: string[];
   stats: { label: string; value: string; icon: React.ElementType }[];
+  features?: { label: string; index: number }[];
   link?: string;
   playStore?: boolean;
   playStoreLink?: string;
+  mediaBgColor?: string;
 }
 
 export function ProjectShowcase() {
@@ -29,17 +45,44 @@ export function ProjectShowcase() {
   const products: ProductData[] = [
     {
       title: "KILO — Founder",
-      category: language === 'es' ? "Retail ERP" : "Retail ERP",
+      category: language === 'es' ? "Retail OS" : "Retail OS",
       description: language === 'es' 
-        ? "Plataforma multi-tenant para comercios preparada para +10.000 usuarios. Diseñé el sistema con aislamiento de datos seguro y aprovisionamiento dinámico, transformando flujos complejos en una experiencia moderna orientada a decisiones."
-        : "Multi-tenant retail platform built for 10k+ users. Designed the system with secure data isolation and dynamic provisioning, transforming complex workflows into a modern, decision-oriented experience.",
-      images: ["/Images/kilo_1.png", "/Images/kilo_2.png"],
-      imageLabels: language === 'es' ? ["Dashboard", "Inventario"] : ["Dashboard", "Inventory"],
-      stack: ["React", "NestJS", "PostgreSQL", "Docker", "AFIP API"],
+        ? "Plataforma fintech multi-tenant para el retail moderno. Lideré el lanzamiento del sistema core en solo 4 meses, orquestando flujos de IA con Claude para automatizar el desarrollo y asegurar el aislamiento de datos (RBAC/JWT) de +10,000 subdominios con integraciones críticas de AFIP y pasarelas QR."
+        : "Multi-tenant fintech platform for modern retail. Led the core system launch in just 4 months, orchestrating AI flows with Claude to automate development and secure RBAC/JWT data isolation for 10k+ subdomains with critical AFIP and QR gateway integrations.",
+      images: [
+        "/Images/kilo_ai_hero_2026.jpg",
+        "/Images/kilo_control_v3.jpeg",
+        "/Images/kilo_dashboard_v3.jpeg", 
+        "/Images/kilo_whatsapp_v3.jpeg", 
+        "/Images/kilo_pos_v3.jpeg",
+        "/Images/kilo_ai_v3.jpeg"
+      ],
+      imageLabels: language === 'es' 
+        ? ["Kilo AI", "Dashboard Global", "Punto de Venta", "Venta por WhatsApp", "Control Total", "Transacciones"] 
+        : ["Kilo AI", "Global Dashboard", "POS System", "WhatsApp Sales", "Full Control", "Transactions"],
+      stack: ["React", "Node.js", "Docker", "Coolify", "AFIP API"],
       stats: [
-        { label: language === 'es' ? 'Capacidad' : 'User Capacity', value: '+10k', icon: IconUsers },
+        { label: language === 'es' ? 'Subdominios' : 'Subdomains', value: '+10k', icon: IconUsers },
         { label: language === 'es' ? 'Lanzamiento' : 'Time-to-Market', value: language === 'es' ? '4 Meses' : '4 Months', icon: IconBolt }
       ],
+      features: language === 'es' 
+        ? [
+            { label: "Kilo AI", index: 0 },
+            { label: "Dashboard", index: 1 },
+            { label: "Punto de Venta", index: 2 },
+            { label: "WhatsApp", index: 5 },
+            { label: "Control Total", index: 4 },
+            { label: "Pagos", index: 3 }
+          ]
+        : [
+            { label: "Kilo AI", index: 0 },
+            { label: "Dashboard", index: 1 },
+            { label: "POS System", index: 2 },
+            { label: "WhatsApp", index: 5 },
+            { label: "Full Control", index: 4 },
+            { label: "Payments", index: 3 }
+          ],
+      mediaBgColor: '#FFFFFF',
       link: "https://somoskilo.com",
       playStore: true,
       playStoreLink: "https://play.google.com/store/apps/details?id=com.kilo.app&hl=es_AR"
@@ -59,16 +102,16 @@ export function ProjectShowcase() {
       link: "#contact"
     },
     {
-      title: "ZonaSalud",
-      category: language === 'es' ? "Healthcare SaaS" : "Healthcare SaaS",
+      title: "SLOT MEDICAL — Founder",
+      category: language === 'es' ? "AI Health OS" : "AI Health OS",
       description: language === 'es'
-        ? "Gestión médica integral donde especialistas coordinan turnos y pacientes reciben recordatorios por WhatsApp. Permite a secretarias gestionar agendas completas e historiales médicos centralizados en tiempo real."
-        : "Comprehensive medical management where specialists coordinate appointments and patients receive WhatsApp reminders. Enables secretaries to manage full agendas and centralized medical records in real-time.",
+        ? "Capa autónoma de logística y gestión clínica con IA. Procesa historiales clínicos en tiempo real con LLMs para generar resúmenes inmutables, integra flujos de captura QR para colas virtuales y CronJobs anti-ausentismo que reasignan turnos automáticamente."
+        : "Autonomous AI logistic and clinical management layer. Processes medical records in real-time with LLMs to generate immutable summaries, integrates QR capture flows for virtual queues, and anti-absenteeism CronJobs that automatically reassign appointments.",
       videoSrc: "/Images/zonasalud.mp4",
-      stack: ["Python", "FastAPI", "WhatsApp API", "Supabase"],
+      stack: ["NestJS", "Supabase", "Gemini 1.5", "TypeScript", "Linux Ops"],
       stats: [
-        { label: language === 'es' ? 'Recordatorios' : 'Reminders', value: 'WhatsApp', icon: IconDeviceMobile },
-        { label: language === 'es' ? 'Gestión' : 'Management', value: language === 'es' ? 'Historial' : 'Medical Records', icon: IconCircleCheck }
+        { label: language === 'es' ? 'Automatización' : 'Automation', value: 'CronJobs', icon: IconBolt },
+        { label: language === 'es' ? 'Procesamiento' : 'Processing', value: 'AI JSON', icon: IconRobot }
       ],
       link: "#contact"
     }
@@ -163,6 +206,37 @@ function ProductRow({ product, index, language }: { product: ProductData; index:
               ))}
             </Group>
 
+            {product.features && (
+              <Stack gap={10}>
+                <Text size="xs" fw={800} style={{ color: '#717171', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+                  {language === 'es' ? 'Explorar Ecosistema' : 'Explore Ecosystem'}
+                </Text>
+                <Group gap={8}>
+                  {product.features.map((feature) => (
+                    <UnstyledButton
+                      key={feature.label}
+                      onClick={() => {
+                        setImgIndex(feature.index);
+                        playSound('click');
+                      }}
+                      onMouseEnter={() => playSound('hover')}
+                      style={{
+                        padding: '8px 16px',
+                        borderRadius: '100px',
+                        border: `1px solid ${imgIndex === feature.index ? '#059669' : (colorScheme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)')}`,
+                        backgroundColor: imgIndex === feature.index ? (colorScheme === 'dark' ? 'rgba(5, 150, 105, 0.1)' : 'rgba(5, 150, 105, 0.05)') : 'transparent',
+                        transition: 'all 0.2s ease'
+                      }}
+                    >
+                      <Text size="xs" fw={700} style={{ color: imgIndex === feature.index ? '#059669' : (colorScheme === 'dark' ? '#A0A0A0' : '#717171') }}>
+                        {feature.label}
+                      </Text>
+                    </UnstyledButton>
+                  ))}
+                </Group>
+              </Stack>
+            )}
+
             <Group gap="md" mt={10}>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <UnstyledButton 
@@ -212,7 +286,7 @@ function ProductRow({ product, index, language }: { product: ProductData; index:
             <Box style={{ 
               position: 'relative',
               borderRadius: '32px',
-              backgroundColor: colorScheme === 'dark' ? '#0F0F0F' : '#F7F7F7',
+              backgroundColor: product.mediaBgColor || (colorScheme === 'dark' ? '#0F0F0F' : '#F7F7F7'),
               border: `1px solid ${colorScheme === 'dark' ? 'rgba(255,255,255,0.1)' : '#EBEBEB'}`,
               overflow: 'hidden',
               aspectRatio: '16/10',
@@ -235,87 +309,58 @@ function ProductRow({ product, index, language }: { product: ProductData; index:
                   }}
                 />
               ) : product.images && (
-                <>
+                <Box style={{ width: '100%', height: '100%', position: 'relative' }}>
                   <AnimatePresence mode="wait">
                     <motion.div
-                      key={product.images[imgIndex]}
-                      initial={{ opacity: 0, scale: 0.95 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 1.05 }}
-                      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] as any }}
-                      style={{ width: '100%', height: '100%' }}
-                    >
-                      <Box 
-                        style={{
-                          width: '100%',
-                          height: '100%',
-                          backgroundImage: `url(${product.images[imgIndex]})`,
-                          backgroundSize: 'cover',
-                          backgroundPosition: 'center'
-                        }}
-                      />
-                    </motion.div>
+                      key={imgIndex}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.8, ease: 'easeInOut' }}
+                      style={{
+                        position: 'absolute',
+                        inset: 0,
+                        backgroundImage: `url(${product.images[imgIndex]})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        backgroundRepeat: 'no-repeat'
+                      }}
+                    />
                   </AnimatePresence>
 
+                  {/* Subtle Progress Dots (Mercado Pago Style) */}
                   {product.images.length > 1 && (
-                    <Box style={{ 
-                      position: 'absolute', 
-                      bottom: 24, 
-                      left: '50%', 
-                      transform: 'translateX(-50%)',
-                      zIndex: 10,
-                      backgroundColor: colorScheme === 'dark' ? 'rgba(0,0,0,0.4)' : 'rgba(255,255,255,0.4)',
-                      backdropFilter: 'blur(12px)',
-                      WebkitBackdropFilter: 'blur(12px)',
-                      padding: '4px',
-                      borderRadius: '100px',
-                      border: `1px solid ${colorScheme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)'}`
-                    }}>
-                      <Group gap={4}>
-                        {product.images.map((_, i) => (
-                          <UnstyledButton 
-                            key={i}
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              setImgIndex(i);
-                              playSound('click');
-                            }}
-                            style={{ position: 'relative', padding: '6px 12px', borderRadius: '100px' }}
-                          >
-                            {i === imgIndex && (
-                              <motion.div
-                                layoutId={`pill-${product.title}`}
-                                style={{
-                                  position: 'absolute',
-                                  inset: 0,
-                                  backgroundColor: colorScheme === 'dark' ? '#FFFFFF' : '#000000',
-                                  borderRadius: '100px',
-                                  zIndex: 0
-                                }}
-                              />
-                            )}
-                            <Text 
-                              size="10px" 
-                              fw={700} 
-                              style={{ 
-                                position: 'relative', 
-                                zIndex: 1,
-                                color: i === imgIndex 
-                                  ? (colorScheme === 'dark' ? '#000000' : '#FFFFFF') 
-                                  : (colorScheme === 'dark' ? '#A0A0A0' : '#555555'),
-                                transition: 'color 0.2s ease',
-                                textTransform: 'uppercase',
-                                letterSpacing: '0.05em'
-                              }}
-                            >
-                              {product.imageLabels?.[i] || `Vista ${i + 1}`}
-                            </Text>
-                          </UnstyledButton>
-                        ))}
-                      </Group>
-                    </Box>
+                    <Group 
+                      gap={6} 
+                      style={{ 
+                        position: 'absolute', 
+                        bottom: 16, 
+                        left: '50%', 
+                        transform: 'translateX(-50%)',
+                        zIndex: 10,
+                        backgroundColor: 'rgba(0,0,0,0.2)',
+                        padding: '6px 10px',
+                        borderRadius: '100px',
+                        backdropFilter: 'blur(10px)'
+                      }}
+                    >
+                      {product.images.map((_, i) => (
+                        <Box 
+                          key={i}
+                          onClick={() => setImgIndex(i)}
+                          style={{
+                            width: i === imgIndex ? 20 : 6,
+                            height: 6,
+                            borderRadius: 3,
+                            backgroundColor: i === imgIndex ? '#059669' : 'rgba(255,255,255,0.5)',
+                            transition: 'all 0.3s ease',
+                            cursor: 'pointer'
+                          }}
+                        />
+                      ))}
+                    </Group>
                   )}
-                </>
+                </Box>
               )}
             </Box>
           </motion.div>

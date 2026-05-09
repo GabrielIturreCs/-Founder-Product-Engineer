@@ -106,8 +106,9 @@ export function ProjectCard({ title, category, description, date, imageSrc, stac
                 width: '100%',
                 height: '100%',
                 backgroundImage: `url(${imageSrc})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'top center',
+                backgroundSize: 'contain',
+                backgroundPosition: 'bottom center',
+                backgroundRepeat: 'no-repeat',
                 borderRadius: '16px 16px 0 0',
                 boxShadow: '0 -10px 30px rgba(0,0,0,0.1)',
                 zIndex: 1

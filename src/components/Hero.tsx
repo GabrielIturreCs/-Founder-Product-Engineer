@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { Container, Title, Text, Button, Group, Stack, Avatar, Image as MantineImage, Divider, Box } from '@mantine/core';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MobileNav } from './MobileNav';
-import { IconBrandGithub, IconBrandLinkedin, IconMail, IconArrowUpRight, IconSun, IconMoon, IconVolume, IconVolumeOff, IconCheck } from '@tabler/icons-react';
+import { IconBrandGithub, IconBrandLinkedin, IconMail, IconArrowUpRight, IconSun, IconMoon, IconVolume, IconVolumeOff, IconCheck, IconDownload } from '@tabler/icons-react';
 import { useMantineColorScheme, ActionIcon } from '@mantine/core';
 import { useLanguage } from '../app/LanguageProvider';
 import { useSoundEffects } from '../app/SoundProvider';
@@ -229,22 +229,23 @@ export function Hero() {
             <Reveal delay={0.2} y={40}>
               <Stack gap="lg">
                 <Stack gap={0}>
-                  <Text 
-                    size="clamp(1.2rem, 6vw, 2.2rem)" 
-                    fw={900} 
-                    c={colorScheme === 'dark' ? 'white' : 'var(--mantine-color-text)'} 
-                    lh={0.9}
-                    style={{ letterSpacing: '-0.04em' }}
-                  >
-                    {t.hero.craft}
-                  </Text>
                   <Title 
                     order={1} 
                     size="clamp(2.5rem, 10vw, 4.5rem)" 
                     fw={900} 
                     c={colorScheme === 'dark' ? 'white' : 'var(--mantine-color-text)'}
                     lh={0.85}
-                    style={{ letterSpacing: '-0.06em' }}
+                    style={{ letterSpacing: '-0.06em', textTransform: 'uppercase' }}
+                  >
+                    {t.hero.craft}
+                  </Title>
+                  <Title 
+                    order={1} 
+                    size="clamp(2.5rem, 10vw, 4.5rem)" 
+                    fw={900} 
+                    c={colorScheme === 'dark' ? 'white' : 'var(--mantine-color-text)'}
+                    lh={0.85}
+                    style={{ letterSpacing: '-0.06em', textTransform: 'uppercase' }}
                   >
                     {t.hero.products}
                   </Title>
@@ -264,7 +265,7 @@ export function Hero() {
                           fw={900} 
                           c={colorScheme === 'dark' ? 'white' : 'var(--mantine-color-text)'}
                           lh={0.85}
-                          style={{ letterSpacing: '-0.06em' }}
+                          style={{ letterSpacing: '-0.06em', textTransform: 'uppercase' }}
                         >
                           {words[index]}.
                         </Title>
@@ -289,10 +290,11 @@ export function Hero() {
                       radius="md" 
                       size="xl"
                       component="a"
-                      href="#projects"
+                      href={t.hero.cvLink}
+                      download
                       onMouseEnter={() => playSound('hover')}
                       onClick={() => playSound('click')}
-                      rightSection={<IconArrowUpRight size={18} stroke={2.2} />}
+                      rightSection={<IconDownload size={18} stroke={2.2} />}
                       styles={{
                         root: { height: 56, paddingLeft: 24, paddingRight: 24, fontWeight: 800, position: 'relative', zIndex: 1 }
                       }}

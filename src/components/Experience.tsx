@@ -23,11 +23,15 @@ import {
   IconArrowRight,
   IconBriefcase,
   IconBuildingStore,
-  IconToolsKitchen2,
+  IconStethoscope,
+  IconRobot,
   IconUser,
   IconTarget,
   IconCompass,
-  IconTrophy
+  IconTrophy,
+  IconBolt,
+  IconServer,
+  IconCreditCard,
 } from '@tabler/icons-react';
 import { useLanguage } from '../app/LanguageProvider';
 import { Reveal } from './Reveal';
@@ -57,102 +61,102 @@ export function Experience() {
   const experiences: ExperienceItem[] = [
     {
       id: 'kilo',
-      role: 'Founder · Full Stack Product Engineer',
-      company: 'KILO',
-      period: '2023 – 2026',
-      type: 'SaaS multi-tenant para comercios · Web · PWA · Android',
-      description: language === 'es' 
-        ? 'Sistema operativo para comercios que transforma operaciones complejas en decisiones simples y accionables.'
-        : 'Operating system for retail that transforms complex operations into simple, actionable decisions.',
-      icon: IconBuildingStore,
+      role: 'Founder & Product Engineer',
+      company: 'KILO SaaS',
+      period: '2023 – Present',
+      type: 'Fintech · Multi-tenant · SaaS Builder',
+      description: language === 'es'
+        ? 'Plataforma fintech multi-tenant orquestada con IA para automatizar el desarrollo y optimizar la lógica operativa del retail moderno.'
+        : 'Multi-tenant fintech platform orchestrated with AI to automate development and optimize modern retail operational logic.',
+      icon: IconTarget,
       bullets: [
         {
-          title: language === 'es' ? 'Problema' : 'Problem',
-          text: language === 'es' 
-            ? 'Los sistemas tradicionales tipo ERP son complejos, lentos y no están diseñados para el día a día del comerciante.'
-            : 'Traditional ERP systems are complex, slow, and not designed for the merchant\'s daily reality.',
-          icon: IconTarget
+          title: language === 'es' ? 'Ingeniería de Producto & IA autónoma' : 'Product Engineering & Autonomous AI',
+          text: language === 'es'
+            ? 'Lideré el lanzamiento del sistema core en 4 meses, orquestando flujos con Claude API para acelerar el desarrollo y asegurar el aislamiento de datos (RBAC/JWT).'
+            : 'Led the core system launch in 4 months, orchestrating flows with Claude API to accelerate development and ensure RBAC/JWT data isolation.',
+          icon: IconBolt
         },
         {
-          title: language === 'es' ? 'Qué construí' : 'What I Built',
+          title: language === 'es' ? 'Infraestructura' : 'Infrastructure',
           text: language === 'es'
-            ? 'Diseñé y desarrollé una plataforma SaaS multi-tenant preparada para +10.000 usuarios con aislamiento de datos y aprovisionamiento dinámico.'
-            : 'Designed and developed a multi-tenant SaaS platform ready for 10,000+ users with data isolation and dynamic provisioning.',
-          icon: IconCompass
+            ? 'Diseñé la arquitectura cloud en servidores Linux (Docker/Coolify) para el aprovisionamiento dinámico de +10,000 subdominios.'
+            : 'Designed the cloud architecture on Linux servers (Docker/Coolify) for the dynamic provisioning of 10k+ subdomains.',
+          icon: IconServer
         },
         {
           title: language === 'es' ? 'Impacto' : 'Impact',
           text: language === 'es'
-            ? 'Reduje la fricción operativa y sistematicé la reconciliación financiera, permitiendo a dueños de negocios escalar sin aumentar el caos administrativo.'
-            : 'Reduced operational friction and systematized financial reconciliation, allowing business owners to scale without increasing administrative chaos.',
+            ? 'Integré facturación electrónica AFIP y pasarelas de pago QR, reduciendo drásticamente el time-to-market de funciones críticas de negocio.'
+            : 'Integrated AFIP electronic billing and QR payment gateways, drastically reducing the time-to-market for critical business features.',
           icon: IconTrophy
         }
       ]
     },
     {
-      id: 'chefi',
-      role: 'Founder · Product Engineer',
-      company: 'CHEFI',
-      period: '2024 – 2026',
-      type: 'SaaS para gastronomía y automatización operativa · Web · PWA · Android',
+      id: 'slot',
+      role: 'Founder & Product Engineer',
+      company: 'ZonaSalud',
+      period: '2025 – 2026',
+      type: 'AI Health OS · Logistics · Automation',
       description: language === 'es'
-        ? 'Sistema operativo para locales gastronómicos que centraliza pedidos, mesas y atención al cliente en tiempo real.'
-        : 'Operating system for gastronomic venues that centralizes orders, tables, and customer service in real time.',
-      icon: IconToolsKitchen2,
+        ? 'Capa autónoma de gestión clínica que erradica procesos manuales mediante procesamiento de datos con LLMs y automatización E2E.'
+        : 'Autonomous clinical management layer that eradicates manual processes through LLM data processing and E2E automation.',
+      icon: IconStethoscope,
       bullets: [
         {
-          title: language === 'es' ? 'Problema' : 'Problem',
+          title: language === 'es' ? 'AI Data Processing' : 'AI Data Processing',
           text: language === 'es'
-            ? 'Los restaurantes operan con sistemas fragmentados y alta fricción en la atención, generando errores y pérdida de eficiencia.'
-            : 'Restaurants operate with fragmented systems and high friction in service, leading to errors and loss of efficiency.',
-          icon: IconTarget
+            ? 'Integré modelos LLM en NestJS para procesar historiales médicos en tiempo real, generando resúmenes inmutables y estructurados en JSON.'
+            : 'Integrated LLM models in NestJS to process medical records in real-time, generating immutable and structured JSON summaries.',
+          icon: IconRobot
         },
         {
-          title: language === 'es' ? 'Qué construí' : 'What I Built',
+          title: language === 'es' ? 'Sistemas E2E' : 'E2E Systems',
           text: language === 'es'
-            ? 'Diseñé y desarrollé un SaaS vertical con gestión de mesas en tiempo real, pedidos QR y autenticación WhatsApp OTP.'
-            : 'Designed and developed a vertical SaaS with real-time table management, QR ordering, and WhatsApp OTP authentication.',
+            ? 'Construí flujos de captura QR para colas virtuales y CronJobs anti-ausentismo que reasignan turnos automáticamente en la base de datos.'
+            : 'Built QR capture flows for virtual queues and anti-absenteeism CronJobs that automatically reassign appointments in the database.',
           icon: IconCompass
         },
         {
-          title: language === 'es' ? 'Impacto' : 'Impact',
+          title: language === 'es' ? 'Resiliencia' : 'Resilience',
           text: language === 'es'
-            ? 'Automaticé el flujo de pedidos y sincronización de stock mediante Evolution API, elevando la experiencia del comensal y la rentabilidad del local.'
-            : 'Automated order flow and stock synchronization via Evolution API, elevating diner experience and venue profitability.',
+            ? 'Optimicé la logística operativa mediante generación asíncrona de PDF y despliegue multi-nodo en servidores Linux con alta disponibilidad.'
+            : 'Optimized operational logistics through asynchronous PDF generation and multi-node deployment on high-availability Linux servers.',
           icon: IconTrophy
         }
       ]
     },
     {
       id: 'independent',
-      role: 'Independent Product Engineer',
+      role: 'Full Stack & AI Architect',
       company: 'Freelance',
-      period: '2022 – 2026',
-      type: 'Desarrollo de software y productos a medida · Web · SaaS · Automatización',
+      period: '2022 – Present',
+      type: 'AI Infrastructure · SaaS Architect · Consulting',
       description: language === 'es'
-        ? 'Desarrollo soluciones digitales a medida para negocios, diseñando productos completos desde la idea hasta su implementación.'
-        : 'Develop custom digital solutions for businesses, designing complete products from idea to implementation.',
-      icon: IconUser,
+        ? 'Arquitectura y construcción de infraestructuras inteligentes bilingües, especializadas en el escalado de activos digitales complejos.'
+        : 'Architecture and construction of bilingual intelligent infrastructures, specialized in scaling complex digital assets.',
+      icon: IconRobot,
       bullets: [
         {
-          title: language === 'es' ? 'Problema' : 'Problem',
+          title: language === 'es' ? 'Consultoría' : 'Consulting',
           text: language === 'es'
-            ? 'Muchos negocios necesitan software específico pero no tienen el equipo para diseñarlo, ejecutarlo y mantenerlo con calidad senior.'
-            : 'Many businesses need specific software but lack the team to design, execute, and maintain it with senior quality.',
+            ? 'Asesoro en la orquestación de IA y migración de sistemas legacy a arquitecturas cloud modernas y resilientes.'
+            : 'Advise on AI orchestration and migration of legacy systems to modern, resilient cloud architectures.',
           icon: IconTarget
         },
         {
-          title: language === 'es' ? 'Qué construí' : 'What I Built',
+          title: language === 'es' ? 'Ingeniería' : 'Engineering',
           text: language === 'es'
-            ? 'Entregué múltiples plataformas a medida (Fintech, HealthTech) gestionando todo el ciclo de vida del producto.'
-            : 'Delivered multiple custom platforms (Fintech, HealthTech) managing the entire product lifecycle.',
+            ? 'Implementación de sistemas RAG, agentes autónomos y pasarelas de pago internacionales para clientes globales.'
+            : 'Implementation of RAG systems, autonomous agents, and international payment gateways for global clients.',
           icon: IconCompass
         },
         {
           title: language === 'es' ? 'Impacto' : 'Impact',
           text: language === 'es'
-            ? 'Transformé procesos manuales obsoletos en sistemas automatizados en producción, ahorrando cientos de horas operativas a mis clientes.'
-            : 'Transformed obsolete manual processes into automated production systems, saving hundreds of operational hours for my clients.',
+            ? 'Aseguro la entrega de productos listos para producción con enfoque en la rentabilidad y el crecimiento escalable.'
+            : 'Ensure the delivery of production-ready products focused on profitability and scalable growth.',
           icon: IconTrophy
         }
       ]

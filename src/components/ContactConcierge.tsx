@@ -75,7 +75,7 @@ export function ContactConcierge() {
 
   const contactTypes = language === 'es' ? [
     { label: 'Rol Full-Time', value: 'fulltime' },
-    { label: 'Product Engineer', value: 'product' },
+    { label: 'Solución de IA / Automatización', value: 'ai' },
     { label: 'Proyecto Contract / B2B', value: 'contract' },
     { label: 'Entrevista Exploratoria', value: 'interview' },
     { label: 'Crear un MVP', value: 'mvp' },
@@ -83,7 +83,7 @@ export function ContactConcierge() {
     { label: 'Solo Saludar', value: 'hello' }
   ] : [
     { label: 'Full-Time Role', value: 'fulltime' },
-    { label: 'Product Engineer', value: 'product' },
+    { label: 'AI Solution / Automation', value: 'ai' },
     { label: 'Contract / B2B Project', value: 'contract' },
     { label: 'Exploratory Interview', value: 'interview' },
     { label: 'Build an MVP', value: 'mvp' },
@@ -192,12 +192,12 @@ export function ContactConcierge() {
                     fw={700} 
                     style={{ letterSpacing: '-0.04em', color: colorScheme === 'dark' ? '#fff' : '#222222', lineHeight: 1.1 }}
                   >
-                    {language === 'es' ? '¿Buscas un Product Engineer?' : 'Looking for a Product Engineer?'}
+                    {language === 'es' ? '¿Buscas un Full Stack & AI Engineer?' : 'Looking for a Full Stack & AI Engineer?'}
                   </Title>
                   <Text size="xl" style={{ color: '#717171', fontWeight: 500, maxWidth: 500, lineHeight: 1.5 }}>
                     {language === 'es' 
-                      ? 'Listo para aportar visión arquitectónica, código limpio y ejecución rápida a tu equipo o proyecto.' 
-                      : 'Ready to bring architectural vision, clean code, and fast execution to your team or project.'}
+                      ? 'Listo para aportar visión arquitectónica, inteligencia artificial y ejecución rápida a tu equipo o proyecto.' 
+                      : 'Ready to bring architectural vision, artificial intelligence, and fast execution to your team or project.'}
                   </Text>
                 </Stack>
 
@@ -209,7 +209,10 @@ export function ContactConcierge() {
                         leftSection={<IconDownload size={20} stroke={1.5} />}
                         style={{ backgroundColor: '#222222', color: 'white', height: '54px', padding: '0 32px' }}
                         component="a"
-                        href="/Images/Gabriel%20Iturre%20_%20Full%20Stack%20Product%20Engineer.pdf"
+                        href={language === 'es' 
+                          ? "/Images/Gabriel_Iturre_Full_Stack_AI_Engineer_ES.pdf" 
+                          : "/Images/Gabriel_Iturre_Full_Stack_AI_Engineer_EN.pdf"
+                        }
                         download
                         onMouseEnter={() => playSound('hover')}
                         onClick={() => playSound('click')}

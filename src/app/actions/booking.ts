@@ -56,7 +56,7 @@ export async function sendBookingEmails(data: {
             <p style="margin-bottom: 0;">🔗 <strong>Link:</strong> Te enviaré el link de Google Meet unos minutos antes.</p>
           </div>
           <p>Si necesitas cambiar la fecha o cancelar, por favor responde directamente a este correo.</p>
-          <p style="margin-top: 32px;">¡Hablamos pronto!<br><br><strong>Gabriel Iturre</strong><br>Product Engineer</p>
+          <p style="margin-top: 32px;">¡Hablamos pronto!<br><br><strong>Gabriel Iturre</strong><br>Full Stack & AI Engineer</p>
         </div>
       `
       : `
@@ -70,7 +70,7 @@ export async function sendBookingEmails(data: {
             <p style="margin-bottom: 0;">🔗 <strong>Link:</strong> I'll send the Google Meet link a few minutes before the meeting.</p>
           </div>
           <p>If you need to reschedule or cancel, please reply directly to this email.</p>
-          <p style="margin-top: 32px;">Talk soon!<br><br><strong>Gabriel Iturre</strong><br>Product Engineer</p>
+          <p style="margin-top: 32px;">Talk soon!<br><br><strong>Gabriel Iturre</strong><br>Full Stack & AI Engineer</p>
         </div>
       `;
 

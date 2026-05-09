@@ -1,11 +1,14 @@
 import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
+  const baseUrl = 'https://gabrieliturre.dev';
+
   return {
     rules: {
       userAgent: '*',
       allow: '/',
+      disallow: '/api/',
     },
-    sitemap: 'https://gabrieliturre.dev/sitemap.xml',
+    sitemap: `${baseUrl}/sitemap.xml`,
   };
 }

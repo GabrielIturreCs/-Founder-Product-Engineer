@@ -345,7 +345,7 @@ export function MobileNav() {
           </Stack>
 
           <Text size="xs" c={subtextColor} ta="center" mt="auto">
-            Gabriel Iturre · Product Engineer · 2026
+            Gabriel Iturre · Full Stack & AI Engineer · 2026
           </Text>
         </Stack>
       </Drawer>

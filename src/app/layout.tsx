@@ -18,19 +18,28 @@ const serif = Playfair_Display({
   style: ["italic", "normal"]
 });
 
+export const viewport = {
+  themeColor: "#000000",
+  width: "device-width",
+  initialScale: 1,
+};
+
 export const metadata: Metadata = {
-  title: "Gabriel Iturre | Full Stack Product Engineer en Argentina",
-  description: "Product Engineer y Fundador de KILO y CHEFI. Especialista en SaaS, Fintech y arquitectura escalable en Jujuy, Argentina. Diseño productos digitales que generan ingresos.",
+  metadataBase: new URL("https://gabrieliturre.dev"),
+  title: "Gabriel Iturre | AI & Product Engineer | SaaS Infrastructure Architect",
+  description: "AI & Product Engineer especializado en la construcción E2E de plataformas SaaS y arquitecturas cloud multi-tenant. Orquesto flujos con modelos de lenguaje y agentes autónomos.",
   keywords: [
     "Gabriel Iturre", 
-    "Product Engineer Argentina", 
-    "Desarrollador Full Stack Jujuy", 
-    "Software Engineer Palpalá", 
-    "SaaS Founder Argentina", 
-    "KILO ERP", 
-    "CHEFI SaaS", 
-    "Next.js Expert Argentina",
-    "Desarrollo de Software Jujuy"
+    "AI & Product Engineer Argentina", 
+    "SaaS Infrastructure Architect",
+    "Full Stack & AI Engineer LATAM", 
+    "AI Orchestration Specialist",
+    "SaaS Builder Latin America",
+    "Next.js 16 Expert", 
+    "Multi-tenant Architecture Expert",
+    "KILO Retail OS", 
+    "SLOT MEDICAL AI", 
+    "Autonomous Systems Engineering"
   ],
   authors: [{ name: "Gabriel Iturre" }],
   creator: "Gabriel Iturre",
@@ -41,25 +50,25 @@ export const metadata: Metadata = {
     telephone: false,
   },
   openGraph: {
-    title: "Gabriel Iturre | Product Engineer & Founder",
-    description: "Construyendo el futuro del SaaS desde Jujuy, Argentina. Creador de KILO y CHEFI.",
+    title: "Gabriel Iturre | AI & Product Engineer | SaaS Architect",
+    description: "Orquesto flujos con modelos de lenguaje y agentes autónomos para la generación de código, optimizando la lógica operativa y erradicando tareas manuales.",
     url: "https://gabrieliturre.dev",
-    siteName: "Gabriel Iturre Portfolio",
+    siteName: "Gabriel Iturre Portfolio 2026",
     images: [
       {
         url: "/Images/gabriel-iturre-programador-jujuy.png",
-        width: 800,
-        height: 800,
-        alt: "Gabriel Iturre - Product Engineer",
+        width: 1200,
+        height: 630,
+        alt: "Gabriel Iturre - Full Stack & AI Engineer",
       },
     ],
-    locale: "es_AR",
+    locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Gabriel Iturre | Product Engineer",
-    description: "SaaS Builder & Full Stack Engineer en Argentina.",
+    title: "Gabriel Iturre | Full Stack & AI Engineer",
+    description: "SaaS Architect & AI Engineer building the future of intelligent products.",
     images: ["/Images/gabriel-iturre-programador-jujuy.png"],
   },
   icons: {
@@ -88,16 +97,16 @@ export default function RootLayout({
       "https://github.com/GabrielIturreCs",
       "https://www.linkedin.com/in/gabriel-iturre-73900626a/"
     ],
-    "jobTitle": "Full Stack Product Engineer",
+    "jobTitle": "AI & Product Engineer",
     "worksFor": {
       "@type": "Organization",
-      "name": "ZonaJujuy"
+      "name": "KILO SaaS / ZonaSalud"
     },
-    "description": "Product Engineer y Fundador de KILO y CHEFI, especializado en desarrollo de productos SaaS y Aplicaciones Android Nativas en Jujuy, Argentina.",
+    "description": "AI & Product Engineer y Fundador de KILO y SLOT MEDICAL, especializado en la construcción de infraestructuras inteligentes y ecosistemas SaaS en Argentina y Latinoamérica.",
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "Palpalá",
-      "addressRegion": "Jujuy",
+      "addressLocality": "Buenos Aires",
+      "addressRegion": "Argentina",
       "addressCountry": "AR"
     }
   };

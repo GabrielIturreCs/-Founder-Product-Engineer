@@ -3,43 +3,44 @@ export const translations = {
     name: 'Gabriel Iturre',
     nav: {
       experience: 'Experiencia',
-      projects: 'Productos',
+      projects: 'Ecosistemas',
       stack: 'Stack',
       contact: 'Contacto'
     },
     hero: {
-      craft: 'Diseño y construyo',
-      products: 'productos digitales',
-      words: ["intuitivos", "rentables", "modernos", "escalables"],
-      subtext: 'Product Engineer especializado en SaaS y Aplicaciones Android Nativas en Argentina. Conecto UX, backend y arquitectura escalable para transformar ideas en sistemas de producción desde Jujuy al mundo.',
-      cta: 'Ver productos'
+      craft: 'Construyo',
+      products: 'infraestructura',
+      words: ["SaaS & IA", "multi-tenant", "autónoma", "E2E"],
+      subtext: 'AI & Product Engineer especializado en la construcción E2E de plataformas SaaS y arquitecturas cloud multi-tenant. Orquesto flujos con modelos de lenguaje y agentes autónomos para la generación de código, optimizando la lógica operativa y erradicando tareas manuales.',
+      cta: 'Descargar CV',
+      cvLink: '/Images/Gabriel_Iturre_Full_Stack_AI_Engineer_ES.pdf'
     },
     projects: {
-      title: 'Productos',
-      subtitle: 'Sistemas reales desarrollados en Jujuy que generan impacto y facturación global.'
+      title: 'Ecosistemas Críticos',
+      subtitle: 'Plataformas SaaS de alto rendimiento diseñadas para escalar operaciones y automatizar flujos de caja globales.'
     },
     philosophy: {
-      title: 'No escribo código.',
-      subtitle: 'Diseño sistemas que generan resultados.',
-      differential: 'No solo desarrollo software.',
-      impact: 'Diseño productos intuitivos que la gente quiere usar.',
-      footer: '© 2026 Gabriel Iturre. Diseñado con enfoque en producto en Palpalá, Jujuy.',
+      title: 'No solo escribo código.',
+      subtitle: 'Construyo la columna vertebral de negocios digitales.',
+      differential: 'Especialista en Time-to-Market.',
+      impact: 'Orquesto flujos con modelos de lenguaje y agentes autónomos para la generación de código, optimizando la lógica operativa y erradicando tareas manuales.',
+      footer: '© 2026 Gabriel Iturre. AI & Product Engineer. Palpalá, Jujuy.',
       pillars: {
         architecture: {
-          title: 'Arquitectura escalable',
-          desc: 'Sistemas preparados para crecer desde el día 1, sin deuda técnica paralizante.'
+          title: 'Arquitectura Cloud Multi-tenant',
+          desc: 'Aislamiento de datos nivel RBAC/JWT con aprovisionamiento dinámico de subdominios a escala masiva.'
         },
         ux: {
-          title: 'UX orientado a decisiones',
-          desc: 'Interfaces que no solo son lindas, sino que guían al usuario hacia el objetivo de negocio.'
+          title: 'Orquestación de IA (E2E)',
+          desc: 'Integración de LLMs en el core del negocio para automatizar decisiones, código y flujos operativos.'
         },
         monetization: {
-          title: 'Monetización y Pagos',
-          desc: 'Integración profunda de pasarelas de pago y sistemas de suscripción multitenant.'
+          title: 'Integraciones de Negocio',
+          desc: 'Endpoints críticos: Facturación AFIP, pasarelas QR (Mercado Pago/Stripe) y automatización con WhatsApp Cloud API.'
         },
         production: {
-          title: 'Ready for Production',
-          desc: 'Productos lanzables con alta disponibilidad, seguridad y monitoreo real.'
+          title: 'Resiliencia Operativa',
+          desc: 'Priorizo la alta disponibilidad de la infraestructura y la entrega de valor de negocio directo en tiempo récord.'
         }
       }
     }
@@ -48,43 +49,44 @@ export const translations = {
     name: 'Gabriel Iturre',
     nav: {
       experience: 'Experience',
-      projects: 'Products',
+      projects: 'Ecosystems',
       stack: 'Stack',
       contact: 'Contact'
     },
     hero: {
-      craft: 'I design and build',
-      products: 'digital products',
-      words: ["intuitive", "profitable", "modern", "scalable"],
-      subtext: 'Product Engineer specializing in SaaS and Native Android Applications in Argentina. I connect UX, backend, and scalable architecture to transform ideas into production systems from Jujuy to the world.',
-      cta: 'View products'
+      craft: 'I build',
+      products: 'infrastructure',
+      words: ["SaaS & AI", "multi-tenant", "autonomous", "E2E"],
+      subtext: 'AI & Product Engineer specializing in E2E SaaS construction and multi-tenant cloud architectures. I orchestrate flows with language models and autonomous agents for code generation, optimizing operational logic and eradicating manual tasks.',
+      cta: 'Download CV',
+      cvLink: '/Images/Gabriel_Iturre_Full_Stack_AI_Engineer_EN.pdf'
     },
     projects: {
-      title: 'Products',
-      subtitle: 'Real-world systems developed in Jujuy driving impact and global revenue.'
+      title: 'Critical Ecosystems',
+      subtitle: 'High-performance SaaS platforms designed to scale operations and automate global cash flows.'
     },
     philosophy: {
       title: 'I don’t just write code.',
-      subtitle: 'I design systems that drive results.',
-      differential: 'I don’t just develop software.',
-      impact: 'I design intuitive products that people want to use.',
-      footer: '© 2026 Gabriel Iturre. Built with focus on product in Palpalá, Jujuy.',
+      subtitle: 'I build the backbone of digital businesses.',
+      differential: 'Time-to-Market Specialist.',
+      impact: 'I orchestrate flows with language models and autonomous agents for code generation, optimizing operational logic and eradicating manual tasks.',
+      footer: '© 2026 Gabriel Iturre. AI & Product Engineer. Palpalá, Jujuy.',
       pillars: {
         architecture: {
-          title: 'Scalable Architecture',
-          desc: 'Systems ready to grow from day 1, without paralyzing technical debt.'
+          title: 'Multi-tenant Cloud Architecture',
+          desc: 'RBAC/JWT level data isolation with dynamic subdomain provisioning at massive scale.'
         },
         ux: {
-          title: 'Decision-Driven UX',
-          desc: 'Interfaces that aren’t just pretty, but guide users toward business goals.'
+          title: 'AI Orchestration (E2E)',
+          desc: 'LLM integration at the business core to automate decisions, code, and operational flows.'
         },
         monetization: {
-          title: 'Monetization & Payments',
-          desc: 'Deep integration of payment gateways and multi-tenant subscription systems.'
+          title: 'Business Integrations',
+          desc: 'Critical endpoints: Electronic billing, QR gateways (Stripe/Mercado Pago), and WhatsApp Cloud API automation.'
         },
         production: {
-          title: 'Ready for Production',
-          desc: 'Launch-ready products with high availability, security, and real-time monitoring.'
+          title: 'Operational Resilience',
+          desc: 'I prioritize infrastructure high availability and direct business value delivery in record time.'
         }
       }
     }
