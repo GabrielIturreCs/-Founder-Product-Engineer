@@ -1,7 +1,9 @@
 'use client';
 
+import { useStableColorScheme } from '../app/useStableColorScheme';
+
 import React from 'react';
-import { Box, Container, Grid, Stack, Title, Text, Group, UnstyledButton, useMantineColorScheme } from '@mantine/core';
+import { Box, Container, Grid, Stack, Title, Text, Group, UnstyledButton } from '@mantine/core';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   IconArrowRight, 
@@ -40,7 +42,7 @@ interface ProductData {
 
 export function ProjectShowcase() {
   const { t, language } = useLanguage();
-  const { colorScheme } = useMantineColorScheme();
+  const { colorScheme } = useStableColorScheme();
 
   const products: ProductData[] = [
     {
@@ -143,7 +145,7 @@ export function ProjectShowcase() {
 }
 
 function ProductRow({ product, index, language }: { product: ProductData; index: number; language: string }) {
-  const { colorScheme } = useMantineColorScheme();
+  const { colorScheme } = useStableColorScheme();
   const { playSound } = useSoundEffects();
   const [imgIndex, setImgIndex] = React.useState(0);
 

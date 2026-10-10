@@ -1,4 +1,4 @@
-import { ogImage, ogSize } from '@/components/site/OgImage';
+import { ogImage, ogSize } from '@/components/seo/OgImage';
 
 export const alt = 'Gabriel Iturre — Freelance Full Stack Developer';
 export const size = ogSize;

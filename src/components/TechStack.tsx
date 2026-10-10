@@ -1,7 +1,9 @@
 'use client';
 
+import { useStableColorScheme } from '../app/useStableColorScheme';
+
 import React from 'react';
-import { Container, Grid, Title, Text, Stack, Box, Group, useMantineColorScheme, Divider } from '@mantine/core';
+import { Container, Grid, Title, Text, Stack, Box, Group, Divider } from '@mantine/core';
 import { 
   IconLayout2,
   IconDatabase, 
@@ -23,7 +25,7 @@ interface TechCategory {
 
 export function TechStack() {
   const { language } = useLanguage();
-  const { colorScheme } = useMantineColorScheme();
+  const { colorScheme } = useStableColorScheme();
   const { playSound } = useSoundEffects();
 
   const categories: TechCategory[] = [

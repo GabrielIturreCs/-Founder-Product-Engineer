@@ -13,7 +13,7 @@ export const translations = {
       words: ["SaaS & IA", "multi-tenant", "autónoma", "E2E"],
       subtext: 'AI & Product Engineer especializado en la construcción E2E de plataformas SaaS y arquitecturas cloud multi-tenant. Orquesto flujos con modelos de lenguaje y agentes autónomos para la generación de código, optimizando la lógica operativa y erradicando tareas manuales.',
       cta: 'Descargar CV',
-      cvLink: '/Images/Gabriel_Iturre_Full_Stack_AI_Engineer_ES.pdf'
+      cvLink: '/cv/Gabriel-Iturre-CV-ES.pdf'
     },
     projects: {
       title: 'Ecosistemas Críticos',
@@ -59,7 +59,7 @@ export const translations = {
       words: ["SaaS & AI", "multi-tenant", "autonomous", "E2E"],
       subtext: 'AI & Product Engineer specializing in E2E SaaS construction and multi-tenant cloud architectures. I orchestrate flows with language models and autonomous agents for code generation, optimizing operational logic and eradicating manual tasks.',
       cta: 'Download CV',
-      cvLink: '/Images/Gabriel_Iturre_Full_Stack_AI_Engineer_EN.pdf'
+      cvLink: '/cv/Gabriel-Iturre-CV-EN.pdf'
     },
     projects: {
       title: 'Critical Ecosystems',

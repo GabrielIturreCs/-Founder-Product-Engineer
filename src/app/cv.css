@@ -237,3 +237,33 @@
     print-color-adjust: exact;
   }
 }
+
+/* Botones de la barra del CV */
+.cv-page .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 650;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: transform 0.15s ease;
+}
+.cv-page .btn:hover {
+  transform: translateY(-1px);
+}
+.cv-page .btn-primary {
+  background: #10b981;
+  color: #022c22;
+}
+.cv-page .btn-ghost {
+  background: #fff;
+  color: #0f172a;
+  border-color: #cbd5e1;
+}
+.cv-page a {
+  text-decoration: none;
+}

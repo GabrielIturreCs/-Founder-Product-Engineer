@@ -1,11 +1,13 @@
 'use client';
 
+import { useStableColorScheme } from '../app/useStableColorScheme';
+
 import { useState, useEffect } from 'react';
 import { Container, Title, Text, Button, Group, Stack, Avatar, Image as MantineImage, Divider, Box } from '@mantine/core';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MobileNav } from './MobileNav';
 import { IconBrandGithub, IconBrandLinkedin, IconMail, IconArrowUpRight, IconSun, IconMoon, IconVolume, IconVolumeOff, IconCheck, IconDownload } from '@tabler/icons-react';
-import { useMantineColorScheme, ActionIcon } from '@mantine/core';
+import { ActionIcon } from '@mantine/core';
 import { useLanguage } from '../app/LanguageProvider';
 import { useSoundEffects } from '../app/SoundProvider';
 import { notifications } from '@mantine/notifications';
@@ -13,7 +15,7 @@ import { useClipboard } from '@mantine/hooks';
 import { Reveal } from './Reveal';
 
 export function Hero() {
-  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+  const { colorScheme, toggleColorScheme } = useStableColorScheme();
   const { language, setLanguage, t } = useLanguage();
   const { isSoundEnabled, toggleSound, playSound } = useSoundEffects();
   const clipboard = useClipboard({ timeout: 2000 });
@@ -50,7 +52,6 @@ export function Hero() {
     window.location.href = `mailto:${email}`;
   };
 
-  if (!mounted) return <div style={{ minHeight: '100vh', backgroundColor: '#000' }} />;
 
   return (
     <div style={{ 

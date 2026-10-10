@@ -1,6 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import { translations } from './translations';
 
 type Language = 'es' | 'en';
@@ -14,7 +15,8 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguage] = useState<Language>('es');
+  const pathname = usePathname();
+  const [language, setLanguage] = useState<Language>(pathname?.startsWith('/en') ? 'en' : 'es');
 
   const t = translations[language];
 

@@ -4,6 +4,10 @@ import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+function esc(v: string) {
+  return String(v ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
+}
+
 export async function sendBookingEmails(data: {
   name: string;
   email: string;
@@ -13,7 +17,13 @@ export async function sendBookingEmails(data: {
   time: string;
   language: string;
 }) {
-  const { name, email, type, message, date, time, language } = data;
+  const { email, language } = data;
+  const name = esc(data.name);
+  const type = esc(data.type);
+  const message = esc(data.message);
+  const date = esc(data.date);
+  const time = esc(data.time);
+  const safeEmail = esc(email);
 
   try {
     // 1. Email para Gabriel (Notificación de nueva reserva)
@@ -26,7 +36,7 @@ export async function sendBookingEmails(data: {
           <h1 style="color: #222;">¡Nueva reserva!</h1>
           <hr />
           <p><strong>Nombre:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Email:</strong> ${safeEmail}</p>
           <p><strong>Tipo:</strong> ${type}</p>
           <p><strong>Fecha:</strong> ${date}</p>
           <p><strong>Hora:</strong> ${time}</p>

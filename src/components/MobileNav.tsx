@@ -1,5 +1,7 @@
 'use client';
 
+import { useStableColorScheme } from '../app/useStableColorScheme';
+
 import React, { useState } from 'react';
 import { 
   Group, 
@@ -33,14 +35,14 @@ import {
   IconDownload
 } from '@tabler/icons-react';
 import { useLanguage } from '../app/LanguageProvider';
-import { useMantineColorScheme } from '@mantine/core';
+
 import { useSoundEffects } from '../app/SoundProvider';
 import { notifications } from '@mantine/notifications';
 import { useClipboard } from '@mantine/hooks';
 
 export function MobileNav() {
   const { t, language, setLanguage } = useLanguage();
-  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+  const { colorScheme, toggleColorScheme } = useStableColorScheme();
   const { isSoundEnabled, toggleSound, playSound } = useSoundEffects();
   const [activeTab, setActiveTab] = useState('home');
   const [opened, setOpened] = useState(false);
@@ -227,7 +229,7 @@ export function MobileNav() {
             {/* Download CV */}
             <UnstyledButton 
               component="a" 
-              href="/Images/Gabriel%20Iturre%20_%20Full%20Stack%20Product%20Engineer.pdf" 
+              href={t.hero.cvLink}
               download
               onClick={() => { setOpened(false); playSound('click'); }}
             >

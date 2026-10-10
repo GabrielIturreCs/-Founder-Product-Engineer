@@ -77,11 +77,6 @@ export function JsonLd({ lang }: { lang: Lang }) {
         isPartOf: { '@id': `${SITE_URL}/#website` },
       },
       {
-        '@type': 'FAQPage',
-        '@id': `${pageUrl}#faq`,
-        mainEntity: t.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
-      },
-      {
         '@type': 'SoftwareApplication',
         name: 'KILO',
         url: 'https://somoskilo.com',

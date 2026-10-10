@@ -1,5 +1,7 @@
 'use client';
 
+import { useStableColorScheme } from '../app/useStableColorScheme';
+
 import React, { useState } from 'react';
 import { 
   Box, 
@@ -8,7 +10,6 @@ import {
   Title, 
   Text, 
   Group, 
-  useMantineColorScheme,
   Avatar,
   Divider,
   Grid,
@@ -54,7 +55,7 @@ interface ExperienceItem {
 
 export function Experience() {
   const { t, language } = useLanguage();
-  const { colorScheme } = useMantineColorScheme();
+  const { colorScheme } = useStableColorScheme();
   const { playSound } = useSoundEffects();
   const [activeTab, setActiveTab] = useState('kilo');
 

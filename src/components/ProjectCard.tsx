@@ -1,6 +1,8 @@
 'use client';
 
-import { Box, Text, Group, Stack, UnstyledButton, useMantineColorScheme } from '@mantine/core';
+import { useStableColorScheme } from '../app/useStableColorScheme';
+
+import { Box, Text, Group, Stack, UnstyledButton } from '@mantine/core';
 import { motion } from 'framer-motion';
 import { IconArrowRight } from '@tabler/icons-react';
 import { useLanguage } from '../app/LanguageProvider';
@@ -19,7 +21,7 @@ interface ProjectCardProps {
 
 export function ProjectCard({ title, category, description, date, imageSrc, stack, stats, gridSpan = 6, height = 480 }: ProjectCardProps) {
   const { language } = useLanguage();
-  const { colorScheme } = useMantineColorScheme();
+  const { colorScheme } = useStableColorScheme();
 
   return (
     <Box className="bento-grid-item" style={{ gridColumn: `span ${gridSpan}` }}>

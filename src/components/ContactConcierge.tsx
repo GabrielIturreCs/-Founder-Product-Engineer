@@ -1,5 +1,7 @@
 'use client';
 
+import { useStableColorScheme } from '../app/useStableColorScheme';
+
 import React, { useState, useEffect } from 'react';
 import { Container, Grid, Title, Text, Stack, Box, Group, UnstyledButton, Textarea, Avatar, Badge, ActionIcon, Modal, Button } from '@mantine/core';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -17,7 +19,7 @@ import {
   IconFileText
 } from '@tabler/icons-react';
 import { useLanguage } from '../app/LanguageProvider';
-import { useMantineColorScheme } from '@mantine/core';
+
 import { notifications } from '@mantine/notifications';
 import { useClipboard } from '@mantine/hooks';
 import { Reveal } from './Reveal';
@@ -28,7 +30,7 @@ import { sendBookingEmails } from '../app/actions/booking';
 
 export function ContactConcierge() {
   const { language } = useLanguage();
-  const { colorScheme } = useMantineColorScheme();
+  const { colorScheme } = useStableColorScheme();
   const { playSound } = useSoundEffects();
   const clipboard = useClipboard({ timeout: 2000 });
   const [step, setStep] = useState(1);
@@ -38,6 +40,7 @@ export function ContactConcierge() {
   const [message, setMessage] = useState('');
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState<number | null>(null);
+  const [monthOffset, setMonthOffset] = useState(0);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [bookedSlots, setBookedSlots] = useState<string[]>([]);
   const [isConfirmed, setIsConfirmed] = useState(false);
@@ -50,12 +53,31 @@ export function ContactConcierge() {
   const isEmailValid = (email: string) => /^\S+@\S+\.\S+$/.test(email);
   const canOpenCalendar = name.trim().length > 2 && isEmailValid(emailInput);
 
+  // Calendario dinámico: mes actual + hasta 2 meses hacia adelante.
+  const today = new Date();
+  const viewDate = new Date(today.getFullYear(), today.getMonth() + monthOffset, 1);
+  const viewYear = viewDate.getFullYear();
+  const viewMonth = viewDate.getMonth();
+  const daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
+  const leadingBlanks = (viewDate.getDay() + 6) % 7; // semana empieza en lunes
+  const days = Array.from({ length: daysInMonth }, (_, i) => i + 1);
+  const monthLabel = viewDate.toLocaleDateString(language === 'es' ? 'es-AR' : 'en-US', { month: 'long', year: 'numeric' });
+  const isPastDay = (d: number) => new Date(viewYear, viewMonth, d) < new Date(today.getFullYear(), today.getMonth(), today.getDate());
+  function toDateStr(d: number) {
+    return `${viewYear}-${String(viewMonth + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+  }
+  const changeMonth = (delta: number) => {
+    setMonthOffset((m) => Math.min(2, Math.max(0, m + delta)));
+    setSelectedDate(null);
+    setSelectedTime(null);
+  };
+
   // Cargar turnos ocupados cuando cambia la fecha
   useEffect(() => {
     const fetchBookedSlots = async () => {
       if (!selectedDate) return;
       
-      const dateStr = `2026-05-${selectedDate.toString().padStart(2, '0')}`;
+      const dateStr = toDateStr(selectedDate);
       const q = query(
         collection(db, "appointments"),
         where("date", "==", dateStr)
@@ -71,7 +93,7 @@ export function ContactConcierge() {
     };
 
     fetchBookedSlots();
-  }, [selectedDate]);
+  }, [selectedDate, monthOffset]);
 
   const contactTypes = language === 'es' ? [
     { label: 'Rol Full-Time', value: 'fulltime' },
@@ -92,7 +114,6 @@ export function ContactConcierge() {
   ];
 
   const times = ['10:00', '11:30', '14:00', '16:30', '18:00'];
-  const days = Array.from({ length: 31 }, (_, i) => i + 1);
 
   const handleWhatsApp = () => {
     playSound('click');
@@ -126,7 +147,7 @@ export function ContactConcierge() {
         email: emailInput || 'no-email',
         type: selectedType,
         message,
-        date: `2026-05-${selectedDate.toString().padStart(2, '0')}`,
+        date: toDateStr(selectedDate),
         time: selectedTime,
         status: 'pending',
         createdAt: serverTimestamp(),
@@ -210,8 +231,8 @@ export function ContactConcierge() {
                         style={{ backgroundColor: '#222222', color: 'white', height: '54px', padding: '0 32px' }}
                         component="a"
                         href={language === 'es' 
-                          ? "/Images/Gabriel_Iturre_Full_Stack_AI_Engineer_ES.pdf" 
-                          : "/Images/Gabriel_Iturre_Full_Stack_AI_Engineer_EN.pdf"
+                          ? "/cv/Gabriel-Iturre-CV-ES.pdf" 
+                          : "/cv/Gabriel-Iturre-CV-EN.pdf"
                         }
                         download
                         onMouseEnter={() => playSound('hover')}
@@ -470,21 +491,24 @@ export function ContactConcierge() {
                   <Group justify="space-between" align="center">
                     <Stack gap={4}>
                       <Title order={3} size="24px" fw={700} c={colorScheme === 'dark' ? '#fff' : '#222222'}>{language === 'es' ? 'Selecciona una fecha' : 'Select a date'}</Title>
-                      <Text size="sm" c={colorScheme === 'dark' ? '#A0A0A0' : '#717171'}>{language === 'es' ? 'Mayo 2026' : 'May 2026'}</Text>
+                      <Text size="sm" c={colorScheme === 'dark' ? '#A0A0A0' : '#717171'}>{monthLabel.charAt(0).toUpperCase() + monthLabel.slice(1)}</Text>
                     </Stack>
                     <Group gap="xs">
-                      <ActionIcon variant="subtle" color={colorScheme === 'dark' ? 'gray' : 'dark'} radius="xl"><IconChevronLeft size={20} /></ActionIcon>
-                      <ActionIcon variant="subtle" color={colorScheme === 'dark' ? 'gray' : 'dark'} radius="xl"><IconChevronRight size={20} /></ActionIcon>
+                      <ActionIcon variant="subtle" color={colorScheme === 'dark' ? 'gray' : 'dark'} radius="xl" onClick={() => changeMonth(-1)} disabled={monthOffset === 0} aria-label={language === 'es' ? 'Mes anterior' : 'Previous month'}><IconChevronLeft size={20} /></ActionIcon>
+                      <ActionIcon variant="subtle" color={colorScheme === 'dark' ? 'gray' : 'dark'} radius="xl" onClick={() => changeMonth(1)} disabled={monthOffset === 2} aria-label={language === 'es' ? 'Mes siguiente' : 'Next month'}><IconChevronRight size={20} /></ActionIcon>
                     </Group>
                   </Group>
                   <Grid gap={4} style={{ textAlign: 'center' }}>
                     {(language === 'es' ? ['L', 'M', 'M', 'J', 'V', 'S', 'D'] : ['M', 'T', 'W', 'T', 'F', 'S', 'S']).map((d, i) => (<Grid.Col span={1.7} key={`${d}-${i}`}><Text size="xs" fw={700} c={colorScheme === 'dark' ? '#A0A0A0' : '#717171'}>{d}</Text></Grid.Col>))}
-                    {Array.from({ length: 4 }).map((_, i) => <Grid.Col span={1.7} key={`empty-${i}`} />)}
+                    {Array.from({ length: leadingBlanks }).map((_, i) => <Grid.Col span={1.7} key={`empty-${i}`} />)}
                     {days.map(d => (
                       <Grid.Col span={1.7} key={d}>
                         <UnstyledButton 
-                          onClick={() => setSelectedDate(d)} 
+                          onClick={() => !isPastDay(d) && setSelectedDate(d)} 
+                          disabled={isPastDay(d)}
                           style={{ 
+                            opacity: isPastDay(d) ? 0.25 : 1,
+                            cursor: isPastDay(d) ? 'not-allowed' : 'pointer',
                             width: '100%', 
                             aspectRatio: '1', 
                             borderRadius: '50%', 

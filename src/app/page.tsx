@@ -1,7 +1,9 @@
 'use client';
 
+import { useStableColorScheme } from './useStableColorScheme';
+
 import React from 'react';
-import { Container, Grid, GridCol, Title, Text, Stack, useMantineColorScheme } from '@mantine/core';
+import { Container, Grid, GridCol, Title, Text, Stack } from '@mantine/core';
 import { Hero } from '@/components/Hero';
 import { ProjectShowcase } from '@/components/ProjectShowcase';
 import { Experience } from '@/components/Experience';
@@ -11,15 +13,7 @@ import { useLanguage } from './LanguageProvider';
 
 export default function Home() {
   const { t, language } = useLanguage();
-  const { colorScheme } = useMantineColorScheme();
-  const [mounted, setMounted] = React.useState(false);
-
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
-
+  const { colorScheme } = useStableColorScheme();
   return (
     <main style={{ 
       backgroundColor: colorScheme === 'dark' ? '#000' : 'var(--mantine-color-body)', 
