@@ -207,10 +207,19 @@ export function Home({ lang }: { lang: Lang }) {
               <article className="step g-green noise reveal" style={{ ['--d' as string]: '0.16s' }}>
                 <div className="step-visual" aria-hidden="true">
                   <div className="upload">
-                    <span className="upload-app" />
+                    <span className="upload-glow" />
+                    <svg className="upload-ring" viewBox="0 0 120 120">
+                      <circle cx="60" cy="60" r="54" />
+                      <circle className="ring-fill" cx="60" cy="60" r="54" />
+                    </svg>
                     <span className="upload-play">
                       <PlayLogo />
                     </span>
+                    <span className="upload-app" />
+                    <span className="upload-check">✓</span>
+                    {[0, 1, 2, 3, 4, 5].map((n) => (
+                      <i key={n} className="spark" style={{ ['--a' as string]: `${n * 60}deg` }} />
+                    ))}
                   </div>
                 </div>
                 <h3>{t.how.steps[2].title}</h3>
