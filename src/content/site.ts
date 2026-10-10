@@ -86,6 +86,9 @@ const prices = {
   },
 };
 
+// Para sumar un proyecto: agregalo acá (y su traducción en `en` más abajo).
+// Los primeros 6 se muestran siempre; el resto aparece con "Ver más proyectos".
+// Capturas: 1440x900 en /public/work/<slug>.webp
 const projectsEs: Project[] = [
   { slug: 'chefi', name: 'Chefi', kind: 'SaaS gastronómico', year: '2025', summary: 'Pedidos por QR, mesas en tiempo real y login por WhatsApp.', url: 'https://chefi.zonajujuy.com', image: '/work/chefi.webp', tags: ['React', 'Node.js', 'WhatsApp API'] },
   { slug: 'slot', name: 'SLOT', kind: 'Software médico con IA', year: '2025', summary: 'Turnos, colas virtuales por QR e historias clínicas resumidas con IA.', url: 'https://slot.zonajujuy.com', image: '/work/slot.webp', tags: ['NestJS', 'Supabase', 'Gemini'] },
@@ -177,6 +180,8 @@ export const content = {
       },
       visit: 'Ver sitio',
       soon: 'Próximamente',
+      more: 'Ver más proyectos',
+      less: 'Ver menos',
     },
     services: {
       title: ['Apps, sistemas, webs', 'y mucho más'],
@@ -299,6 +304,8 @@ export const content = {
       },
       visit: 'Visit site',
       soon: 'Coming soon',
+      more: 'See more projects',
+      less: 'See less',
     },
     services: {
       title: ['Apps, systems, websites', '& more'],
@@ -365,7 +372,10 @@ export type SiteContent = (typeof content)['es'];
 export const kiloLinks = {
   site: 'https://somoskilo.com',
   play: 'https://play.google.com/store/apps/details?id=com.kilo.app&hl=es_AR',
-  screens: ['/work/kilo-app-home.webp', '/work/kilo-app-pos.webp'],
+  // Capturas reales de la app (1080x2400). Cada celular rota entre 4 pantallas.
+  screensA: ['/work/kilo/home.webp', '/work/kilo/reportes.webp', '/work/kilo/caja.webp', '/work/kilo/ofertas.webp'],
+  screensB: ['/work/kilo/productos.webp', '/work/kilo/tienda.webp', '/work/kilo/pedido.webp', '/work/kilo/oferta-lista.webp'],
+  badge: '/Images/google-play-badge-es-300x116.png',
 };
 
 // ---------- CV / perfil para clientes ----------

@@ -3,7 +3,6 @@ import {
   IconArrowRight,
   IconArrowUpRight,
   IconBolt,
-  IconBrandGooglePlay,
   IconBrandWhatsapp,
   IconCheck,
   IconChevronDown,
@@ -12,13 +11,12 @@ import {
   IconFileCertificate,
   IconHeartHandshake,
   IconPhone,
-  IconRocket,
   IconSend,
   IconStack2,
   IconTag,
   IconWallet,
 } from '@tabler/icons-react';
-import { content, contact, cvPdf, kiloLinks, whatsappLink, type Lang } from '@/content/site';
+import { content, contact, cvPdf, kiloLinks, whatsappLink, type Lang, type Project, type SiteContent } from '@/content/site';
 import { Booking } from './Booking';
 import { Dock } from './Dock';
 import { JsonLd } from './JsonLd';
@@ -97,8 +95,8 @@ export function Home({ lang }: { lang: Lang }) {
               <div className="floaty" aria-hidden="true">
                 <div className="phone">
                   <div className="phone-screen screens">
-                    {kiloLinks.screens.map((s) => (
-                      <Image key={s} src={s} alt="" width={430} height={1000} sizes="210px" />
+                    {[kiloLinks.screensA[0], kiloLinks.screensB[1], kiloLinks.screensA[1], kiloLinks.screensB[0]].map((s) => (
+                      <Image key={s} src={s} alt="" width={540} height={1200} sizes="160px" />
                     ))}
                   </div>
                 </div>
@@ -181,8 +179,8 @@ export function Home({ lang }: { lang: Lang }) {
                     <i />
                   </div>
                   <div className="launch">
-                    <i>
-                      <IconRocket size={16} />
+                    <i className="play-logo">
+                      <PlayLogo />
                     </i>
                     <span>
                       {t.how.launched}
@@ -250,17 +248,18 @@ export function Home({ lang }: { lang: Lang }) {
                     {t.work.kilo.site}
                     <IconArrowUpRight size={16} />
                   </a>
-                  <a className="btn" href={kiloLinks.play} target="_blank" rel="noopener noreferrer">
-                    <IconBrandGooglePlay size={16} />
-                    {t.work.kilo.play}
+                  <a className="play-badge" href={kiloLinks.play} target="_blank" rel="noopener noreferrer" aria-label={`KILO — ${t.work.kilo.play}`}>
+                    <Image src={kiloLinks.badge} alt="Disponible en Google Play" width={150} height={58} />
                   </a>
                 </div>
               </div>
               <div className="kilo-phones" aria-hidden="true">
-                {kiloLinks.screens.map((s, i) => (
-                  <div className="phone" key={s}>
-                    <div className="phone-screen">
-                      <Image src={s} alt={`KILO app ${i + 1}`} width={430} height={1000} sizes="210px" />
+                {[kiloLinks.screensA, kiloLinks.screensB].map((set, n) => (
+                  <div className="phone" key={n}>
+                    <div className="phone-screen screens">
+                      {set.map((s) => (
+                        <Image key={s} src={s} alt={`KILO app — ${s.split('/').pop()?.replace('.webp', '')}`} width={540} height={1200} sizes="(max-width: 900px) 45vw, 220px" />
+                      ))}
                     </div>
                   </div>
                 ))}
@@ -268,51 +267,26 @@ export function Home({ lang }: { lang: Lang }) {
             </article>
 
             <div className="work-grid">
-              {featured.map((p, i) => (
-                <a
-                  key={p.slug}
-                  className="work-card reveal"
-                  href={p.url ?? `${home}#agendar`}
-                  target={p.url ? '_blank' : undefined}
-                  rel={p.url ? 'noopener noreferrer' : undefined}
-                  style={{ ['--d' as string]: `${(i % 2) * 0.06}s` }}
-                >
-                  <div className="browser">
-                    <div className="browser-bar" aria-hidden="true">
-                      <i />
-                      <i />
-                      <i />
-                      <span>{p.url ? p.url.replace(/^https?:\/\//, '') : 'play.google.com'}</span>
-                    </div>
-                    <div className="browser-shot">
-                      {p.soon ? (
-                        <div className="soon-shot">
-                          <span className="pill soon-badge">{t.work.soon}</span>
-                          <div className="phone">
-                            <div className="phone-screen" style={{ background: 'linear-gradient(180deg,#0f3d2e,#0b0b0b)' }} />
-                          </div>
-                        </div>
-                      ) : (
-                        p.image && <Image src={p.image} alt={`${p.name} — ${p.kind}`} width={1440} height={900} sizes="(max-width: 760px) 100vw, 520px" />
-                      )}
-                    </div>
-                  </div>
-                  <div className="work-body">
-                    <div className="work-top">
-                      <h3>{p.name}</h3>
-                      <span>{p.year}</span>
-                    </div>
-                    <p className="work-kind">{p.kind}</p>
-                    <p>{p.summary}</p>
-                    <ul className="chips">
-                      {p.tags.map((tag) => (
-                        <li key={tag}>{tag}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </a>
+              {featured.slice(0, 6).map((p, i) => (
+                <WorkCard key={p.slug} p={p} i={i} t={t} home={home} />
               ))}
             </div>
+            {featured.length > 6 && (
+              <details className="more-work">
+                <summary className="btn btn-lg">
+                  <span className="more-open">
+                    {t.work.more} ({featured.length - 6})
+                  </span>
+                  <span className="more-close">{t.work.less}</span>
+                  <IconChevronDown size={18} />
+                </summary>
+                <div className="work-grid">
+                  {featured.slice(6).map((p, i) => (
+                    <WorkCard key={p.slug} p={p} i={i} t={t} home={home} />
+                  ))}
+                </div>
+              </details>
+            )}
           </section>
 
           {/* ---------- Services cloud ---------- */}
@@ -503,5 +477,63 @@ export function Home({ lang }: { lang: Lang }) {
       <Dock t={t} />
       <Reveal />
     </>
+  );
+}
+
+function WorkCard({ p, i, t, home }: { p: Project; i: number; t: SiteContent; home: string }) {
+  return (
+    <a
+      className="work-card reveal"
+      href={p.url ?? `${home}#agendar`}
+      target={p.url ? '_blank' : undefined}
+      rel={p.url ? 'noopener noreferrer' : undefined}
+      style={{ ['--d' as string]: `${(i % 2) * 0.06}s` }}
+    >
+      <div className="browser">
+        <div className="browser-bar" aria-hidden="true">
+          <i />
+          <i />
+          <i />
+          <span>{p.url ? p.url.replace(/^https?:\/\//, '') : 'play.google.com'}</span>
+        </div>
+        <div className="browser-shot">
+          {p.soon ? (
+            <div className="soon-shot">
+              <span className="pill soon-badge">{t.work.soon}</span>
+              <div className="phone">
+                <div className="phone-screen" style={{ background: 'linear-gradient(180deg,#0f3d2e,#0b0b0b)' }} />
+              </div>
+            </div>
+          ) : (
+            p.image && <Image src={p.image} alt={`${p.name} — ${p.kind}`} width={1440} height={900} sizes="(max-width: 760px) 100vw, 520px" />
+          )}
+        </div>
+      </div>
+      <div className="work-body">
+        <div className="work-top">
+          <h3>{p.name}</h3>
+          <span>{p.year}</span>
+        </div>
+        <p className="work-kind">{p.kind}</p>
+        <p>{p.summary}</p>
+        <ul className="chips">
+          {p.tags.map((tag) => (
+            <li key={tag}>{tag}</li>
+          ))}
+        </ul>
+      </div>
+    </a>
+  );
+}
+
+// Logo de Google Play (para indicar que la app está publicada en la tienda).
+function PlayLogo() {
+  return (
+    <svg width="16" height="18" viewBox="0 0 16 18" aria-hidden="true">
+      <path d="M.6.3C.4.5.3.8.3 1.2v15.6c0 .4.1.7.3.9l8.6-8.7L.6.3z" fill="#00D7FE" />
+      <path d="M12.1 12 9.2 9 12.1 6l3.3 1.9c.9.5.9 1.4 0 2L12.1 12z" fill="#FFCE00" />
+      <path d="M12.1 12 9.2 9 .6 17.7c.3.3.9.4 1.5 0L12.1 12z" fill="#FF3A44" />
+      <path d="M12.1 6 2.1.3C1.5-.1.9 0 .6.3L9.2 9l2.9-3z" fill="#00F076" />
+    </svg>
   );
 }

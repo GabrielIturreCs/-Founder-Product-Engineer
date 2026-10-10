@@ -491,27 +491,47 @@ button {
   object-fit: cover;
   object-position: top;
 }
+/* Carrusel de 4 pantallas: cada una visible ~3 s */
 .screens img {
   opacity: 0;
-  animation: screen 8s infinite;
+  animation: screen 12s infinite;
 }
 .screens img:nth-child(2) {
-  animation-delay: 4s;
+  animation-delay: 3s;
+}
+.screens img:nth-child(3) {
+  animation-delay: 6s;
+}
+.screens img:nth-child(4) {
+  animation-delay: 9s;
+}
+/* El segundo celular arranca desfasado 1.5 s */
+.kilo-phones .phone:nth-child(2) .screens img:nth-child(1) {
+  animation-delay: 1.5s;
+}
+.kilo-phones .phone:nth-child(2) .screens img:nth-child(2) {
+  animation-delay: 4.5s;
+}
+.kilo-phones .phone:nth-child(2) .screens img:nth-child(3) {
+  animation-delay: 7.5s;
+}
+.kilo-phones .phone:nth-child(2) .screens img:nth-child(4) {
+  animation-delay: 10.5s;
 }
 @keyframes screen {
   0% {
     opacity: 0;
-    transform: translateY(6%);
+    transform: translateY(4%);
   }
-  6%,
-  46% {
+  4%,
+  25% {
     opacity: 1;
     transform: none;
   }
-  52%,
+  29%,
   100% {
     opacity: 0;
-    transform: translateY(-4%);
+    transform: translateY(-3%);
   }
 }
 
@@ -692,13 +712,13 @@ button {
   animation: pop 5s infinite;
 }
 .launch i {
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   border-radius: 9px;
   display: grid;
   place-items: center;
-  background: #10b981;
-  color: #fff;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   font-style: normal;
 }
 .launch small {
@@ -1746,5 +1766,75 @@ button {
   .bubble,
   .launch {
     opacity: 1 !important;
+  }
+}
+
+/* Google Play */
+.play-badge {
+  display: inline-flex;
+  align-items: center;
+  height: 42px;
+  transition: transform 0.15s ease;
+}
+.play-badge:hover {
+  transform: translateY(-1px);
+}
+.play-badge img {
+  height: 46px;
+  width: auto;
+  margin: -2px -6px;
+}
+
+/* Ver más proyectos */
+.more-work {
+  margin-top: 20px;
+}
+.more-work > summary {
+  list-style: none;
+  display: flex;
+  width: fit-content;
+  margin: 0 auto;
+}
+.more-work > summary::-webkit-details-marker {
+  display: none;
+}
+.more-work > summary svg {
+  transition: transform 0.25s ease;
+}
+.more-work[open] > summary {
+  order: 2;
+  margin-top: 20px;
+}
+.more-work[open] > summary svg {
+  transform: rotate(180deg);
+}
+.more-work .more-close,
+.more-work[open] .more-open {
+  display: none;
+}
+.more-work[open] .more-close {
+  display: inline;
+}
+.more-work[open] {
+  display: flex;
+  flex-direction: column;
+}
+.more-work > .work-grid {
+  margin-top: 0;
+}
+
+/* Ajustes de mockups en celular */
+@media (max-width: 900px) {
+  .kilo-phones {
+    height: auto;
+    padding-bottom: 8px;
+  }
+  .kilo-phones .phone:nth-child(2) {
+    margin-top: 28px;
+  }
+  .floaty {
+    top: -40px;
+    right: -14px;
+    width: 120px;
   }
 }
