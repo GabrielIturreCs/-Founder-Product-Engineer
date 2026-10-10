@@ -2184,3 +2184,119 @@ button {
     background: #01875f;
   }
 }
+
+/* Adjunto PDF en el chat */
+.wa-doc {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  padding: 8px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.05);
+  font-size: 12.5px;
+  font-weight: 500;
+}
+.wa-doc i {
+  font-style: normal;
+  font-size: 9px;
+  font-weight: 700;
+  color: #fff;
+  background: #e5484d;
+  border-radius: 3px;
+  padding: 3px 4px;
+}
+
+/* App genérica subiendo a Google Play */
+.upload {
+  position: relative;
+  height: 170px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.upload-play {
+  position: absolute;
+  top: 6px;
+  width: 74px;
+  height: 74px;
+  border-radius: 22px;
+  background: #fff;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 16px 34px -14px rgba(0, 0, 0, 0.45);
+  animation: play-pulse 4s infinite;
+  z-index: 1;
+}
+.upload-play svg {
+  width: 34px;
+  height: 38px;
+}
+.upload-app {
+  position: absolute;
+  bottom: 0;
+  width: 46px;
+  height: 46px;
+  border-radius: 13px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 10px 24px -10px rgba(0, 0, 0, 0.4);
+  animation: app-up 4s infinite cubic-bezier(0.65, 0, 0.35, 1);
+}
+.upload-app::before {
+  content: '';
+  position: absolute;
+  inset: 11px;
+  border-radius: 6px;
+  background: rgba(4, 120, 87, 0.25);
+}
+@keyframes app-up {
+  0% {
+    transform: translateY(10px) scale(0.9);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  55% {
+    transform: translateY(-96px) scale(0.6);
+    opacity: 1;
+  }
+  62%,
+  100% {
+    transform: translateY(-96px) scale(0.4);
+    opacity: 0;
+  }
+}
+@keyframes play-pulse {
+  0%,
+  55% {
+    transform: scale(1);
+  }
+  62% {
+    transform: scale(1.12);
+  }
+  72%,
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* WhatsApp como CTA principal en el cierre */
+.final-wa {
+  height: 52px;
+  padding: 0 22px;
+  border-radius: 14px;
+  background: #25d366;
+  color: #062d17;
+  font-weight: 600;
+}
+.final-wa:hover {
+  text-decoration: none;
+  filter: brightness(1.05);
+}
+@media (prefers-reduced-motion: reduce) {
+  .upload-app {
+    opacity: 1 !important;
+  }
+}

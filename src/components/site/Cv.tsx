@@ -118,7 +118,7 @@ export function Cv({ lang }: { lang: Lang }) {
             <h2 className="cv-h">{L.languages}</h2>
             <p className="cv-lang">{c.languages}</p>
 
-            <a className="cv-cta" href={`${SITE_URL}/#agendar`}>
+            <a className="cv-cta" href={`https://wa.me/${contact.whatsapp}`}>
               <b>{L.cta}</b>
               <span>gabrieliturre.tech</span>
             </a>

@@ -17,7 +17,7 @@ export function GET() {
     '',
     '## Contact',
     `- Website: ${SITE_URL}`,
-    `- Book a free 15-minute call: ${SITE_URL}/#agendar`,
+    `- Fastest: WhatsApp ${contact.whatsappDisplay} · or book a free 15-minute call: ${SITE_URL}/#agendar`,
     `- WhatsApp: ${contact.whatsappDisplay} (https://wa.me/${contact.whatsapp})`,
     `- Email: ${contact.email}`,
     `- LinkedIn: ${contact.linkedin}`,

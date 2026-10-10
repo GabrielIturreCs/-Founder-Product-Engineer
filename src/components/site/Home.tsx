@@ -10,7 +10,6 @@ import {
   IconDiamond,
   IconFileCertificate,
   IconHeartHandshake,
-  IconPhone,
   IconSend,
   IconStack2,
   IconTag,
@@ -41,6 +40,7 @@ export function Home({ lang }: { lang: Lang }) {
   const home = es ? '/' : '/en';
   const cvHref = es ? '/cv' : '/en/cv';
   const featured = t.projects;
+  const wa = whatsappLink(t.cta.waText);
   const half = Math.ceil(t.tags.length / 2);
   const rowA = t.tags.slice(0, half);
   const rowB = t.tags.slice(half);
@@ -58,8 +58,8 @@ export function Home({ lang }: { lang: Lang }) {
             Gabriel Iturre
           </a>
           <div className="top-actions">
-            <a className="btn hide-sm" href={`${home}#agendar`}>
-              <IconPhone size={16} />
+            <a className="btn hide-sm" href={wa} target="_blank" rel="noopener noreferrer">
+              <IconBrandWhatsapp size={16} />
               {t.nav.call}
             </a>
             <a className="btn btn-ink" href={`${home}#precios`}>
@@ -110,7 +110,7 @@ export function Home({ lang }: { lang: Lang }) {
               <a className="btn btn-white" href={`${home}#precios`}>
                 {t.nav.seePricing}
               </a>
-              <a className="join-call" href={`${home}#agendar`}>
+              <a className="join-call" href={wa} target="_blank" rel="noopener noreferrer">
                 <Image src={contact.photo} alt="" width={84} height={84} />
                 <span>
                   <b>{t.hero.cardCall}</b>
@@ -163,13 +163,17 @@ export function Home({ lang }: { lang: Lang }) {
                       </span>
                       <span className="wa-msg out">
                         {t.how.chat[1]}
+                        <span className="wa-doc">
+                          <i>PDF</i>
+                          {t.how.chat[2]}
+                        </span>
                         <time>
                           10:03 <b className="ticks">✓✓</b>
                         </time>
                       </span>
                       <span className="wa-msg in last">
-                        {t.how.chat[2]}
-                        <time>10:03</time>
+                        {t.how.chat[3]}
+                        <time>10:04</time>
                       </span>
                     </div>
                   </div>
@@ -202,21 +206,11 @@ export function Home({ lang }: { lang: Lang }) {
               </article>
               <article className="step g-green noise reveal" style={{ ['--d' as string]: '0.16s' }}>
                 <div className="step-visual" aria-hidden="true">
-                  <div className="store">
-                    <div className="store-top">
-                      <span className="store-icon">K</span>
-                      <span>
-                        <b>KILO</b>
-                        <small>
-                          <PlayLogo /> Google Play
-                        </small>
-                      </span>
-                    </div>
-                    <div className="store-btn">
-                      <i className="store-fill" />
-                      <span className="s1">{es ? 'Publicando…' : 'Publishing…'}</span>
-                      <span className="s2">✓ {t.how.launched}</span>
-                    </div>
+                  <div className="upload">
+                    <span className="upload-app" />
+                    <span className="upload-play">
+                      <PlayLogo />
+                    </span>
                   </div>
                 </div>
                 <h3>{t.how.steps[2].title}</h3>
@@ -367,7 +361,7 @@ export function Home({ lang }: { lang: Lang }) {
                     </li>
                   ))}
                 </ul>
-                <a className="btn btn-lg" href={`${home}#agendar`}>
+                <a className="btn btn-lg" href={wa} target="_blank" rel="noopener noreferrer">
                   {t.pricing.plan.cta}
                   <IconArrowRight size={18} />
                 </a>
@@ -423,7 +417,7 @@ export function Home({ lang }: { lang: Lang }) {
               <aside className="faq-card g-sun noise reveal">
                 <Image src={contact.photo} alt="" width={128} height={128} />
                 <h3>{t.faq.callTitle}</h3>
-                <a className="btn btn-white" href={`${home}#agendar`}>
+                <a className="btn btn-white" href={wa} target="_blank" rel="noopener noreferrer">
                   {t.faq.callBtn}
                 </a>
                 <a className="mail" href={`mailto:${contact.email}`}>
@@ -513,7 +507,7 @@ function WorkCard({ p, i, t, home }: { p: Project; i: number; t: SiteContent; ho
   return (
     <a
       className="work-card reveal"
-      href={p.url ?? `${home}#agendar`}
+      href={p.url ?? `${home}#proyectos`}
       target={p.url ? '_blank' : undefined}
       rel={p.url ? 'noopener noreferrer' : undefined}
       style={{ ['--d' as string]: `${(i % 2) * 0.06}s` }}
