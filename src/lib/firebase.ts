@@ -1,29 +1,19 @@
-import { initializeApp, getApps, getApp } from "firebase/app";
-import { getAnalytics, isSupported } from "firebase/analytics";
-import { getFirestore } from "firebase/firestore";
+import { initializeApp, getApps, getApp } from 'firebase/app';
+import { getAnalytics, isSupported } from 'firebase/analytics';
 
+// Config web pública de Firebase (no es un secreto). Solo se usa para Analytics.
 const firebaseConfig = {
-  apiKey: "AIzaSyB3xyliZiVZN9P-jdZ9A6b3uLaJK5-42ZY",
-  authDomain: "portfolio-gab-cbaae.firebaseapp.com",
-  projectId: "portfolio-gab-cbaae",
-  storageBucket: "portfolio-gab-cbaae.firebasestorage.app",
-  messagingSenderId: "968862481523",
-  appId: "1:968862481523:web:491bdb17f54e0183e8be06",
-  measurementId: "G-L6BCMQCBJ0"
+  apiKey: 'AIzaSyB3xyliZiVZN9P-jdZ9A6b3uLaJK5-42ZY',
+  authDomain: 'portfolio-gab-cbaae.firebaseapp.com',
+  projectId: 'portfolio-gab-cbaae',
+  storageBucket: 'portfolio-gab-cbaae.firebasestorage.app',
+  messagingSenderId: '968862481523',
+  appId: '1:968862481523:web:491bdb17f54e0183e8be06',
+  measurementId: 'G-L6BCMQCBJ0',
 };
 
-// Initialize Firebase
-const app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-// Initialize Analytics conditionally (only in browser and if supported)
-let analytics = null;
-if (typeof window !== "undefined") {
-  isSupported().then((supported) => {
-    if (supported) {
-      analytics = getAnalytics(app);
-    }
-  });
+export async function initAnalytics() {
+  if (typeof window === 'undefined' || !(await isSupported())) return null;
+  const app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig);
+  return getAnalytics(app);
 }
-
-export { app, analytics, db };
