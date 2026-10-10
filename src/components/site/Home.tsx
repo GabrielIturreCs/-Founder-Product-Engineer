@@ -143,9 +143,36 @@ export function Home({ lang }: { lang: Lang }) {
             <div className="steps">
               <article className="step g-sun noise reveal">
                 <div className="step-visual" aria-hidden="true">
-                  <span className="bubble">{t.how.chat[0]}</span>
-                  <span className="bubble me">{t.how.chat[1]}</span>
-                  <span className="bubble">{t.how.chat[2]}</span>
+                  <div className="wa">
+                    <div className="wa-head">
+                      <Image src={contact.photo} alt="" width={56} height={56} />
+                      <span>
+                        <b>Gabriel Iturre</b>
+                        <small>{es ? 'en línea' : 'online'}</small>
+                      </span>
+                    </div>
+                    <div className="wa-body">
+                      <span className="wa-msg in">
+                        {t.how.chat[0]}
+                        <time>10:02</time>
+                      </span>
+                      <span className="wa-typing">
+                        <i />
+                        <i />
+                        <i />
+                      </span>
+                      <span className="wa-msg out">
+                        {t.how.chat[1]}
+                        <time>
+                          10:03 <b className="ticks">✓✓</b>
+                        </time>
+                      </span>
+                      <span className="wa-msg in last">
+                        {t.how.chat[2]}
+                        <time>10:03</time>
+                      </span>
+                    </div>
+                  </div>
                 </div>
                 <h3>{t.how.steps[0].title}</h3>
                 <p>{t.how.steps[0].desc}</p>
@@ -175,17 +202,21 @@ export function Home({ lang }: { lang: Lang }) {
               </article>
               <article className="step g-green noise reveal" style={{ ['--d' as string]: '0.16s' }}>
                 <div className="step-visual" aria-hidden="true">
-                  <div className="bar">
-                    <i />
-                  </div>
-                  <div className="launch">
-                    <i className="play-logo">
-                      <PlayLogo />
-                    </i>
-                    <span>
-                      {t.how.launched}
-                      <small>KILO · v2.4</small>
-                    </span>
+                  <div className="store">
+                    <div className="store-top">
+                      <span className="store-icon">K</span>
+                      <span>
+                        <b>KILO</b>
+                        <small>
+                          <PlayLogo /> Google Play
+                        </small>
+                      </span>
+                    </div>
+                    <div className="store-btn">
+                      <i className="store-fill" />
+                      <span className="s1">{es ? 'Publicando…' : 'Publishing…'}</span>
+                      <span className="s2">✓ {t.how.launched}</span>
+                    </div>
                   </div>
                 </div>
                 <h3>{t.how.steps[2].title}</h3>
@@ -254,15 +285,13 @@ export function Home({ lang }: { lang: Lang }) {
                 </div>
               </div>
               <div className="kilo-phones" aria-hidden="true">
-                {[kiloLinks.screensA, kiloLinks.screensB].map((set, n) => (
-                  <div className="phone" key={n}>
-                    <div className="phone-screen screens">
-                      {set.map((s) => (
-                        <Image key={s} src={s} alt={`KILO app — ${s.split('/').pop()?.replace('.webp', '')}`} width={540} height={1200} sizes="(max-width: 900px) 45vw, 220px" />
-                      ))}
-                    </div>
+                <div className="phone">
+                  <div className="phone-screen screens">
+                    {[kiloLinks.screensA[2], kiloLinks.screensB[2], kiloLinks.screensA[0], kiloLinks.screensB[1]].map((s) => (
+                      <Image key={s} src={s} alt={`KILO app — ${s.split('/').pop()?.replace('.webp', '')}`} width={540} height={1200} sizes="(max-width: 900px) 60vw, 260px" />
+                    ))}
                   </div>
-                ))}
+                </div>
               </div>
             </article>
 

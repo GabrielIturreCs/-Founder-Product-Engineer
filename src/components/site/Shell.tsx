@@ -7,7 +7,7 @@ const mono = Geist_Mono({ subsets: ['latin'], variable: '--font-mono', display: 
 const serif = Instrument_Serif({ subsets: ['latin'], weight: '400', style: ['italic'], variable: '--font-serif', display: 'swap' });
 
 // Aplica el tema guardado (o el del sistema) antes de pintar, para evitar parpadeo.
-const themeScript = `try{var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';var d=document.documentElement;d.setAttribute('data-theme',t);d.classList.add('js')}catch(e){}`;
+const themeScript = `try{var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark')t='light';var d=document.documentElement;d.setAttribute('data-theme',t);d.classList.add('js')}catch(e){}`;
 
 export function Shell({ lang, children }: { lang: Lang; children: React.ReactNode }) {
   return (

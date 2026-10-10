@@ -1838,3 +1838,349 @@ button {
     width: 120px;
   }
 }
+
+/* ===== v3: fondo, celular realista, WhatsApp, tienda, scroll ===== */
+:root {
+  --bg: #ede8e6;
+}
+
+/* Celular con proporciones reales (≈ iPhone 15: 71.6 x 147.6 mm) */
+.phone {
+  aspect-ratio: 71.6 / 147.6;
+  border-radius: 13% / 6.3%;
+  padding: 3.2%;
+  background: linear-gradient(145deg, #2b2b2b, #0b0b0b 40%, #1d1d1d);
+  box-shadow:
+    0 0 0 1px #4a4a4a,
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 40px 80px -30px rgba(0, 0, 0, 0.6);
+}
+.phone-screen {
+  border-radius: 10.5% / 5%;
+}
+.phone-screen::before {
+  top: 2.2%;
+  width: 30%;
+  height: 3.6%;
+}
+.kilo {
+  grid-template-columns: 1.15fr 0.85fr;
+}
+.kilo-phones {
+  height: auto;
+}
+.kilo-phones .phone {
+  width: 260px;
+  margin: 0 auto;
+}
+.kilo-stats {
+  grid-template-columns: repeat(3, minmax(0, max-content));
+  gap: 32px;
+}
+.kilo-stats b {
+  white-space: nowrap;
+}
+@media (max-width: 900px) {
+  .kilo-phones .phone {
+    width: 62%;
+    max-width: 250px;
+    margin-top: 8px;
+  }
+  .kilo-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+  .kilo-stats b {
+    white-space: normal;
+  }
+}
+
+/* Chat estilo WhatsApp */
+.wa {
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #efe7de;
+  box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.45);
+  color: #111b21;
+  font-size: 13.5px;
+}
+.wa-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  background: #008069;
+  color: #fff;
+}
+.wa-head img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 15%;
+  background: #dfe9e3;
+}
+.wa-head b {
+  display: block;
+  font-size: 13.5px;
+  font-weight: 600;
+}
+.wa-head small {
+  font-size: 11px;
+  opacity: 0.85;
+}
+.wa-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 10px 14px;
+  min-height: 150px;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+  background-size: 14px 14px;
+}
+.wa-msg {
+  position: relative;
+  max-width: 82%;
+  padding: 6px 9px 16px;
+  border-radius: 8px;
+  line-height: 1.35;
+  box-shadow: 0 1px 0.5px rgba(11, 20, 26, 0.13);
+  opacity: 0;
+  animation: wa-in 10s infinite;
+}
+.wa-msg time {
+  position: absolute;
+  right: 8px;
+  bottom: 3px;
+  font-size: 10px;
+  color: #667781;
+}
+.wa-msg.in {
+  align-self: flex-start;
+  background: #fff;
+  border-top-left-radius: 0;
+}
+.wa-msg.out {
+  align-self: flex-end;
+  background: #d9fdd3;
+  border-top-right-radius: 0;
+  animation-delay: 2.6s;
+}
+.wa-msg.last {
+  animation-delay: 4.2s;
+}
+.ticks {
+  color: #53bdeb;
+  font-weight: 600;
+  letter-spacing: -2px;
+  margin-left: 2px;
+}
+.wa-typing {
+  align-self: flex-end;
+  display: flex;
+  gap: 3px;
+  padding: 9px 11px;
+  border-radius: 8px;
+  background: #d9fdd3;
+  opacity: 0;
+  height: 0;
+  margin: -3px 0;
+  overflow: hidden;
+  animation: wa-typing 10s infinite;
+}
+.wa-typing i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #8696a0;
+  animation: wa-dot 1s infinite;
+}
+.wa-typing i:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.wa-typing i:nth-child(3) {
+  animation-delay: 0.3s;
+}
+@keyframes wa-in {
+  0% {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+  }
+  4%,
+  88% {
+    opacity: 1;
+    transform: none;
+  }
+  94%,
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes wa-typing {
+  0%,
+  10% {
+    opacity: 0;
+    height: 0;
+    margin: -3px 0;
+  }
+  12%,
+  24% {
+    opacity: 1;
+    height: 24px;
+    margin: 0;
+  }
+  26%,
+  100% {
+    opacity: 0;
+    height: 0;
+    margin: -3px 0;
+  }
+}
+@keyframes wa-dot {
+  50% {
+    transform: translateY(-3px);
+    opacity: 0.5;
+  }
+}
+
+/* Tarjeta de tienda (Lanzás) */
+.store {
+  width: 100%;
+  border-radius: 16px;
+  padding: 16px;
+  background: #fff;
+  color: #0b0b0b;
+  box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.45);
+}
+.store-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.store-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(140deg, #10b981, #047857);
+  color: #fff;
+  font-weight: 700;
+  font-size: 22px;
+}
+.store-top b {
+  display: block;
+  font-size: 16px;
+}
+.store-top small {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #5f6368;
+  font-size: 12.5px;
+}
+.store-top small svg {
+  width: 11px;
+  height: 12px;
+}
+.store-btn {
+  position: relative;
+  margin-top: 14px;
+  height: 38px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: #e8f5ef;
+  display: grid;
+  place-items: center;
+  font-size: 13.5px;
+  font-weight: 600;
+}
+.store-fill {
+  position: absolute;
+  inset: 0;
+  background: #01875f;
+  transform-origin: left;
+  animation: store-fill 6s infinite;
+}
+.store-btn span {
+  position: relative;
+  grid-area: 1 / 1;
+}
+.store-btn .s1 {
+  color: #01875f;
+  animation: s1 6s infinite;
+}
+.store-btn .s2 {
+  color: #fff;
+  opacity: 0;
+  animation: s2 6s infinite;
+}
+@keyframes store-fill {
+  0% {
+    transform: scaleX(0);
+  }
+  55%,
+  100% {
+    transform: scaleX(1);
+  }
+}
+@keyframes s1 {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  56%,
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes s2 {
+  0%,
+  54% {
+    opacity: 0;
+  }
+  60%,
+  96% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Scroll más sutil y profesional */
+@media (prefers-reduced-motion: no-preference) {
+  .js .reveal {
+    filter: blur(4px);
+    transform: translateY(18px);
+    transition:
+      opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+      filter 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--d, 0s);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wa-msg,
+  .store-btn .s2 {
+    opacity: 1 !important;
+  }
+}
+.store-fill {
+  inset: auto 0 0 0;
+  height: 3px;
+}
+.store-btn {
+  animation: store-bg 6s infinite;
+}
+@keyframes store-bg {
+  0%,
+  54% {
+    background: #e8f5ef;
+  }
+  58%,
+  100% {
+    background: #01875f;
+  }
+}
