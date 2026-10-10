@@ -54,13 +54,13 @@ export function pageMetadata(lang: Lang, page: 'home' | 'cv'): Metadata {
   const path = isCv ? (lang === 'es' ? '/cv' : '/en/cv') : lang === 'es' ? '/' : '/en';
   const title = isCv
     ? lang === 'es'
-      ? 'CV de Gabriel Iturre · Full Stack & AI Product Engineer'
-      : 'Gabriel Iturre Resume · Full Stack & AI Product Engineer'
+      ? 'Gabriel Iturre · Perfil profesional — Desarrollo de software a medida'
+      : 'Gabriel Iturre · Profile — Custom software development'
     : t.title;
   const description = isCv
     ? lang === 'es'
-      ? 'Currículum de Gabriel Iturre: desarrollador full stack, fundador de KILO y ZonaJujuy. Experiencia en apps, SaaS multi-tenant, IA, pagos y facturación electrónica. Descargá el CV en PDF.'
-      : 'Resume of Gabriel Iturre: full stack developer, founder of KILO and ZonaJujuy. Experience in apps, multi-tenant SaaS, AI, payments and e-invoicing. Download the PDF.'
+      ? 'Perfil de Gabriel Iturre: apps, sistemas y webs a medida. Fundador de KILO y ZonaJujuy. Proyectos en producción, forma de trabajo y tecnologías (Claude, Codex). Descargalo en PDF.'
+      : 'Profile of Gabriel Iturre: custom apps, systems and websites. Founder of KILO and ZonaJujuy. Live projects, process and tech (Claude, Codex). Download the PDF.'
     : t.description;
 
   return {

@@ -1,4 +1,4 @@
-import { Cv } from '@/components/seo/Cv';
+import { Cv } from '@/components/site/Cv';
 import { pageMetadata } from '@/content/meta';
 import '@/app/cv.css';
 

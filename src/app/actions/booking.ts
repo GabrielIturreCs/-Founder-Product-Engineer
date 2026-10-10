@@ -2,103 +2,80 @@
 
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
-function esc(v: string) {
-  return String(v ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
-}
-
-export async function sendBookingEmails(data: {
+export type BookingInput = {
   name: string;
   email: string;
-  type: string;
   message: string;
-  date: string;
-  time: string;
-  language: string;
-}) {
-  const { email, language } = data;
-  const name = esc(data.name);
-  const type = esc(data.type);
-  const message = esc(data.message);
-  const date = esc(data.date);
-  const time = esc(data.time);
-  const safeEmail = esc(email);
+  date: string; // YYYY-MM-DD
+  time: string; // HH:MM (GMT-3)
+  lang: 'es' | 'en';
+  company?: string; // honeypot
+};
 
+const TO = 'gabriel13iturre@gmail.com';
+
+function esc(v: string) {
+  return v.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
+}
+
+export async function bookCall(input: BookingInput): Promise<{ ok: boolean }> {
+  if (input.company) return { ok: true };
+
+  const name = String(input.name ?? '').trim().slice(0, 120);
+  const email = String(input.email ?? '').trim().slice(0, 200);
+  const message = String(input.message ?? '').trim().slice(0, 3000);
+  const date = String(input.date ?? '');
+  const time = String(input.time ?? '');
+  const es = input.lang !== 'en';
+
+  if (name.length < 2 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !/^\d{4}-\d{2}-\d{2}$/.test(date) || !/^\d{2}:\d{2}$/.test(time)) {
+    return { ok: false };
+  }
+
+  const key = process.env.RESEND_API_KEY;
+  if (!key) {
+    console.error('RESEND_API_KEY no configurada');
+    return { ok: false };
+  }
+
+  const resend = new Resend(key);
   try {
-    // 1. Email para Gabriel (Notificación de nueva reserva)
-    const { error: adminError } = await resend.emails.send({
-      from: 'Portfolio <onboarding@resend.dev>',
-      to: 'gabriel13iturre@gmail.com',
-      subject: `🚀 Nueva reunión agendada: ${name}`,
-      html: `
-        <div style="font-family: sans-serif; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
-          <h1 style="color: #222;">¡Nueva reserva!</h1>
-          <hr />
-          <p><strong>Nombre:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${safeEmail}</p>
-          <p><strong>Tipo:</strong> ${type}</p>
-          <p><strong>Fecha:</strong> ${date}</p>
-          <p><strong>Hora:</strong> ${time}</p>
-          <p><strong>Mensaje:</strong> ${message}</p>
-        </div>
-      `,
+    const { error } = await resend.emails.send({
+      from: 'Portfolio gabrieliturre.tech <onboarding@resend.dev>',
+      to: TO,
+      replyTo: email,
+      subject: `📅 Llamada agendada: ${name} — ${date} ${time}`,
+      html: `<div style="font-family:system-ui,sans-serif;line-height:1.6;color:#111;max-width:600px">
+        <h2 style="margin:0 0 12px">Nueva llamada de 15 min</h2>
+        <p><b>Nombre:</b> ${esc(name)}<br/><b>Email:</b> ${esc(email)}<br/>
+        <b>Fecha:</b> ${esc(date)} · <b>Hora:</b> ${esc(time)} (GMT-3)<br/><b>Idioma:</b> ${es ? 'es' : 'en'}</p>
+        <p style="white-space:pre-wrap;background:#f4f6f8;padding:16px;border-radius:10px">${esc(message) || '—'}</p>
+        <p style="color:#666;font-size:13px">Respondé este email para mandarle el link de Meet.</p></div>`,
     });
-
-    if (adminError) {
-      console.error('Resend Admin Error:', adminError);
+    if (error) {
+      console.error('Resend error:', error);
+      return { ok: false };
     }
+  } catch (e) {
+    console.error('Booking error:', e);
+    return { ok: false };
+  }
 
-    // 2. Email para el Cliente (Confirmación e información)
-    const subject = language === 'es' 
-      ? 'Confirmación de Reunión - Gabriel Iturre' 
-      : 'Meeting Confirmation - Gabriel Iturre';
-    
-    const html = language === 'es' 
-      ? `
-        <div style="font-family: sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #f0f0f0; border-radius: 12px;">
-          <h2 style="color: #059669;">Hola ${name},</h2>
-          <p>Gracias por agendar una reunión. He recibido tu solicitud y ya está en mi calendario.</p>
-          <div style="background: #f7f7f9; padding: 24px; border-radius: 12px; margin: 24px 0; border: 1px solid #ebebeb;">
-            <p style="margin-top: 0;"><strong>Detalles de la reunión:</strong></p>
-            <p>📅 <strong>Fecha:</strong> ${date}</p>
-            <p>⏰ <strong>Hora:</strong> ${time} (GMT-3)</p>
-            <p style="margin-bottom: 0;">🔗 <strong>Link:</strong> Te enviaré el link de Google Meet unos minutos antes.</p>
-          </div>
-          <p>Si necesitas cambiar la fecha o cancelar, por favor responde directamente a este correo.</p>
-          <p style="margin-top: 32px;">¡Hablamos pronto!<br><br><strong>Gabriel Iturre</strong><br>Full Stack & AI Engineer</p>
-        </div>
-      `
-      : `
-        <div style="font-family: sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #f0f0f0; border-radius: 12px;">
-          <h2 style="color: #059669;">Hi ${name},</h2>
-          <p>Thanks for scheduling a meeting. I've received your request and it's now in my calendar.</p>
-          <div style="background: #f7f7f9; padding: 24px; border-radius: 12px; margin: 24px 0; border: 1px solid #ebebeb;">
-            <p style="margin-top: 0;"><strong>Meeting Details:</strong></p>
-            <p>📅 <strong>Date:</strong> ${date}</p>
-            <p>⏰ <strong>Time:</strong> ${time} (GMT-3)</p>
-            <p style="margin-bottom: 0;">🔗 <strong>Link:</strong> I'll send the Google Meet link a few minutes before the meeting.</p>
-          </div>
-          <p>If you need to reschedule or cancel, please reply directly to this email.</p>
-          <p style="margin-top: 32px;">Talk soon!<br><br><strong>Gabriel Iturre</strong><br>Full Stack & AI Engineer</p>
-        </div>
-      `;
-
-    const { error: clientError } = await resend.emails.send({
+  // Confirmación al cliente. Con el remitente de prueba de Resend solo llega si el
+  // dominio está verificado; si falla no bloquea la reserva.
+  try {
+    await resend.emails.send({
       from: 'Gabriel Iturre <onboarding@resend.dev>',
       to: email,
-      subject: subject,
-      html: html,
-      replyTo: 'gabriel13iturre@gmail.com'
+      replyTo: TO,
+      subject: es ? 'Tu llamada con Gabriel Iturre' : 'Your call with Gabriel Iturre',
+      html: `<div style="font-family:system-ui,sans-serif;line-height:1.6;color:#111;max-width:600px">
+        <p>${es ? 'Hola' : 'Hi'} ${esc(name)},</p>
+        <p>${es ? 'Agendamos una llamada de 15 minutos el' : "We're booked for a 15-minute call on"} <b>${esc(date)}</b> ${es ? 'a las' : 'at'} <b>${esc(time)}</b> (GMT-3).</p>
+        <p>${es ? 'Te mando el link de Google Meet antes de la llamada. Si necesitás cambiar el horario, respondé este email.' : "I'll send the Google Meet link before the call. Reply to this email to reschedule."}</p>
+        <p>— Gabriel</p></div>`,
     });
+  } catch {}
 
-    if (clientError) {
-      console.error('Resend Client Error:', clientError);
-    }
-
-    return { success: !adminError && !clientError };
-  } catch (error) {
-    console.error('Unexpected Booking Error:', error);
-    return { success: false, error };
-  }
+  return { ok: true };
 }

@@ -1,48 +1,55 @@
-import { SITE_URL, contact, content, cvPdf } from '@/content/site';
+import { SITE_URL, contact, content, cv, cvPdf, kiloLinks } from '@/content/site';
 
 export const dynamic = 'force-static';
 
-// /llms.txt: resumen en texto plano pensado para ChatGPT, Claude, Gemini, Perplexity y otros asistentes.
+// /llms.txt: resumen en texto plano para ChatGPT, Claude, Gemini, Perplexity y otros asistentes.
 export function GET() {
-  const es = content.es;
   const en = content.en;
+  const es = content.es;
   const lines = [
-    '# Gabriel Iturre — Freelance Full Stack Developer & AI Product Engineer',
+    '# Gabriel Iturre — Freelance software developer (apps, systems, websites, AI)',
     '',
     `> ${en.description}`,
     '',
-    `Gabriel Iturre is a freelance full stack developer based in Jujuy, Argentina, working remotely with clients worldwide in Spanish and English. Founder of KILO (retail management SaaS with an Android app on Google Play) and of the software agency ZonaJujuy. Typical engagements: freelance programming, mobile app development (Android/iOS), custom business software (ERP, POS, scheduling), WordPress and Next.js websites, SaaS MVPs, e-commerce with payments, and AI automation (WhatsApp bots, RAG). Works with clients in Argentina, Latin America, the US and Europe.`,
+    cv.en.summary,
+    '',
+    'Typical engagements: mobile apps (Android/iOS) published on the stores, custom business systems (ERP, point of sale, booking, inventory, CRM), SaaS and MVPs, WordPress and Next.js websites, landing pages, e-commerce with payments, fixing or migrating existing systems and websites, and AI automation (WhatsApp bots, RAG). Works remotely with clients in Argentina, Latin America, the US and Europe, in Spanish or English.',
     '',
     '## Contact',
     `- Website: ${SITE_URL}`,
+    `- Book a free 15-minute call: ${SITE_URL}/#agendar`,
     `- WhatsApp: ${contact.whatsappDisplay} (https://wa.me/${contact.whatsapp})`,
     `- Email: ${contact.email}`,
     `- LinkedIn: ${contact.linkedin}`,
     `- GitHub: ${contact.github}`,
-    `- Resume (PDF): ${SITE_URL}${cvPdf.en} · ES: ${SITE_URL}${cvPdf.es}`,
+    `- Profile PDF: ${SITE_URL}${cvPdf.en} · ES: ${SITE_URL}${cvPdf.es}`,
     '',
-    '## Services',
-    ...en.services.map((s) => `- **${s.title}**: ${s.desc} (${s.items.join(', ')})`),
+    '## Pricing (starting points, USD)',
+    ...en.pricing.from.map((p) => `- ${p.name}: from ${p.from} (${p.note})`),
+    `- ${en.pricing.plan.name} (monthly plan): ${en.pricing.plan.price}${en.pricing.plan.per} — ${en.pricing.plan.features.join(', ')}`,
+    `- ${en.pricing.note}`,
     '',
     '## Projects in production',
-    ...en.projects.map((p) => `- **${p.name}** — ${p.kind}. ${p.summary} ${p.outcome}${p.url ? ` ${p.url}` : ''}${p.playStore ? ` · Google Play: ${p.playStore}` : ''}`),
+    `- **KILO** — ${en.work.kilo.kind}. ${en.work.kilo.desc} ${kiloLinks.site} · Google Play: ${kiloLinks.play}`,
+    ...en.projects.map((p) => `- **${p.name}** — ${p.kind}. ${p.summary}${p.url ? ` ${p.url}` : ''}${p.soon ? ' (coming soon)' : ''}`),
     '',
-    '## How he works',
-    ...en.process.map((s, i) => `${i + 1}. ${s.title}: ${s.desc}`),
+    '## How it works',
+    ...en.how.steps.map((s, i) => `${i + 1}. ${s.title}: ${s.desc}`),
     '',
-    '## Tech stack',
-    ...en.stack.map((g) => `- ${g.group}: ${g.items.join(', ')}`),
+    '## Tech',
+    ...cv.en.stack.map((g) => `- ${g.g}: ${g.i}`),
     '',
     '## FAQ',
-    ...en.faq.flatMap((f) => [`### ${f.q}`, f.a, '']),
+    ...en.faq.items.flatMap((f) => [`### ${f.q}`, f.a, '']),
     '## En español',
     '',
-    es.about,
+    es.description,
     '',
-    ...es.services.map((s) => `- **${s.title}**: ${s.desc}`),
+    ...es.pricing.from.map((p) => `- ${p.name}: desde ${p.from}`),
+    `- ${es.pricing.plan.name}: ${es.pricing.plan.price}${es.pricing.plan.per}`,
     '',
-    ...es.faq.flatMap((f) => [`### ${f.q}`, f.a, '']),
-    `Páginas: ${SITE_URL}/ (ES) · ${SITE_URL}/en (EN) · ${SITE_URL}/cv (CV)`,
+    ...es.faq.items.flatMap((f) => [`### ${f.q}`, f.a, '']),
+    `Páginas: ${SITE_URL}/ (ES) · ${SITE_URL}/en (EN) · ${SITE_URL}/cv (perfil)`,
   ];
   return new Response(lines.join('\n'), { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
 }
