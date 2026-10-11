@@ -48,6 +48,7 @@ export function Home({ lang }: { lang: Lang }) {
   return (
     <>
       <JsonLd lang={lang} />
+      <div className="progress" aria-hidden="true" />
       <div className="page" id="top">
         {/* ---------- Top ---------- */}
         <header className="wrap top">
@@ -71,13 +72,30 @@ export function Home({ lang }: { lang: Lang }) {
         <main>
           {/* ---------- Hero ---------- */}
           <section className="wrap hero">
+            <div className="aurora" aria-hidden="true">
+              <i />
+              <i />
+              <i />
+            </div>
             <div>
               <p className="status reveal">
                 <span className="dot" aria-hidden="true" />
                 {t.hero.status}
               </p>
-              <h1 className="h1 reveal" style={{ ['--d' as string]: '0.05s' }}>
-                {t.hero.title[0]} <span className="serif">{t.hero.title[1]}</span> {t.hero.title[2]}
+              <h1 className="h1 words">
+                {t.hero.title[0].split(' ').map((w, i) => (
+                  <span className="w" key={'a' + i} style={{ ['--i' as string]: i }}>
+                    {w}{' '}
+                  </span>
+                ))}
+                <span className="w serif" style={{ ['--i' as string]: t.hero.title[0].split(' ').length }}>
+                  {t.hero.title[1]}{' '}
+                </span>
+                {t.hero.title[2].split(' ').map((w, i) => (
+                  <span className="w" key={'b' + i} style={{ ['--i' as string]: t.hero.title[0].split(' ').length + 1 + i }}>
+                    {w}{' '}
+                  </span>
+                ))}
               </h1>
               <p className="lead hero-sub reveal" style={{ ['--d' as string]: '0.12s' }}>
                 {t.hero.sub}
@@ -91,7 +109,8 @@ export function Home({ lang }: { lang: Lang }) {
               </div>
             </div>
 
-            <div className="join g-green noise reveal" style={{ ['--d' as string]: '0.15s' }}>
+            <div className="join g-green noise reveal tilt" data-tilt="6" style={{ ['--d' as string]: '0.15s' }}>
+              <span className="glare" aria-hidden="true" />
               <div className="floaty" aria-hidden="true">
                 <div className="phone">
                   <div className="phone-screen screens">
@@ -128,10 +147,16 @@ export function Home({ lang }: { lang: Lang }) {
             <p className="eyebrow center reveal" style={{ marginBottom: 18 }}>
               {t.logosLabel}
             </p>
-            <div className="logos reveal">
-              {['KILO', 'ZonaJujuy', 'Chefi', 'SLOT', 'Aevum', 'ZonaSalud', 'Inti Mates', 'Petit'].map((l) => (
-                <span key={l}>{l}</span>
-              ))}
+            <div className="logos logos-marquee reveal">
+              <div className="logos-track">
+                {[...Array(2)].flatMap((_, k) =>
+                  ['KILO', 'ZonaJujuy', 'Chefi', 'SLOT', 'Aevum', 'ZonaSalud', 'Inti Mates', 'Petit'].map((l) => (
+                    <span key={l + k} aria-hidden={k === 1 ? true : undefined}>
+                      {l}
+                    </span>
+                  )),
+                )}
+              </div>
             </div>
           </section>
 
@@ -288,7 +313,8 @@ export function Home({ lang }: { lang: Lang }) {
                 </div>
               </div>
               <div className="kilo-phones" aria-hidden="true">
-                <div className="phone">
+                <div className="phone phone-3d tilt" data-tilt="12">
+                  <span className="glare" />
                   <div className="phone-screen screens">
                     {[kiloLinks.screensA[2], kiloLinks.screensB[2], kiloLinks.screensA[0], kiloLinks.screensB[1]].map((s) => (
                       <Image key={s} src={s} alt={`KILO app — ${s.split('/').pop()?.replace('.webp', '')}`} width={540} height={1200} sizes="(max-width: 900px) 60vw, 260px" />
@@ -515,12 +541,14 @@ export function Home({ lang }: { lang: Lang }) {
 function WorkCard({ p, i, t, home }: { p: Project; i: number; t: SiteContent; home: string }) {
   return (
     <a
-      className="work-card reveal"
+      className="work-card reveal tilt"
+      data-tilt="4"
       href={p.url ?? `${home}#proyectos`}
       target={p.url ? '_blank' : undefined}
       rel={p.url ? 'noopener noreferrer' : undefined}
       style={{ ['--d' as string]: `${(i % 2) * 0.06}s` }}
     >
+      <span className="glare" aria-hidden="true" />
       <div className="browser">
         <div className="browser-bar" aria-hidden="true">
           <i />
