@@ -45,7 +45,7 @@ async function notify(env, kind, lead) {
     method: 'POST',
     headers: { authorization: `Bearer ${env.RESEND_API_KEY}`, 'content-type': 'application/json' },
     body: JSON.stringify({
-      from: 'Portfolio gabrieliturre.tech <onboarding@resend.dev>',
+      from: 'Portafolio gabrieliturre.tech <avisos@gabrieliturre.tech>',
       to: TO,
       reply_to: lead.email,
       subject,
