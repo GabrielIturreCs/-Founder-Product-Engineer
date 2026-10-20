@@ -1,0 +1,32 @@
+# Publica gabrieliturre.tech en Cloudflare Workers (sitio estático + worker/index.js)
+# después de cada push a main. Necesita los secretos del repo CLOUDFLARE_API_TOKEN y
+# CLOUDFLARE_ACCOUNT_ID (los mismos que usan los repos de KILO).
+name: Deploy to Cloudflare
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - '**/*.md'
+  workflow_dispatch:
+
+concurrency:
+  group: cloudflare-portfolio-production
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Build and deploy to Cloudflare
+        run: npm run cf:deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
