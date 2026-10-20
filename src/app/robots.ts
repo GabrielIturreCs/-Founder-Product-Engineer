@@ -8,6 +8,7 @@ const aiBots = [
   'Google-Extended', 'PerplexityBot', 'Perplexity-User', 'Applebot-Extended', 'Bingbot', 'meta-externalagent', 'CCBot',
 ];
 
+export const dynamic = 'force-static';
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [

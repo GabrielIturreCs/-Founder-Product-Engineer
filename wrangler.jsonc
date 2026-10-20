@@ -1,0 +1,20 @@
+// Hosting en Cloudflare Workers: el sitio estático de `next build` (out/) más el Worker de
+// worker/index.js, que guarda los contactos de la guía y de la agenda en KV.
+// Publicar: npm run cf:deploy  (necesita CLOUDFLARE_API_TOKEN y CLOUDFLARE_ACCOUNT_ID)
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "gabrieliturre",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./out",
+    "binding": "ASSETS",
+    "html_handling": "drop-trailing-slash",
+    "not_found_handling": "404-page",
+    "run_worker_first": ["/api/*"]
+  },
+  "kv_namespaces": [{ "binding": "LEADS", "id": "f6a9e82bbdb74ca0806ffafa2604fa41" }],
+  "workers_dev": true,
+  "preview_urls": false,
+  "observability": { "enabled": true }
+}

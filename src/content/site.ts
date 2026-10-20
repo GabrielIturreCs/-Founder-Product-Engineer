@@ -28,7 +28,7 @@ export const contact = {
 export const bookingUrl = '';
 
 // ---------- GUÍA GRATIS ----------
-// Los correos quedan en Netlify → tu sitio → Forms → «guia».
+// Los correos los guarda el Worker de Cloudflare en KV (gabrieliturre-leads) y llegan por email.
 export const guidePdf = {
   es: '/guia/automatizar-tu-negocio-con-ia-en-7-dias.pdf',
   en: '/guia/automate-your-business-with-ai-in-7-days.pdf',

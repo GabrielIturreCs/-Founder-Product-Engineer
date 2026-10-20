@@ -1,6 +1,7 @@
 import { ogImage, ogSize } from '@/components/site/OgImage';
 
-export const alt = 'Gabriel Iturre — Desarrollador freelance: apps, sistemas y webs';
+export const dynamic = 'force-static';
+export const alt = 'Gabriel Iturre — AI Engineer: producto con IA de punta a punta';
 export const size = ogSize;
 export const contentType = 'image/png';
 

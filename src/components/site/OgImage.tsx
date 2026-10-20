@@ -14,12 +14,12 @@ export function ogImage(lang: Lang) {
             gabrieliturre.tech
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', fontSize: 76, lineHeight: 1, letterSpacing: -3, color: '#0b0b0b' }}>
-            <span>{es ? 'Apps, sistemas' : 'Apps, systems'}</span>
-            <span>{es ? 'y webs que' : 'and websites'}</span>
-            <span style={{ color: '#047857' }}>{es ? 'hacen crecer.' : 'that grow.'}</span>
+            <span>{es ? 'AI Engineer que' : 'AI Engineer who'}</span>
+            <span>{es ? 'construye producto' : 'builds products'}</span>
+            <span style={{ color: '#047857' }}>{es ? 'de punta a punta.' : 'end to end.'}</span>
           </div>
           <div style={{ display: 'flex', fontSize: 26, color: '#77726c' }}>
-            {es ? 'Gabriel Iturre · Desarrollador freelance · Fundador de KILO' : 'Gabriel Iturre · Freelance developer · Founder of KILO'}
+            {es ? 'Gabriel Iturre · Fundador y CEO de KILO · Claude, apps, pagos, WhatsApp' : 'Gabriel Iturre · Founder & CEO of KILO · Claude, apps, payments, WhatsApp'}
           </div>
         </div>
         <div
@@ -35,11 +35,11 @@ export function ogImage(lang: Lang) {
           }}
         >
           <div style={{ display: 'flex', alignSelf: 'flex-start', padding: '8px 16px', borderRadius: 99, background: '#0b0b0b', fontSize: 20, marginBottom: 'auto' }}>
-            {es ? 'Empezá hoy' : 'Start today'}
+            {es ? 'Disponible' : 'Available'}
           </div>
-          <div style={{ fontSize: 48, lineHeight: 1, letterSpacing: -2 }}>{es ? 'Trabajemos juntos' : "Let's work together"}</div>
+          <div style={{ fontSize: 48, lineHeight: 1, letterSpacing: -2 }}>{es ? 'Contame tu idea' : 'Tell me your idea'}</div>
           <div style={{ display: 'flex', marginTop: 20, padding: '14px 0', justifyContent: 'center', borderRadius: 14, background: '#fff', color: '#0b0b0b', fontSize: 22 }}>
-            {es ? 'Ver precios' : 'See pricing'}
+            {es ? 'Guía gratis de IA' : 'Free AI guide'}
           </div>
         </div>
       </div>

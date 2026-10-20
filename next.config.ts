@@ -1,15 +1,10 @@
 import type { NextConfig } from "next";
 
+// Sitio estático (carpeta out/) servido por el Worker de Cloudflare (wrangler.jsonc).
+// Los links cortos /agenda y /guia están en public/_redirects.
 const nextConfig: NextConfig = {
-  // Links cortos para redes (LinkedIn, TikTok): llevan a la sección correspondiente.
-  async redirects() {
-    return [
-      { source: "/agenda", destination: "/#agendar", permanent: false },
-      { source: "/en/agenda", destination: "/en#agendar", permanent: false },
-      { source: "/guia", destination: "/#guia", permanent: false },
-      { source: "/en/guide", destination: "/en#guia", permanent: false },
-    ];
-  },
+  output: "export",
+  images: { unoptimized: true },
 };
 
 export default nextConfig;

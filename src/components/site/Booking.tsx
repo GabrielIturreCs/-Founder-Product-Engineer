@@ -2,7 +2,6 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react';
-import { bookCall } from '@/app/actions/booking';
 import type { SiteContent } from '@/content/site';
 
 const TIMES = ['10:00', '11:30', '14:00', '16:30', '18:00'];
@@ -77,17 +76,10 @@ export function Booking({ t }: { t: SiteContent }) {
     };
     setStatus('sending');
     if (data.company) return setStatus('ok');
-    // Se guarda en Netlify Forms («agenda») y, si RESEND_API_KEY está configurada, también llega por email.
-    const form = new URLSearchParams({ 'form-name': 'agenda', nombre: data.name, email: data.email, mensaje: data.message, fecha: date, hora: `${time} (GMT-3)`, idioma: t.lang });
-    const [saved, mailed] = await Promise.all([
-      fetch('/__forms.html', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: form.toString() })
-        .then((r) => r.ok)
-        .catch(() => false),
-      bookCall(data)
-        .then((r) => r.ok)
-        .catch(() => false),
-    ]);
-    const res = { ok: saved || mailed };
+    // Lo guarda el Worker de Cloudflare (worker/index.js) y le avisa a Gabriel por email.
+    const res = await fetch('/api/agenda', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
+      .then((r) => ({ ok: r.ok }))
+      .catch(() => ({ ok: false }));
     if (res.ok) {
       firestore()
         .then(({ db, fs }) =>

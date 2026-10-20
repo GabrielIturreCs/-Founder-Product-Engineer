@@ -4,8 +4,7 @@ import { useState } from 'react';
 import { IconDownload } from '@tabler/icons-react';
 import { guidePdf, type SiteContent } from '@/content/site';
 
-// Los correos se guardan con Netlify Forms (formulario «guia», declarado en /public/__forms.html).
-// Se leen en Netlify → el sitio → Forms.
+// Los correos los guarda el Worker de Cloudflare (worker/index.js) en KV y le llegan a Gabriel por email.
 export function GuideForm({ t }: { t: SiteContent }) {
   const g = t.guide;
   const [status, setStatus] = useState<'idle' | 'sending' | 'ok'>('idle');
@@ -17,13 +16,13 @@ export function GuideForm({ t }: { t: SiteContent }) {
     if (fd.get('bot-field')) return;
     setStatus('sending');
     try {
-      const body = new URLSearchParams();
-      body.set('form-name', 'guia');
-      body.set('email', String(fd.get('email') || '').trim());
-      body.set('nombre', String(fd.get('nombre') || '').trim());
-      body.set('idioma', t.lang);
-      body.set('origen', typeof location !== 'undefined' ? location.pathname + location.search : '');
-      const res = await fetch('/__forms.html', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body.toString() });
+      const body = {
+        email: String(fd.get('email') || '').trim(),
+        name: String(fd.get('nombre') || '').trim(),
+        lang: t.lang,
+        origin: location.pathname + location.search,
+      };
+      const res = await fetch('/api/guia', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
       if (!res.ok) throw new Error(String(res.status));
     } catch {
       // Si no se pudo guardar el correo, la guía se entrega igual: el visitante no tiene la culpa.
