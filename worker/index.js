@@ -67,7 +67,8 @@ const worker = {
     if (!kind) return json({ ok: false }, 404);
     if (request.method !== 'POST') return json({ ok: false }, 405);
     const origin = request.headers.get('origin');
-    if (origin && new URL(origin).host !== url.host) return json({ ok: false }, 403);
+    const allowed = [url.host, 'gabrieliturre.tech', 'www.gabrieliturre.tech'];
+    if (origin && !allowed.includes(new URL(origin).host)) return json({ ok: false }, 403);
 
     let body;
     try {
