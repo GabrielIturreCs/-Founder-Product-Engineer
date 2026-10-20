@@ -10,7 +10,7 @@ export const contact = {
   email: 'gabriel13iturre@gmail.com',
   whatsapp: '543884472423',
   whatsappDisplay: '+54 9 388 447-2423',
-  linkedin: 'https://www.linkedin.com/in/gabriel-iturre-73900626a/',
+  linkedin: 'https://www.linkedin.com/in/gabriel-iturre/',
   github: 'https://github.com/GabrielIturreCs',
   agency: 'https://zonajujuy.com',
   // Sólo provincia y país: nunca publicar el domicilio.
