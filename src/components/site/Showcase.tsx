@@ -111,7 +111,7 @@ const TAPS: Record<string, ([number, number] | null)[]> = {
 };
 
 export function ProjectStage({ p, visit, stepsLabel, flip }: { p: Showcase; visit: string; stepsLabel: string; flip: boolean }) {
-  const primary = p.phone ?? p.browser ?? [];
+  const primary = (p.lead === 'browser' ? p.browser : p.phone) ?? p.browser ?? [];
   const { ref, i, setI, running, setHover, ms } = useStepper(primary.length);
   const host = p.url ? p.url.replace(/^https?:\/\//, '') : 'localhost';
   const alt = `${p.name} — ${p.steps[i] ?? p.kind}`;
@@ -145,7 +145,7 @@ export function ProjectStage({ p, visit, stepsLabel, flip }: { p: Showcase; visi
       <div className={`sc-stage tone-${p.tone} ${hasBrowser && p.phone ? 'combo' : p.phone ? 'solo-phone' : 'solo-browser'}`}>
         <div className="sc-devices">
           {hasBrowser && <Browser shots={p.browser} scroll={p.scroll} i={i} url={host} alt={p.phone ? `${p.name} — web` : alt} />}
-          {p.phone && <Phone screens={p.phone} i={i} alt={alt} taps={TAPS[p.slug]} ms={ms} running={running} />}
+          {p.phone && <Phone screens={p.phone} i={i % p.phone.length} alt={alt} taps={p.lead === 'browser' ? undefined : TAPS[p.slug]} ms={ms} running={running} />}
         </div>
       </div>
     </article>

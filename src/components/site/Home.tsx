@@ -15,6 +15,7 @@ import {
   IconFileCertificate,
   IconMessageChatbot,
   IconRocket,
+  IconShieldCheck,
   IconSend,
   IconSparkles,
   IconStack2,
@@ -49,7 +50,7 @@ export function Home({ lang }: { lang: Lang }) {
   const es = lang === 'es';
   const home = es ? '/' : '/en';
   const cvHref = es ? '/cv' : '/en/cv';
-  const wa = whatsappLink(t.cta.waText);
+  const wa = whatsappLink(t.offer.waText);
   const half = Math.ceil(t.tags.length / 2);
   const rowA = t.tags.slice(0, half);
   const rowB = t.tags.slice(half);
@@ -70,18 +71,14 @@ export function Home({ lang }: { lang: Lang }) {
             Gabriel Iturre
           </a>
           <nav className="top-links hide-sm" aria-label={es ? 'Secciones' : 'Sections'}>
+            <a href={`${home}#oferta`}>{t.nav.offer}</a>
             <a href={`${home}#proyectos`}>{t.nav.work}</a>
-            <a href={`${home}#servicios`}>{t.nav.services}</a>
             <a href={`${home}#guia`}>{t.nav.guide}</a>
-            <a href={`${home}#precios`}>{t.nav.pricing}</a>
+            <a href={`${home}#faq`}>{t.nav.faq}</a>
           </nav>
           <div className="top-actions">
-            <a className="btn hide-sm" href={wa} target="_blank" rel="noopener noreferrer">
+            <a className="btn btn-ink" href={wa} target="_blank" rel="noopener noreferrer">
               <IconBrandWhatsapp size={16} />
-              {t.nav.call}
-            </a>
-            <a className="btn btn-ink" href={book}>
-              <IconCalendarEvent size={16} />
               {t.nav.book}
             </a>
           </div>
@@ -118,6 +115,14 @@ export function Home({ lang }: { lang: Lang }) {
               <p className="lead hero-sub reveal" style={{ ['--d' as string]: '0.12s' }}>
                 {t.hero.sub}
               </p>
+              <ul className="hero-points reveal" style={{ ['--d' as string]: '0.15s' }}>
+                {t.hero.points.map((x) => (
+                  <li key={x}>
+                    <IconCheck size={16} />
+                    {x}
+                  </li>
+                ))}
+              </ul>
               <div className="hello reveal" style={{ ['--d' as string]: '0.18s' }}>
                 <Image src={contact.photo} alt="Gabriel Iturre" width={92} height={92} />
                 <div>
@@ -144,8 +149,8 @@ export function Home({ lang }: { lang: Lang }) {
               </span>
               <p className="join-title">{t.hero.cardTitle}</p>
               <p className="join-sub">{t.hero.cardSub}</p>
-              <a className="btn btn-white" href={book}>
-                <IconCalendarEvent size={16} />
+              <a className="btn btn-white" href={wa} target="_blank" rel="noopener noreferrer">
+                <IconBrandWhatsapp size={18} />
                 {t.hero.cardBtn}
               </a>
               <a className="join-call" href={wa} target="_blank" rel="noopener noreferrer">
@@ -191,6 +196,83 @@ export function Home({ lang }: { lang: Lang }) {
               </div>
             </div>
           </section>
+
+          {/* ---------- Problema ---------- */}
+          <section className="wrap section problem-wrap">
+            <div className="section-head reveal">
+              <span className="pill">{t.problem.pill}</span>
+              <Title parts={t.problem.title} />
+            </div>
+            <div className="problem">
+              {t.problem.items.map((p, i) => (
+                <article className="problem-card reveal" key={p.title} style={{ ['--d' as string]: `${i * 0.06}s` }}>
+                  <span className="problem-num">{String(i + 1).padStart(2, '0')}</span>
+                  <h3>{p.title}</h3>
+                  <p>{p.desc}</p>
+                </article>
+              ))}
+            </div>
+            <p className="problem-close reveal">{t.problem.close}</p>
+          </section>
+
+          {/* ---------- Oferta ---------- */}
+          <section className="wrap section" id="oferta">
+            <div className="offer g-ink noise reveal">
+              <div className="offer-head">
+                <span className="offer-pill">{t.offer.pill}</span>
+                <p className="offer-name">{t.offer.name}</p>
+                <Title parts={t.offer.title} />
+                <p className="lead">{t.offer.sub}</p>
+              </div>
+              <div className="offer-grid">
+                <ol className="offer-list">
+                  {t.offer.items.map((x, i) => (
+                    <li key={x.title}>
+                      <span className="offer-num">{i + 1}</span>
+                      <div>
+                        <b>{x.title}</b>
+                        <span>{x.desc}</span>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
+                <div className="offer-side">
+                  <div className="offer-bonus">
+                    <p className="offer-bonus-title">{t.offer.bonusTitle}</p>
+                    {t.offer.bonus.map((x) => (
+                      <div key={x.title}>
+                        <b>{x.title}</b>
+                        <span>{x.desc}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="offer-price">
+                    <span>{t.offer.priceLabel}</span>
+                    <b>{t.offer.price}</b>
+                    <small>{t.offer.priceNote}</small>
+                  </div>
+                  <div className="offer-guarantee">
+                    <IconShieldCheck size={26} stroke={1.6} />
+                    <div>
+                      <b>{t.offer.guaranteeTitle}</b>
+                      <span>{t.offer.guarantee}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="offer-cta">
+                <a className="btn btn-white btn-lg" href={wa} target="_blank" rel="noopener noreferrer">
+                  <IconBrandWhatsapp size={20} />
+                  {t.offer.cta}
+                </a>
+                <span>{t.offer.ctaSub}</span>
+              </div>
+              <p className="offer-scarcity">{t.offer.scarcity}</p>
+            </div>
+          </section>
+
+
+          <div className="divider" />
 
           {/* ---------- How ---------- */}
           <section className="wrap section">
@@ -288,70 +370,6 @@ export function Home({ lang }: { lang: Lang }) {
 
           <div className="divider" />
 
-          {/* ---------- Services ---------- */}
-          <section className="wrap section" id="servicios">
-            <div className="section-head reveal">
-              <span className="pill">{t.services.pill}</span>
-              <Title parts={t.services.title} />
-              <p className="lead">{t.services.sub}</p>
-            </div>
-            <div className="services">
-              {t.services.items.map((s, i) => {
-                const Icon = serviceIcons[s.icon as keyof typeof serviceIcons];
-                return (
-                  <article className={`service reveal ${i === 0 ? 'wide' : ''}`} key={s.title} style={{ ['--d' as string]: `${(i % 3) * 0.06}s` }}>
-                    <span className={`service-icon noise ${gradients[i]}`}>
-                      <Icon size={26} stroke={1.6} />
-                    </span>
-                    <h3>{s.title}</h3>
-                    <p>{s.desc}</p>
-                    <ul className="chips">
-                      {s.tags.map((x) => (
-                        <li key={x}>{x}</li>
-                      ))}
-                    </ul>
-                  </article>
-                );
-              })}
-              <a className="service service-cta g-ink noise reveal" href={book}>
-                <IconCalendarEvent size={28} stroke={1.6} />
-                <h3>{t.hero.cardTitle}</h3>
-                <p>{t.hero.cardSub}</p>
-                <span className="btn btn-white">
-                  {t.nav.book}
-                  <IconArrowRight size={16} />
-                </span>
-              </a>
-            </div>
-          </section>
-
-          <div className="divider" />
-
-          {/* ---------- Benefits ---------- */}
-          <section className="wrap section">
-            <div className="section-head reveal">
-              <span className="pill">{t.benefits.pill}</span>
-              <Title parts={t.benefits.title} />
-              <p className="lead">{t.benefits.sub}</p>
-            </div>
-            <div className="benefits">
-              {t.benefits.items.map((b, i) => {
-                const Icon = benefitIcons[b.icon as keyof typeof benefitIcons];
-                return (
-                  <article className="benefit reveal" key={b.title} style={{ ['--d' as string]: `${(i % 3) * 0.06}s` }}>
-                    <div className={`benefit-icon noise ${gradients[i]}`}>
-                      <Icon size={44} stroke={1.5} />
-                    </div>
-                    <h3>{b.title}</h3>
-                    <p>{b.desc}</p>
-                  </article>
-                );
-              })}
-            </div>
-          </section>
-
-          <div className="divider" />
-
           {/* ---------- Work ---------- */}
           <section className="wrap section" id="proyectos">
             <div className="section-head reveal">
@@ -431,19 +449,67 @@ export function Home({ lang }: { lang: Lang }) {
             </details>
           </section>
 
-          {/* ---------- Services cloud ---------- */}
-          <section className="wrap" style={{ paddingBottom: 110 }}>
-            <div className="cloud reveal">
-              <div className="cloud-tags">
-                {t.tags.map((x) => (
-                  <span key={x}>{x}</span>
-                ))}
-                <span>{t.services.more}</span>
-              </div>
-              <Title parts={t.services.cloudTitle} />
-              <p className="lead" style={{ marginTop: 14 }}>
-                {t.services.cloudSub}
-              </p>
+          <div className="divider" />
+
+          {/* ---------- Benefits ---------- */}
+          <section className="wrap section">
+            <div className="section-head reveal">
+              <span className="pill">{t.benefits.pill}</span>
+              <Title parts={t.benefits.title} />
+              <p className="lead">{t.benefits.sub}</p>
+            </div>
+            <div className="benefits">
+              {t.benefits.items.map((b, i) => {
+                const Icon = benefitIcons[b.icon as keyof typeof benefitIcons];
+                return (
+                  <article className="benefit reveal" key={b.title} style={{ ['--d' as string]: `${(i % 3) * 0.06}s` }}>
+                    <div className={`benefit-icon noise ${gradients[i]}`}>
+                      <Icon size={44} stroke={1.5} />
+                    </div>
+                    <h3>{b.title}</h3>
+                    <p>{b.desc}</p>
+                  </article>
+                );
+              })}
+            </div>
+          </section>
+
+          <div className="divider" />
+
+          {/* ---------- Services ---------- */}
+          <section className="wrap section" id="servicios">
+            <div className="section-head reveal">
+              <span className="pill">{t.services.pill}</span>
+              <Title parts={t.services.title} />
+              <p className="lead">{t.services.sub}</p>
+            </div>
+            <div className="services">
+              {t.services.items.map((s, i) => {
+                const Icon = serviceIcons[s.icon as keyof typeof serviceIcons];
+                return (
+                  <article className={`service reveal ${i === 0 ? 'wide' : ''}`} key={s.title} style={{ ['--d' as string]: `${(i % 3) * 0.06}s` }}>
+                    <span className={`service-icon noise ${gradients[i]}`}>
+                      <Icon size={26} stroke={1.6} />
+                    </span>
+                    <h3>{s.title}</h3>
+                    <p>{s.desc}</p>
+                    <ul className="chips">
+                      {s.tags.map((x) => (
+                        <li key={x}>{x}</li>
+                      ))}
+                    </ul>
+                  </article>
+                );
+              })}
+              <a className="service service-cta g-ink noise reveal" href={wa} target="_blank" rel="noopener noreferrer">
+                <IconCalendarEvent size={28} stroke={1.6} />
+                <h3>{t.hero.cardTitle}</h3>
+                <p>{t.hero.cardSub}</p>
+                <span className="btn btn-white">
+                  {t.nav.book}
+                  <IconArrowRight size={16} />
+                </span>
+              </a>
             </div>
           </section>
 
@@ -519,7 +585,7 @@ export function Home({ lang }: { lang: Lang }) {
                     </li>
                   ))}
                 </ul>
-                <a className="btn btn-lg" href={book}>
+                <a className="btn btn-lg" href={wa} target="_blank" rel="noopener noreferrer">
                   {t.pricing.plan.cta}
                   <IconArrowRight size={18} />
                 </a>
@@ -549,20 +615,6 @@ export function Home({ lang }: { lang: Lang }) {
               ))}
             </div>
             <p className="price-note reveal">{t.pricing.note}</p>
-          </section>
-
-          <div className="divider" />
-
-          {/* ---------- Agenda ---------- */}
-          <section className="wrap section" id="agendar">
-            <div className="section-head reveal">
-              <span className="pill">{t.booking.pill}</span>
-              <Title parts={t.booking.title} />
-              <p className="lead">{t.booking.sub}</p>
-            </div>
-            <div className="agenda reveal">
-              <BookingEmbed t={t} />
-            </div>
           </section>
 
           <div className="divider" />
@@ -602,6 +654,21 @@ export function Home({ lang }: { lang: Lang }) {
               </aside>
             </div>
           </section>
+
+          <div className="divider" />
+
+          {/* ---------- Agenda ---------- */}
+          <section className="wrap section" id="agendar">
+            <div className="section-head reveal">
+              <span className="pill">{t.booking.pill}</span>
+              <Title parts={t.booking.title} />
+              <p className="lead">{t.booking.sub}</p>
+            </div>
+            <div className="agenda reveal">
+              <BookingEmbed t={t} />
+            </div>
+          </section>
+
         </main>
 
         {/* ---------- Final CTA + footer ---------- */}
@@ -619,13 +686,13 @@ export function Home({ lang }: { lang: Lang }) {
               </h2>
               <p className="lead">{t.cta.sub}</p>
               <div className="final-actions">
-                <a className="btn btn-white btn-lg" href={book}>
-                  <IconCalendarEvent size={18} />
-                  {t.nav.book}
-                </a>
-                <a className="final-wa" href={wa} target="_blank" rel="noopener noreferrer">
+                <a className="btn btn-white btn-lg" href={wa} target="_blank" rel="noopener noreferrer">
                   <IconBrandWhatsapp size={18} />
                   {t.cta.whatsapp}
+                </a>
+                <a className="final-wa" href={book}>
+                  <IconCalendarEvent size={18} />
+                  {es ? 'Prefiero una llamada' : "I'd rather have a call"}
                 </a>
               </div>
             </div>
