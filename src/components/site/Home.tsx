@@ -22,8 +22,9 @@ import {
   IconTag,
   IconUsersGroup,
   IconWallet,
+  IconWorld,
 } from '@tabler/icons-react';
-import { content, contact, cvPdf, kiloLinks, landings, whatsappLink, type Lang, type Project } from '@/content/site';
+import { content, contact, cvPdf, kiloLinks, landings, whatsappLink, type Extra, type Lang, type Project } from '@/content/site';
 import { BookingEmbed } from './BookingEmbed';
 import { Dock } from './Dock';
 import { GuideForm } from './GuideForm';
@@ -32,7 +33,7 @@ import { Reveal } from './Reveal';
 import { KiloStage, ProjectStage } from './Showcase';
 
 const benefitIcons = { price: IconTag, fast: IconBolt, quality: IconDiamond, all: IconStack2, code: IconCode, ai: IconSparkles, business: IconChartLine } as const;
-const serviceIcons = { product: IconRocket, bot: IconMessageChatbot, system: IconBuildingStore, strategy: IconBulb, team: IconUsersGroup } as const;
+const serviceIcons = { product: IconRocket, bot: IconMessageChatbot, system: IconBuildingStore, strategy: IconBulb, team: IconUsersGroup, web: IconWorld } as const;
 const gradients = ['g-green', 'g-blue', 'g-sun', 'g-ink', 'g-green', 'g-blue'];
 
 function Title({ parts, as: Tag = 'h2', className = 'h2' }: { parts: string[]; as?: 'h1' | 'h2'; className?: string }) {
@@ -407,6 +408,18 @@ export function Home({ lang }: { lang: Lang }) {
               ))}
             </div>
 
+            <div className="extras">
+              <div className="section-head reveal">
+                <Title parts={t.work.extrasTitle} />
+                <p className="lead">{t.work.extrasSub}</p>
+              </div>
+              <div className="extras-grid">
+                {t.extras.map((p, i) => (
+                  <ExtraCard key={p.slug} p={p} i={i} open={t.work.open} />
+                ))}
+              </div>
+            </div>
+
             <div className="wall g-ink noise reveal">
               <div className="wall-head">
                 <Title parts={t.work.wallTitle} />
@@ -463,8 +476,8 @@ export function Home({ lang }: { lang: Lang }) {
                 const Icon = benefitIcons[b.icon as keyof typeof benefitIcons];
                 return (
                   <article className="benefit reveal" key={b.title} style={{ ['--d' as string]: `${(i % 3) * 0.06}s` }}>
-                    <div className={`benefit-icon noise ${gradients[i]}`}>
-                      <Icon size={44} stroke={1.5} />
+                    <div className={`benefit-icon noise ${gradients[i]}${b.image ? ' has-art' : ''}`}>
+                      {b.image ? <Image src={b.image} alt="" fill sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 380px" /> : <Icon size={44} stroke={1.5} />}
                     </div>
                     <h3>{b.title}</h3>
                     <p>{b.desc}</p>
@@ -487,7 +500,7 @@ export function Home({ lang }: { lang: Lang }) {
               {t.services.items.map((s, i) => {
                 const Icon = serviceIcons[s.icon as keyof typeof serviceIcons];
                 return (
-                  <article className={`service reveal ${i === 0 ? 'wide' : ''}`} key={s.title} style={{ ['--d' as string]: `${(i % 3) * 0.06}s` }}>
+                  <article className={`service reveal ${i === 0 || s.image ? 'wide' : ''}${s.image ? ' has-art' : ''}`} key={s.title} style={{ ['--d' as string]: `${(i % 3) * 0.06}s` }}>
                     <span className={`service-icon noise ${gradients[i]}`}>
                       <Icon size={26} stroke={1.6} />
                     </span>
@@ -498,6 +511,11 @@ export function Home({ lang }: { lang: Lang }) {
                         <li key={x}>{x}</li>
                       ))}
                     </ul>
+                    {s.image && (
+                      <div className="service-art">
+                        <Image src={s.image} alt="" fill sizes="(max-width: 760px) 100vw, 420px" />
+                      </div>
+                    )}
                   </article>
                 );
               })}
@@ -765,6 +783,43 @@ function WorkCard({ p, i, home }: { p: Project; i: number; home: string }) {
         </ul>
       </div>
     </a>
+  );
+}
+
+// Más proyectos: portada diseñada con la captura real del proyecto.
+function ExtraCard({ p, i, open }: { p: Extra; i: number; open: string }) {
+  const body = (
+    <>
+      <div className="extra-cover">
+        <Image src={p.cover} alt={`${p.name} — ${p.kind}`} width={1200} height={750} sizes="(max-width: 760px) 100vw, (max-width: 1000px) 50vw, 600px" />
+      </div>
+      <div className="extra-body">
+        <div className="work-top">
+          <h3>{p.name}</h3>
+          <span>{p.year}</span>
+        </div>
+        <p className="work-kind">{p.kind}</p>
+        <p>{p.summary}</p>
+        <div className="extra-foot">
+          {p.label && <span className="extra-label">{p.label}</span>}
+          {p.url && (
+            <span className="extra-open">
+              {open} <IconArrowUpRight size={15} />
+            </span>
+          )}
+        </div>
+      </div>
+    </>
+  );
+  const style = { ['--d' as string]: `${(i % 3) * 0.06}s` };
+  return p.url ? (
+    <a className="extra-card reveal" href={p.url} target="_blank" rel="noopener noreferrer" style={style}>
+      {body}
+    </a>
+  ) : (
+    <article className="extra-card reveal" style={style}>
+      {body}
+    </article>
   );
 }
 

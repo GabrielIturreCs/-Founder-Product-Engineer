@@ -61,6 +61,8 @@ export type Showcase = {
   steps: string[];
   // Qué dispositivo marca los pasos cuando hay celular y ventana (por defecto, el celular).
   lead?: 'phone' | 'browser';
+  // 'bare': las capturas de escritorio ya traen su propia ventana (app de escritorio), sin barra de navegador.
+  frame?: 'bare';
   tone: 'green' | 'orange' | 'blue' | 'ink' | 'violet';
 };
 
@@ -74,6 +76,18 @@ export type Project = {
   image?: string;
   year: string;
   tags: string[];
+};
+
+// Más proyectos de GitHub: tarjetas con portada diseñada (1200x750) en /public/work/portadas/.
+export type Extra = {
+  slug: string;
+  name: string;
+  kind: string;
+  summary: string;
+  cover: string;
+  year: string;
+  url?: string;
+  label?: string;
 };
 
 export type Faq = { q: string; a: string };
@@ -214,9 +228,10 @@ const showcaseEs: Showcase[] = [
     summary: 'Sistema de ventas que sigue funcionando sin internet, con app de escritorio e impresión de tickets térmicos.',
     tags: ['Angular', 'Electron', 'MongoDB', 'ESC/POS'],
     url: 'https://sudo.zonajujuy.com',
-    note: 'Pantallas de venta y vencimientos diseñadas a partir de su código; el acceso es una captura real.',
-    browser: ['/work/sudo/venta.webp', '/work/sudo/vencimientos.webp', '/work/sudo/login-web.webp'],
-    steps: ['Venta con balanza y pagos mixtos', 'Stock y vencimientos', 'Cada comercio con su código'],
+    note: 'La app de escritorio está rediseñada a partir de su código: venta, reportes y cajas usan sus funciones reales con datos de ejemplo.',
+    browser: ['/work/sudo/app-venta.webp', '/work/sudo/app-reportes.webp', '/work/sudo/app-caja.webp'],
+    frame: 'bare',
+    steps: ['Venta con balanza y pagos mixtos', 'Reporte financiero por caja', 'Apertura y cierre de cajas'],
     tone: 'orange',
   },
   {
@@ -224,14 +239,27 @@ const showcaseEs: Showcase[] = [
     name: 'ZonaSalud',
     kind: 'Gestión de consultorios',
     year: '2025',
-    summary: 'Pacientes, historia clínica, caja y avisos por WhatsApp para consultorios médicos.',
+    summary: 'Turnos, historia clínica, caja con coseguros y recetas por WhatsApp para consultorios médicos.',
     tags: ['Next.js', 'NestJS', 'PostgreSQL'],
     url: 'https://salud.zonajujuy.com',
-    note: 'Pacientes, curva y receta son pantallas diseñadas a partir de su código; el acceso es una captura real.',
-    phone: ['/work/salud/pacientes.webp', '/work/salud/curva.webp', '/work/salud/receta.webp'],
-    browser: ['/work/salud.webp'],
-    steps: ['Padrón de pacientes', 'Curva de crecimiento OMS', 'Receta digital por WhatsApp'],
+    note: 'Pantallas de la app rediseñadas a partir de su código, con datos de ejemplo.',
+    phone: ['/work/salud/turnos.webp', '/work/salud/ficha.webp', '/work/salud/caja.webp', '/work/salud/receta-whatsapp.webp'],
+    steps: ['Turnos del día', 'Historia clínica del paciente', 'Caja y coseguros', 'Receta por WhatsApp'],
     tone: 'blue',
+  },
+  {
+    slug: 'expojuy',
+    name: 'ExpoJuy Conecta',
+    kind: 'App para una feria',
+    year: '2026',
+    status: 'Prototipo',
+    summary: 'La feria en el celular: mapa con rutas accesibles hasta cada stand, agenda por día y una sección personal con tu próxima actividad.',
+    note: 'Prototipo navegable presentado a la convocatoria de la ExpoJuy 2026; no es la plataforma oficial. Capturas reales.',
+    tags: ['Astro', 'React', 'Mapa interactivo', 'Rutas accesibles'],
+    phone: ['/work/expojuy/portada.webp', '/work/expojuy/mapa.webp', '/work/expojuy/agenda.webp', '/work/expojuy/mi-expo.webp'],
+    browser: ['/work/expojuy/web.webp'],
+    steps: ['Portada de la feria', 'Mapa con rutas a cada stand', 'Agenda por día', 'Mi Expo: tu próxima actividad'],
+    tone: 'violet',
   },
 ];
 
@@ -271,14 +299,22 @@ const showcaseEnPatch: Record<string, Partial<Showcase>> = {
   sudo: {
     kind: 'Sales & inventory for supermarkets',
     summary: 'A point of sale that keeps working offline, with a desktop app and thermal ticket printing.',
-    note: 'Sale and expiry screens designed from its code; sign-in is a real screenshot.',
-    steps: ['Sale with scale and split payments', 'Stock and expiry dates', 'Each store with its own code'],
+    note: 'The desktop app is redesigned from its code: sales, reports and registers use its real features with sample data.',
+    steps: ['Sale with scale and split payments', 'Financial report by register', 'Opening and closing registers'],
   },
   zonasalud: {
     kind: 'Clinic management',
-    summary: 'Patients, medical records, cash register and WhatsApp reminders for medical practices.',
-    note: 'Patients, growth chart and prescription are screens designed from its code; sign-in is a real screenshot.',
-    steps: ['Patient registry', 'WHO growth chart', 'Digital prescription via WhatsApp'],
+    summary: 'Appointments, medical records, a cash register with co-pays and prescriptions via WhatsApp for medical practices.',
+    note: 'App screens redesigned from its code, with sample data.',
+    steps: ["Today's appointments", "The patient's medical record", 'Register and co-pays', 'Prescription via WhatsApp'],
+  },
+  expojuy: {
+    kind: 'App for a trade fair',
+    status: 'Prototype',
+    summary: 'The fair on your phone: a map with accessible routes to every stand, a day-by-day agenda and a personal section with your next activity.',
+    note: 'Clickable prototype submitted to the ExpoJuy 2026 call; not the official platform. Real screenshots.',
+    tags: ['Astro', 'React', 'Interactive map', 'Accessible routes'],
+    steps: ['The fair home page', 'Map with routes to every stand', 'Agenda by day', 'My Expo: your next activity'],
   },
 };
 const showcaseEn: Showcase[] = showcaseEs.map((p) => ({ ...p, ...showcaseEnPatch[p.slug] }));
@@ -299,6 +335,23 @@ const sitesEnPatch: Record<string, Partial<Project>> = {
   burguesita: { kind: 'Website + digital menu', summary: 'Online menu with direct WhatsApp orders.' },
 };
 const sitesEn: Project[] = sitesEs.map((p) => ({ ...p, ...sitesEnPatch[p.slug] }));
+
+// Más proyectos de GitHub. OpticaVistas va sin link: su acceso público muestra usuarios de demo.
+const extrasEs: Extra[] = [
+  { slug: 'ghostcut', name: 'GhostCut', kind: 'Herramienta web', year: '2025', summary: 'Convierte, recorta y comprime imágenes en el navegador, sin subirlas a ningún servidor.', cover: '/work/portadas/ghostcut.webp', url: 'https://ghostcut.netlify.app' },
+  { slug: 'detaquito', name: 'De Taquito Ligas', kind: 'Ligas de fútbol amateur', year: '2025', summary: 'Partidos con formación en cancha, jugadores y tablas de goleadores, asistencias y tarjetas.', cover: '/work/portadas/de-taquito.webp', url: 'https://futbolformacion.netlify.app' },
+  { slug: 'serenacita', name: 'SerenaCita', kind: 'Turnos online', year: '2025', summary: 'Reserva de turnos en seis pasos con seña del 50% y un panel con agenda, clientes y reportes.', cover: '/work/portadas/serenacita.webp', url: 'https://appturnosonline-c783d.web.app' },
+  { slug: 'opticavistas', name: 'OpticaVistas', kind: 'Gestión para ópticas', year: '2025', summary: 'Ventas con descuentos automáticos por cliente, stock por categoría, egresos y reportes.', cover: '/work/portadas/opticavistas.webp' },
+  { slug: 'empleoflash', name: 'Empleo Flash', kind: 'Bolsa de empleo', year: '2024', summary: 'Sitio con ofertas, postulaciones y registro de candidatos.', cover: '/work/portadas/empleo-flash.webp', url: 'https://empleoflash.netlify.app', label: 'Práctica de curso' },
+];
+const extrasEnPatch: Record<string, Partial<Extra>> = {
+  serenacita: { kind: 'Online booking', summary: 'Six-step booking with a 50% deposit and a dashboard with schedule, clients and reports.' },
+  detaquito: { kind: 'Amateur football leagues', summary: 'Matches with on-pitch line-ups, players and tables for top scorers, assists and cards.' },
+  opticavistas: { kind: 'Optician store management', summary: 'Sales with automatic per-customer discounts, stock by category, expenses and reports.' },
+  ghostcut: { kind: 'Web tool', summary: 'Convert, crop and compress images in the browser, without uploading them anywhere.' },
+  empleoflash: { kind: 'Job board', summary: 'Website with job offers, applications and candidate sign-up.', label: 'Course project' },
+};
+const extrasEn: Extra[] = extrasEs.map((p) => ({ ...p, ...extrasEnPatch[p.slug] }));
 
 // Landings y webs publicadas: el muro animado de la sección de proyectos.
 export const landings = [
@@ -405,12 +458,12 @@ export const content = {
       title: ['No te vendo una idea.', 'Ya funciona', 'en mi propio producto.'],
       sub: 'KILO está en Google Play y 83 comercios se registraron en sus primeras 6 semanas. Lo construí yo, con la misma IA que voy a usar para tu negocio.',
       items: [
-        { icon: 'ai', title: 'Claude, todos los días', desc: 'Diseño, programo y reviso con Claude. Sé dónde la IA ahorra semanas y dónde no conviene usarla.' },
-        { icon: 'all', title: 'De punta a punta', desc: 'App Android, web, backend, base de datos, pagos, WhatsApp y servidores.' },
-        { icon: 'business', title: 'Pienso el negocio', desc: 'Qué conviene construir, qué es caro, qué es barato y cuánto te va a costar la IA por mes.' },
-        { icon: 'quality', title: 'Producto propio en la calle', desc: 'KILO está en Google Play y los comercios registran ventas reales con él.' },
-        { icon: 'code', title: 'El código es tuyo', desc: 'Te llevás código, accesos y documentación.' },
-        { icon: 'price', title: 'Precio cerrado', desc: 'Sabés cuánto pagás antes de empezar.' },
+        { icon: 'ai', image: '/work/ilustraciones/claude.webp', title: 'Claude, todos los días', desc: 'Diseño, programo y reviso con Claude. Sé dónde la IA ahorra semanas y dónde no conviene usarla.' },
+        { icon: 'all', image: '/work/ilustraciones/punta.webp', title: 'De punta a punta', desc: 'App Android, web, backend, base de datos, pagos, WhatsApp y servidores.' },
+        { icon: 'business', image: '/work/ilustraciones/negocio.webp', title: 'Pienso el negocio', desc: 'Qué conviene construir, qué es caro, qué es barato y cuánto te va a costar la IA por mes.' },
+        { icon: 'quality', image: '/work/ilustraciones/calle.webp', title: 'Producto propio en la calle', desc: 'KILO está en Google Play y los comercios registran ventas reales con él.' },
+        { icon: 'code', image: '/work/ilustraciones/codigo.webp', title: 'El código es tuyo', desc: 'Te llevás código, accesos y documentación.' },
+        { icon: 'price', image: '/work/ilustraciones/precio.webp', title: 'Precio cerrado', desc: 'Sabés cuánto pagás antes de empezar.' },
       ],
     },
     services: {
@@ -423,6 +476,7 @@ export const content = {
         { icon: 'system', title: 'Sistemas a medida', desc: 'Punto de venta, stock, turnos y gestión, con cobros por Mercado Pago y facturación electrónica.', tags: ['Punto de venta', 'Mercado Pago', 'ARCA'] },
         { icon: 'strategy', title: 'Estrategia de producto e IA', desc: 'Pulimos la idea, elegimos qué construir primero y estimamos costos de IA, servidores y tiendas antes de gastar.', tags: ['Modelo de negocio', 'Costos', 'Prioridades'] },
         { icon: 'team', title: 'Contratos y equipos', desc: 'Me sumo a tu equipo como AI Engineer o full stack, remoto, por proyecto o de forma continua.', tags: ['Remoto', 'Español / inglés', 'Por contrato'] },
+        { icon: 'web', image: '/work/ilustraciones/wordpress.webp', title: 'Webs y WordPress', desc: 'Landings, sitios y tiendas online, en código o en WordPress, con SEO local y las consultas directo a tu WhatsApp.', tags: ['WordPress', 'Landing pages', 'SEO local'] },
       ],
       cloudTitle: ['Y todo lo que', 'haga falta'],
       cloudSub: 'Backend, pagos, servidores, publicación en tiendas y soporte, bajo un mismo techo.',
@@ -448,6 +502,9 @@ export const content = {
       visit: 'Ver sitio',
       live: 'En producción',
       sitesTitle: 'Webs para clientes',
+      extrasTitle: ['Más', 'proyectos', 'en GitHub'],
+      extrasSub: 'Otros sistemas y herramientas de mi GitHub. Las portadas están diseñadas a partir de lo que cada uno hace de verdad.',
+      open: 'Abrir',
       wallTitle: ['Y muchas', 'landings', 'publicadas'],
       wallSub: 'Sitios y landings que diseñé y puse en línea para negocios de Jujuy y para mis productos.',
       more: 'Ver webs para clientes',
@@ -527,6 +584,7 @@ export const content = {
     dock: { theme: 'Cambiar tema', lang: 'English' },
     showcase: showcaseEs,
     sites: sitesEs,
+    extras: extrasEs,
   },
   en: {
     lang: 'en' as Lang,
@@ -615,12 +673,12 @@ export const content = {
       title: ["I'm not selling an idea.", 'It already works', 'in my own product.'],
       sub: 'KILO is on Google Play and 83 stores signed up in its first 6 weeks. I built it myself, with the same AI I will use for your business.',
       items: [
-        { icon: 'ai', title: 'Claude, every day', desc: 'I design, code and review with Claude. I know where AI saves weeks and where it does not belong.' },
-        { icon: 'all', title: 'End to end', desc: 'Android app, web, backend, database, payments, WhatsApp and servers.' },
-        { icon: 'business', title: 'Business thinking', desc: 'What to build, what is expensive, what is cheap and what AI will cost you each month.' },
-        { icon: 'quality', title: 'My own product, live', desc: 'KILO is on Google Play and stores record real sales with it.' },
-        { icon: 'code', title: 'You own the code', desc: 'Code, credentials and docs are yours.' },
-        { icon: 'price', title: 'Fixed price', desc: 'You know the cost before we start.' },
+        { icon: 'ai', image: '/work/ilustraciones/claude.webp', title: 'Claude, every day', desc: 'I design, code and review with Claude. I know where AI saves weeks and where it does not belong.' },
+        { icon: 'all', image: '/work/ilustraciones/punta.webp', title: 'End to end', desc: 'Android app, web, backend, database, payments, WhatsApp and servers.' },
+        { icon: 'business', image: '/work/ilustraciones/negocio.webp', title: 'Business thinking', desc: 'What to build, what is expensive, what is cheap and what AI will cost you each month.' },
+        { icon: 'quality', image: '/work/ilustraciones/calle.webp', title: 'My own product, live', desc: 'KILO is on Google Play and stores record real sales with it.' },
+        { icon: 'code', image: '/work/ilustraciones/codigo.webp', title: 'You own the code', desc: 'Code, credentials and docs are yours.' },
+        { icon: 'price', image: '/work/ilustraciones/precio.webp', title: 'Fixed price', desc: 'You know the cost before we start.' },
       ],
     },
     services: {
@@ -633,6 +691,7 @@ export const content = {
         { icon: 'system', title: 'Custom systems', desc: 'Point of sale, inventory, booking and back office, with payments and e-invoicing.', tags: ['Point of sale', 'Payments', 'E-invoicing'] },
         { icon: 'strategy', title: 'Product & AI strategy', desc: 'We sharpen the idea, pick what to build first and estimate AI, server and store costs before spending.', tags: ['Business model', 'Costs', 'Priorities'] },
         { icon: 'team', title: 'Contracts & teams', desc: 'I join your team as an AI Engineer or full stack developer, remote, per project or ongoing.', tags: ['Remote', 'English / Spanish', 'Contract'] },
+        { icon: 'web', image: '/work/ilustraciones/wordpress.webp', title: 'Websites & WordPress', desc: 'Landing pages, websites and online stores, hand-coded or on WordPress, with local SEO and inquiries straight to your WhatsApp.', tags: ['WordPress', 'Landing pages', 'Local SEO'] },
       ],
       cloudTitle: ['And whatever', 'it takes'],
       cloudSub: 'Backend, payments, servers, store releases and support, under one roof.',
@@ -658,6 +717,9 @@ export const content = {
       visit: 'Visit site',
       live: 'Live',
       sitesTitle: 'Client websites',
+      extrasTitle: ['More', 'projects', 'on GitHub'],
+      extrasSub: 'Other systems and tools from my GitHub. Each cover is designed from what the project really does.',
+      open: 'Open',
       wallTitle: ['And plenty of', 'landing pages', 'shipped'],
       wallSub: 'Sites and landing pages I designed and put online for businesses in Jujuy and for my own products.',
       more: 'See client websites',
@@ -737,6 +799,7 @@ export const content = {
     dock: { theme: 'Toggle theme', lang: 'Español' },
     showcase: showcaseEn,
     sites: sitesEn,
+    extras: extrasEn,
   },
 };
 

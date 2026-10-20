@@ -63,6 +63,18 @@ export function Phone({ screens, i, alt, taps, ms, running }: { screens: string[
   );
 }
 
+// Capturas de una app de escritorio que ya traen su propia ventana: sin barra de navegador.
+function Desktop({ shots, i, alt }: { shots: string[]; i: number; alt: string }) {
+  const n = shots.length;
+  return (
+    <div className="sc-desktop">
+      {shots.map((s, k) => (
+        <Image key={s} src={s} alt={k === i % n ? alt : ''} aria-hidden={k !== i % n} fill sizes="(max-width: 760px) 92vw, 680px" className={frameClass(k, i % n, n)} />
+      ))}
+    </div>
+  );
+}
+
 export function Browser({ shots, scroll, i, url, alt }: { shots?: string[]; scroll?: string; i: number; url: string; alt: string }) {
   const list = shots ?? [];
   const n = list.length;
@@ -144,7 +156,8 @@ export function ProjectStage({ p, visit, stepsLabel, flip }: { p: Showcase; visi
       </div>
       <div className={`sc-stage tone-${p.tone} ${hasBrowser && p.phone ? 'combo' : p.phone ? 'solo-phone' : 'solo-browser'}`}>
         <div className="sc-devices">
-          {hasBrowser && <Browser shots={p.browser} scroll={p.scroll} i={i} url={host} alt={p.phone ? `${p.name} — web` : alt} />}
+          {p.frame === 'bare' && p.browser && !p.phone && <Desktop shots={p.browser} i={i} alt={alt} />}
+          {hasBrowser && p.frame !== 'bare' && <Browser shots={p.browser} scroll={p.scroll} i={i} url={host} alt={p.phone ? `${p.name} — web` : alt} />}
           {p.phone && <Phone screens={p.phone} i={i % p.phone.length} alt={alt} taps={p.lead === 'browser' ? undefined : TAPS[p.slug]} ms={ms} running={running} />}
         </div>
       </div>

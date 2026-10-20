@@ -116,6 +116,63 @@
   color: #fff;
   margin-bottom: 6px;
 }
+/* Servicio con ilustración: texto a la izquierda, ilustración a la derecha */
+.service.has-art {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  grid-template-rows: 1fr auto auto auto auto 1fr;
+  column-gap: 26px;
+}
+.service.has-art > :not(.service-art) {
+  grid-column: 1;
+}
+.service.has-art > .service-icon {
+  grid-row: 2;
+}
+.service.has-art > h3 {
+  grid-row: 3;
+}
+.service.has-art > p {
+  grid-row: 4;
+}
+.service.has-art > .chips {
+  grid-row: 5;
+  margin-top: 4px;
+}
+.service-art {
+  position: relative;
+  grid-column: 2;
+  grid-row: 1 / -1;
+  align-self: center;
+  aspect-ratio: 16 / 10;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px var(--line);
+}
+.service-art img,
+.benefit-icon.has-art img {
+  object-fit: cover;
+}
+.benefit-icon.has-art::after {
+  display: none;
+}
+.benefit-icon.has-art img {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.benefit:hover .benefit-icon.has-art img {
+  transform: scale(1.04);
+}
+@media (max-width: 620px) {
+  .service.has-art {
+    display: flex;
+  }
+  .service-art {
+    align-self: stretch;
+    margin-top: 8px;
+  }
+}
+
 .service-icon svg {
   position: relative;
   z-index: 1;
@@ -388,6 +445,22 @@
 }
 .solo-phone .sc-devices {
   width: auto;
+}
+
+/* App de escritorio: la pieza ya trae su ventana (macOS) y su fondo, sólo le damos esquinas y sombra */
+.sc-desktop {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #f3e9d8;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06), 0 40px 70px -36px rgba(0, 0, 0, 0.5);
+}
+.solo-browser:has(.sc-desktop) {
+  padding: 22px 16px;
+}
+.sc-desktop img {
+  object-fit: cover;
 }
 
 /* Ventana de navegador */
@@ -912,6 +985,124 @@
 }
 
 /* ---------- Muro de landings ---------- */
+/* Más proyectos: portadas con la captura real de cada uno */
+.extras {
+  margin-top: 88px;
+}
+.extras-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 28px;
+}
+.extra-card {
+  grid-column: span 2;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+.extra-card:nth-child(-n + 2) {
+  grid-column: span 3;
+}
+a.extra-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 48px -24px rgba(0, 0, 0, 0.35);
+}
+.extra-cover {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+}
+.extra-cover img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+a.extra-card:hover .extra-cover img {
+  transform: scale(1.03);
+}
+.extra-body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 18px 20px 20px;
+}
+.extra-body p {
+  color: var(--muted);
+  font-size: 14.5px;
+  margin-top: 8px;
+}
+.extra-body .work-kind {
+  color: var(--accent);
+  font-size: 13px;
+  margin-top: 2px;
+}
+.extra-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 14px;
+}
+.extra-label {
+  font-size: 12px;
+  padding: 3px 9px;
+  border-radius: 7px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
+.extra-open {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+  font-size: 14px;
+  font-weight: 500;
+}
+@media (max-width: 1000px) {
+  .extras-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .extra-card,
+  .extra-card:nth-child(-n + 2) {
+    grid-column: span 1;
+  }
+  .extra-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    flex-direction: row;
+  }
+  .extra-card:last-child:nth-child(odd) .extra-cover {
+    flex: 0 0 56%;
+    border-bottom: 0;
+    border-right: 1px solid var(--line);
+  }
+}
+@media (max-width: 620px) {
+  .extras {
+    margin-top: 64px;
+  }
+  .extras-grid {
+    grid-template-columns: 1fr;
+  }
+  .extra-card:last-child:nth-child(odd) {
+    flex-direction: column;
+  }
+  .extra-card:last-child:nth-child(odd) .extra-cover {
+    flex: none;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+}
+
 .wall {
   position: relative;
   overflow: hidden;
