@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Cómo automatizar tu negocio con IA en 7 días — Gabriel Iturre</title>
+    <link rel="stylesheet" href="guia.css" />
+  </head>
+  <body>
+    <!-- Portada -->
+    <section class="page">
+      <div class="cover">
+        <div>
+          <span class="kicker">Guía práctica · gratis</span>
+          <h1>Cómo automatizar tu negocio <em>con IA</em> en 7 días</h1>
+          <p class="sub">Un plan de una semana, paso a paso, para que tu negocio atienda, venda y ordene sus datos con inteligencia artificial. Con plantillas, cuentas de costos y lo que no conviene hacer.</p>
+        </div>
+        <p class="by"><b>Gabriel Iturre</b>AI Engineer · Fundador y CEO de KILO · gabrieliturre.tech</p>
+      </div>
+    </section>
+
+    <!-- Intro -->
+    <section class="page">
+      <span class="kicker">Antes de empezar</span>
+      <h2>Para quién es esta guía</h2>
+      <p class="lead">Para dueños y equipos de comercios, consultorios, restaurantes y servicios que hoy contestan los mismos mensajes todo el día, anotan pedidos a mano o no saben bien cuánto vendieron la semana pasada.</p>
+      <p>No hace falta saber programar. En 7 días, dedicando entre 30 y 90 minutos por día, vas a:</p>
+      <ul>
+        <li>Saber qué tareas de tu negocio conviene automatizar primero, con números.</li>
+        <li>Tener un documento con la información de tu negocio que cualquier IA puede usar.</li>
+        <li>Probar un asistente con IA que responde como vos, antes de gastar un peso en herramientas.</li>
+        <li>Dejar andando respuestas automáticas, un circuito de pedidos o turnos y un resumen semanal de ventas.</li>
+        <li>Decidir con criterio si te alcanza con herramientas listas o si te conviene algo a medida.</li>
+      </ul>
+
+      <h3>Cinco reglas que te ahorran plata</h3>
+      <div class="box">
+        <ol>
+          <li><strong>La IA no ordena un proceso desordenado: lo acelera.</strong> Si hoy los pedidos se pierden, automatizar sin ordenar hace que se pierdan más rápido.</li>
+          <li><strong>Empezá por lo repetitivo y de bajo riesgo.</strong> Responder horarios o precios, sí. Diagnosticar, cobrar deudas o decidir devoluciones, todavía no.</li>
+          <li><strong>Una persona siempre puede intervenir.</strong> Todo asistente tiene que poder pasar la conversación a alguien del equipo.</li>
+          <li><strong>Medí antes y después.</strong> Si no sabés cuánto tiempo te lleva hoy una tarea, no vas a saber si la automatización funcionó.</li>
+          <li><strong>Cuidá los datos de tus clientes.</strong> En Argentina rige la Ley 25.326 de Protección de Datos Personales: no subas datos sensibles (salud, documentos, tarjetas) a herramientas que no revisaste.</li>
+        </ol>
+      </div>
+
+      <h3>Qué necesitás</h3>
+      <ul>
+        <li>Un celular o una computadora con internet.</li>
+        <li>Una cuenta gratuita de Google (para planillas y documentos).</li>
+        <li>Una cuenta en un asistente de IA. En esta guía uso <strong>Claude</strong> (claude.ai), que tiene plan gratuito.</li>
+        <li>WhatsApp Business (la app gratuita alcanza para empezar).</li>
+      </ul>
+    </section>
+
+    <!-- Día 1 -->
+    <section class="page">
+      <div class="day"><b>Día 1</b><span class="muted">30 a 45 minutos</span></div>
+      <h2>Hacé el inventario de tareas</h2>
+      <p class="goal">Objetivo: elegir una sola tarea para automatizar esta semana, con números y no por intuición.</p>
+      <p>Abrí una planilla y anotá todas las tareas que se repiten en tu negocio. Para cada una, completá cuántas veces por semana pasa y cuántos minutos lleva cada vez.</p>
+      <table>
+        <tr><th>Tarea</th><th>Veces por semana</th><th>Minutos cada vez</th><th>Horas por mes</th><th>Riesgo si sale mal</th></tr>
+        <tr><td>Responder «¿hasta qué hora abren?» y precios</td><td>120</td><td>2</td><td>17</td><td>Bajo</td></tr>
+        <tr><td>Tomar pedidos por WhatsApp y pasarlos a papel</td><td>60</td><td>5</td><td>21,5</td><td>Medio</td></tr>
+        <tr><td>Confirmar y recordar turnos</td><td>40</td><td>3</td><td>8,6</td><td>Bajo</td></tr>
+        <tr><td>Armar el resumen de ventas de la semana</td><td>1</td><td>90</td><td>6,5</td><td>Bajo</td></tr>
+      </table>
+      <p class="muted">Los números de la tabla son un ejemplo: usá los tuyos.</p>
+      <div class="box">
+        <h3>La cuenta</h3>
+        <p><strong>Horas por mes = veces por semana × minutos × 4,3 ÷ 60.</strong> El 4,3 son las semanas que tiene un mes en promedio.</p>
+        <p>Multiplicá esas horas por lo que vale una hora tuya o de tu empleado y vas a ver cuánto te cuesta hoy cada tarea. Eso es lo máximo que tendría sentido pagar por automatizarla.</p>
+      </div>
+      <h3>Cómo elegir</h3>
+      <p>Elegí la tarea con <strong>más horas por mes y riesgo bajo</strong>. Casi siempre gana una de estas tres: responder preguntas frecuentes, tomar pedidos o turnos, o recordar turnos y pagos.</p>
+      <h3>Ideas por rubro</h3>
+      <table>
+        <tr><th>Rubro</th><th>Para empezar</th><th>Para después</th></tr>
+        <tr><td>Almacén, kiosco, carnicería</td><td>Precios y horarios, pedidos por WhatsApp</td><td>Stock bajo, listas de precios actualizadas</td></tr>
+        <tr><td>Consultorio o estética</td><td>Turnos y recordatorios</td><td>Preguntas antes de la consulta</td></tr>
+        <tr><td>Restaurante o rotisería</td><td>Menú y pedidos</td><td>Reservas y avisos de demora</td></tr>
+        <tr><td>Servicios (técnicos, estudios)</td><td>Primer contacto y presupuestos</td><td>Seguimiento de clientes</td></tr>
+      </table>
+    </section>
+
+    <!-- Día 2 -->
+    <section class="page">
+      <div class="day"><b>Día 2</b><span class="muted">60 a 90 minutos</span></div>
+      <h2>Escribí el documento base de tu negocio</h2>
+      <p class="goal">Objetivo: tener en un solo lugar todo lo que la IA necesita saber para responder bien.</p>
+      <p>Una IA responde con lo que le das. Si algo no está escrito, lo va a inventar o va a decir que no sabe. Por eso el paso más importante de toda la semana es este, y no requiere ninguna herramienta nueva: un documento de Google alcanza.</p>
+      <h3>Qué tiene que tener</h3>
+      <ul>
+        <li><strong>Datos básicos:</strong> nombre, rubro, zona de entrega o atención, horarios (incluidos feriados), medios de pago.</li>
+        <li><strong>Lo que vendés:</strong> productos o servicios con precio, presentación y si hay stock o cupo.</li>
+        <li><strong>Políticas:</strong> envíos, demoras, cambios, cancelaciones, señas.</li>
+        <li><strong>Las 20 preguntas más frecuentes con su respuesta.</strong> Sacalas de tu WhatsApp: buscá las que más se repiten.</li>
+        <li><strong>Lo que la IA no tiene que hacer:</strong> por ejemplo, prometer descuentos, dar diagnósticos o confirmar algo sin stock.</li>
+        <li><strong>Cuándo derivar a una persona</strong> y cómo avisarle al cliente.</li>
+      </ul>
+      <div class="box green">
+        <h3>Truco para las preguntas frecuentes</h3>
+        <p>Exportá un chat largo de WhatsApp (Más opciones, Exportar chat, sin archivos), sacale los nombres y teléfonos de los clientes y pegáselo a Claude con este pedido:</p>
+        <div class="prompt">Estos son mensajes de clientes de mi negocio. Armá una lista con las 20 preguntas que más se repiten, agrupadas por tema, y al lado dejá un espacio para que yo escriba la respuesta. No inventes respuestas.</div>
+      </div>
+      <h3>Precios que cambian seguido</h3>
+      <p>Si tus precios cambian cada semana, no los pongas en el documento: dejalos en una planilla aparte y en el documento escribí «los precios están en la planilla». Así actualizás un solo lugar.</p>
+      <div class="box warn">
+        <p><strong>Ojo:</strong> no pongas en este documento datos de clientes, contraseñas ni datos bancarios. Es información del negocio, no de las personas.</p>
+      </div>
+    </section>
+
+    <!-- Día 3 -->
+    <section class="page">
+      <div class="day"><b>Día 3</b><span class="muted">45 a 60 minutos</span></div>
+      <h2>Probá un asistente sin programar</h2>
+      <p class="goal">Objetivo: comprobar que la IA responde como vos antes de conectarla a tus clientes.</p>
+      <p>En Claude podés crear un <strong>Proyecto</strong> con instrucciones y archivos fijos. Si tu plan no tiene Proyectos, pegá las instrucciones y el documento al principio de una conversación.</p>
+      <ol>
+        <li>Creá un Proyecto llamado con el nombre de tu negocio.</li>
+        <li>Subí el documento base del día 2 (y la planilla de precios, si la tenés).</li>
+        <li>En las instrucciones del Proyecto pegá esta plantilla y completala:</li>
+      </ol>
+      <div class="prompt">Sos el asistente de atención de [NOMBRE DEL NEGOCIO], un/a [RUBRO] en [CIUDAD].
+Respondés mensajes de clientes por WhatsApp.
+
+Reglas:
+- Usá sólo la información de los archivos del proyecto. Si algo no está, decí que lo consultás con el equipo. Nunca inventes precios, stock ni horarios.
+- Escribí corto, cálido y claro, como lo haría una persona del negocio. Usá "vos".
+- Para pedidos, pedí: producto, cantidad, nombre, dirección o retiro, y medio de pago. Al final repetí el pedido completo para que el cliente lo confirme.
+- Derivá a una persona si: el cliente está enojado, pide algo que no está en los archivos, hay un reclamo o un pago con problemas. Decí: "Te paso con [NOMBRE], que te responde enseguida".
+- No prometas descuentos ni plazos que no estén escritos.</div>
+      <h3>La prueba de las 20 preguntas</h3>
+      <p>Hacele al asistente 20 preguntas reales, copiadas de tu WhatsApp, incluidas 3 o 4 difíciles (un reclamo, algo que no vendés, un pedido incompleto). Anotá en una planilla cada respuesta como <strong>bien</strong>, <strong>a medias</strong> o <strong>mal</strong>.</p>
+      <ul>
+        <li>Si respondió mal porque faltaba información, completá el documento base.</li>
+        <li>Si respondió mal teniendo la información, ajustá las reglas de las instrucciones.</li>
+        <li>Repetí hasta que tenga 18 de 20 bien. Recién ahí lo conectás a clientes.</li>
+      </ul>
+      <div class="box">
+        <p><strong>Por qué este paso es gratis y vale tanto:</strong> te permite descubrir los errores con preguntas de prueba y no con clientes reales. Y el documento y las instrucciones que armaste te sirven para cualquier herramienta que elijas después.</p>
+      </div>
+    </section>
+
+    <!-- Día 4 -->
+    <section class="page">
+      <div class="day"><b>Día 4</b><span class="muted">45 a 90 minutos</span></div>
+      <h2>Automatizá las respuestas de WhatsApp</h2>
+      <p class="goal">Objetivo: que las preguntas simples se respondan solas, también fuera de horario.</p>
+      <p>Hay tres niveles. Empezá por el primero aunque después vayas al tercero.</p>
+      <h3>Nivel 1: WhatsApp Business (gratis, sin IA)</h3>
+      <ul>
+        <li><strong>Mensaje de bienvenida</strong> con horarios, link al catálogo y cómo hacer un pedido.</li>
+        <li><strong>Mensaje de ausencia</strong> fuera de horario: «Te respondemos mañana desde las 9».</li>
+        <li><strong>Respuestas rápidas</strong> para las 10 preguntas más frecuentes de tu documento base (se usan escribiendo «/» en el chat).</li>
+        <li><strong>Catálogo</strong> con fotos y precios, y <strong>etiquetas</strong> para ordenar chats: nuevo pedido, pendiente de pago, entregado.</li>
+      </ul>
+      <p>Sólo con esto muchos negocios recuperan buena parte del tiempo que se iba en contestar lo mismo.</p>
+      <h3>Nivel 2: plataforma con IA conectada a WhatsApp</h3>
+      <p>Hay servicios que conectan un asistente de IA a tu número usando la API oficial de WhatsApp Business. Les cargás el documento base y las instrucciones del día 3. Suelen cobrar una suscripción mensual más el costo de los mensajes. Antes de contratar, pedí una prueba y hacé con ellos la misma prueba de las 20 preguntas.</p>
+      <h3>Nivel 3: asistente a medida</h3>
+      <p>WhatsApp Cloud API más un modelo de IA como Claude, conectado a tu sistema de pedidos, stock o turnos. Conviene cuando el asistente tiene que consultar datos en tiempo real (stock, agenda, estado de un pedido) o cuando el volumen hace que la suscripción de una plataforma salga más cara que algo propio.</p>
+      <div class="box warn">
+        <h3>Costos de WhatsApp para el nivel 2 y 3</h3>
+        <p>Meta cobra por mensaje según el país y el tipo de mensaje. Las respuestas a un cliente que te escribió, dentro de las 24 horas, en general no tienen costo de Meta; los mensajes que inicia el negocio con plantillas (recordatorios, promociones) sí se cobran. Las tarifas cambian: revisá la tabla oficial de precios de WhatsApp Business Platform antes de decidir.</p>
+      </div>
+      <h3>Siempre</h3>
+      <ul>
+        <li>Avisá que es un asistente: «Hola, soy el asistente de [negocio]. Si preferís hablar con una persona, escribí PERSONA».</li>
+        <li>Revisá todos los días, durante la primera semana, las conversaciones que respondió solo.</li>
+      </ul>
+    </section>
+
+    <!-- Día 5 -->
+    <section class="page">
+      <div class="day"><b>Día 5</b><span class="muted">60 a 90 minutos</span></div>
+      <h2>Pedidos, turnos y cobros sin papel</h2>
+      <p class="goal">Objetivo: que cada pedido o turno quede registrado en un solo lugar y con el cobro asociado.</p>
+      <h3>Si trabajás con turnos</h3>
+      <ul>
+        <li>Usá una agenda con reserva online: la agenda de citas de Google Calendar o Cal.com. El cliente elige un horario libre y le llega la confirmación sola.</li>
+        <li>Activá los recordatorios por email. Pedí seña para los turnos largos.</li>
+        <li>Poné el link de reserva en el mensaje de bienvenida de WhatsApp, en Instagram y en Google Maps.</li>
+      </ul>
+      <h3>Si trabajás con pedidos</h3>
+      <p>Armá una planilla de Google con estas columnas y usala como tablero:</p>
+      <table>
+        <tr><th>Fecha</th><th>Cliente</th><th>Pedido</th><th>Total</th><th>Pago</th><th>Estado</th></tr>
+        <tr><td>14/10</td><td>María</td><td>2 kg de asado, 1 chorizo</td><td>$ 21.400</td><td>Link enviado</td><td>Preparando</td></tr>
+      </table>
+      <p>El asistente del día 3 ya devuelve el pedido completo al final de la charla. Al principio copialo a la planilla a mano; cuando el circuito funcione, se automatiza.</p>
+      <h3>Conectar sin programar</h3>
+      <p>Herramientas como Zapier, Make o n8n conectan aplicaciones entre sí con reglas del tipo «cuando pasa esto, hacé aquello». Ejemplos útiles:</p>
+      <ul>
+        <li>Cuando entra una reserva nueva, agregar una fila en la planilla y avisarte por email.</li>
+        <li>Cuando un pedido pasa a «Listo», mandarle un mensaje al cliente.</li>
+        <li>Cada lunes, copiar las ventas de la semana a una hoja de resumen.</li>
+      </ul>
+      <h3>Cobros</h3>
+      <p>Con un link de pago (por ejemplo, de Mercado Pago) podés cobrar por WhatsApp sin terminal. Anotá en la planilla qué pedidos tienen el link enviado y cuáles están pagos: esa columna sola evita la mayoría de los olvidos.</p>
+    </section>
+
+    <!-- Día 6 -->
+    <section class="page">
+      <div class="day"><b>Día 6</b><span class="muted">30 a 60 minutos</span></div>
+      <h2>Tus números y tu contenido con IA</h2>
+      <p class="goal">Objetivo: entender qué vendés y qué no, y dejar de sufrir con las publicaciones.</p>
+      <h3>Resumen semanal de ventas</h3>
+      <p>Exportá las ventas de la semana (de tu sistema, de la planilla del día 5 o de tu cuenta de cobros) a una planilla, sacale los datos personales de los clientes y pasásela a Claude con este pedido:</p>
+      <div class="prompt">Te paso las ventas de mi negocio de la última semana. Decime en lenguaje simple:
+1. Cuánto vendí en total y comparado con la semana anterior.
+2. Los 5 productos que más plata dejaron y los 5 que menos se movieron.
+3. Qué días y horarios vendí más.
+4. Tres decisiones concretas que tomarías para la semana que viene.
+Si un dato no alcanza para responder algo, decímelo en vez de suponer.</div>
+      <div class="box warn">
+        <p><strong>Verificá los totales.</strong> La IA es muy buena para encontrar patrones y explicar, pero chequeá con tu planilla cualquier número antes de tomar una decisión de plata.</p>
+      </div>
+      <h3>Contenido para redes y catálogo</h3>
+      <div class="prompt">Escribí 5 publicaciones cortas para Instagram de [NEGOCIO], un/a [RUBRO] en [CIUDAD].
+Tono: cercano, sin exagerar. Cada una con una idea distinta: un producto, una oferta real de esta semana ([OFERTA]), una pregunta frecuente, el equipo y un consejo útil para el cliente.
+No uses promesas que no pueda cumplir.</div>
+      <div class="prompt">Escribí descripciones de 2 líneas para estos productos de mi catálogo, claras y con los datos que importan al comprar (tamaño, uso, para quién es): [LISTA]</div>
+      <p>Guardá estas plantillas en tu Proyecto de Claude: la semana que viene sólo cambiás los datos.</p>
+    </section>
+
+    <!-- Día 7 -->
+    <section class="page">
+      <div class="day"><b>Día 7</b><span class="muted">30 minutos</span></div>
+      <h2>Medí, ajustá y decidí el siguiente paso</h2>
+      <p class="goal">Objetivo: saber con números si funcionó y qué hacer después.</p>
+      <h3>Lo que tenés que medir</h3>
+      <table>
+        <tr><th>Indicador</th><th>Antes</th><th>Después de 1 semana</th></tr>
+        <tr><td>Horas por mes en la tarea elegida (día 1)</td><td></td><td></td></tr>
+        <tr><td>Mensajes respondidos sin intervención</td><td></td><td></td></tr>
+        <tr><td>Respuestas incorrectas o derivadas</td><td></td><td></td></tr>
+        <tr><td>Pedidos o turnos perdidos u olvidados</td><td></td><td></td></tr>
+        <tr><td>Ventas o turnos de la semana</td><td></td><td></td></tr>
+      </table>
+      <h3>¿Herramientas listas o algo a medida?</h3>
+      <p><strong>Seguí con herramientas listas si:</strong> el volumen es chico, las preguntas son siempre parecidas y la suscripción cuesta menos que las horas que te ahorra.</p>
+      <p><strong>Pensá en algo a medida si:</strong></p>
+      <ul>
+        <li>El asistente necesita consultar datos en vivo: stock, agenda, estado de un pedido o de un pago.</li>
+        <li>Estás pagando varias suscripciones que no se hablan entre sí y copiás datos de una a otra.</li>
+        <li>El volumen de mensajes hace que pagar por usuario o por conversación salga más caro que un sistema propio.</li>
+        <li>Tu forma de trabajar es una ventaja y las herramientas genéricas te obligan a cambiarla.</li>
+      </ul>
+      <div class="box green">
+        <h3>Regla de decisión</h3>
+        <p>Si las horas ahorradas por mes multiplicadas por el valor de tu hora superan con holgura el costo mensual, seguí. Si no, simplificá: a veces la mejor automatización es una buena respuesta rápida en WhatsApp Business.</p>
+      </div>
+    </section>
+
+    <!-- Costos -->
+    <section class="page">
+      <span class="kicker">Números</span>
+      <h2>Cuánto cuesta por mes</h2>
+      <p>Los precios cambian seguido: tomá esta página como una forma de hacer la cuenta y confirmá cada precio en el sitio oficial antes de decidir.</p>
+      <table>
+        <tr><th>Qué</th><th>Cómo se cobra</th><th>Para qué nivel</th></tr>
+        <tr><td>WhatsApp Business (app)</td><td>Gratis</td><td>Nivel 1</td></tr>
+        <tr><td>Google Docs, Sheets y la agenda básica</td><td>Gratis con una cuenta de Google</td><td>Todos</td></tr>
+        <tr><td>Claude (claude.ai)</td><td>Plan gratuito; planes pagos con suscripción mensual por persona</td><td>Pruebas y uso interno</td></tr>
+        <tr><td>Plataforma de asistente para WhatsApp</td><td>Suscripción mensual más mensajes</td><td>Nivel 2</td></tr>
+        <tr><td>API de un modelo de IA</td><td>Por uso, en tokens (pedazos de texto)</td><td>Nivel 3</td></tr>
+        <tr><td>WhatsApp Business Platform</td><td>Por mensaje, según país y tipo</td><td>Nivel 2 y 3</td></tr>
+        <tr><td>Zapier, Make o n8n</td><td>Plan gratuito limitado; después, por cantidad de tareas</td><td>Día 5</td></tr>
+      </table>
+      <h3>Cómo calcular el costo de la IA por uso</h3>
+      <p>Las APIs cobran por millón de tokens de entrada (lo que le mandás: instrucciones, documento base y la pregunta) y de salida (lo que responde). Un token es más o menos tres cuartos de una palabra.</p>
+      <div class="box">
+        <p><strong>Ejemplo con precios supuestos</strong> de USD 1 por millón de tokens de entrada y USD 5 por millón de salida:</p>
+        <ul>
+          <li>1.000 consultas por mes.</li>
+          <li>Cada consulta manda 3.000 tokens (instrucciones, documento base y la charla) y recibe 300.</li>
+          <li>Entrada: 1.000 × 3.000 = 3 millones de tokens → USD 3.</li>
+          <li>Salida: 1.000 × 300 = 0,3 millones de tokens → USD 1,50.</li>
+          <li><strong>Total de IA: unos USD 4,50 por mes</strong>, sin contar WhatsApp ni el servidor.</li>
+        </ul>
+        <p class="muted">Cambiá los precios por los vigentes del modelo que elijas. Los modelos más chicos cuestan mucho menos que los grandes y alcanzan para atención al cliente.</p>
+      </div>
+      <p>La conclusión que se repite: <strong>en un negocio chico o mediano, la IA en sí suele ser lo más barato del sistema.</strong> Lo que cuesta es el tiempo de armarlo bien, conectarlo a tus datos y mantenerlo.</p>
+    </section>
+
+    <!-- Errores -->
+    <section class="page">
+      <span class="kicker">Lo que no conviene hacer</span>
+      <h2>Siete errores comunes</h2>
+      <ol>
+        <li><strong>Comprar la herramienta antes de probar.</strong> Hacé los días 2 y 3 primero: son gratis y te dicen qué necesitás de verdad.</li>
+        <li><strong>Automatizar un proceso que no funciona.</strong> Si hoy los pedidos se pierden, primero ordená el circuito (día 5).</li>
+        <li><strong>Dejar a la IA sola con temas delicados.</strong> Salud, plata, reclamos y temas legales siempre pasan por una persona.</li>
+        <li><strong>Esconder que es un asistente.</strong> La gente lo nota y se enoja más. Decilo y ofrecé hablar con alguien.</li>
+        <li><strong>Pegar datos de clientes en cualquier lado.</strong> Sacá nombres, teléfonos y documentos antes de pasarle información a una IA, y revisá la política de privacidad de cada herramienta.</li>
+        <li><strong>No actualizar el documento base.</strong> Si cambiaste precios u horarios y no lo actualizaste, el asistente va a informar mal. Ponete un recordatorio semanal.</li>
+        <li><strong>No medir.</strong> Sin la tabla del día 7, en un mes no vas a saber si sirvió.</li>
+      </ol>
+      <div class="box green">
+        <h3>Lo que sí funciona</h3>
+        <p>Empezar chico, con una tarea, medir, y recién después sumar la siguiente. Una automatización que funciona todos los días vale más que cinco a medio terminar.</p>
+      </div>
+    </section>
+
+    <!-- Checklist -->
+    <section class="page">
+      <span class="kicker">Para imprimir</span>
+      <h2>Checklist de 7 días</h2>
+      <ul class="check">
+        <li><span><strong>Día 1.</strong> Planilla con tareas, veces por semana, minutos y horas por mes. Tarea elegida: ____________________</span></li>
+        <li><span><strong>Día 2.</strong> Documento base con datos, productos, políticas, 20 preguntas frecuentes y cuándo derivar.</span></li>
+        <li><span><strong>Día 3.</strong> Proyecto en Claude con instrucciones. Prueba de 20 preguntas: ___ de 20 bien.</span></li>
+        <li><span><strong>Día 4.</strong> WhatsApp Business con bienvenida, ausencia, respuestas rápidas, catálogo y etiquetas.</span></li>
+        <li><span><strong>Día 4.</strong> Decidido el nivel: 1 / 2 / 3. Aviso de asistente y opción de hablar con una persona.</span></li>
+        <li><span><strong>Día 5.</strong> Agenda online o planilla de pedidos funcionando. Link de pago listo.</span></li>
+        <li><span><strong>Día 6.</strong> Resumen semanal de ventas hecho y verificado. Plantillas de contenido guardadas.</span></li>
+        <li><span><strong>Día 7.</strong> Tabla de indicadores completa. Próxima tarea a automatizar: ____________________</span></li>
+        <li><span><strong>Cada semana.</strong> Actualizar el documento base y revisar 10 conversaciones del asistente.</span></li>
+      </ul>
+    </section>
+
+    <!-- Cierre -->
+    <section class="page">
+      <span class="kicker">Siguiente paso</span>
+      <h2>Si querés que lo armemos juntos</h2>
+      <p class="lead">Soy Gabriel Iturre, AI Engineer y fundador y CEO de KILO, un sistema de gestión y punto de venta para comercios de barrio con app en Google Play.</p>
+      <p>KILO lo construí solo: más de 1.900 commits en 10 meses. En las 6 semanas desde el lanzamiento se registraron 83 comercios, que hoy registran alrededor de 700 ventas por mes (datos al 18 de octubre de 2026). Todo lo que está en esta guía lo uso en productos reales.</p>
+      <p>Trabajo con negocios y equipos que quieren llevar esto un paso más allá:</p>
+      <ul>
+        <li>Asistentes con IA conectados a WhatsApp y a tus datos reales (stock, agenda, pedidos).</li>
+        <li>Sistemas de pedidos, turnos y punto de venta, con cobros y facturación.</li>
+        <li>Apps publicadas en Google Play.</li>
+        <li>Antes de construir: qué conviene, cuánto cuesta por mes y qué se puede dejar para después.</li>
+      </ul>
+      <div class="cta">
+        <h3 style="margin-top: 0">Agendá una llamada de 15 minutos</h3>
+        <p>Me contás tu negocio y te digo qué automatizaría primero y cuánto costaría.</p>
+        <p style="margin: 0"><a href="https://gabrieliturre.tech/agenda">gabrieliturre.tech/agenda</a> · WhatsApp +54 9 388 447-2423</p>
+      </div>
+      <p class="muted" style="margin-top: 8mm">© 2026 Gabriel Iturre · Jujuy, Argentina · gabrieliturre.tech. Podés compartir esta guía libremente, sin modificarla.</p>
+    </section>
+  </body>
+</html>

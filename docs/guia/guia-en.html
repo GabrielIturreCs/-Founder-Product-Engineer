@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>How to automate your business with AI in 7 days — Gabriel Iturre</title>
+    <link rel="stylesheet" href="guia.css" />
+  </head>
+  <body>
+    <!-- Cover -->
+    <section class="page">
+      <div class="cover">
+        <div>
+          <span class="kicker">Practical guide · free</span>
+          <h1>How to automate your business <em>with AI</em> in 7 days</h1>
+          <p class="sub">A one-week, step-by-step plan so your business answers, sells and organizes its data with artificial intelligence. With templates, cost math and what not to do.</p>
+        </div>
+        <p class="by"><b>Gabriel Iturre</b>AI Engineer · Founder &amp; CEO of KILO · gabrieliturre.tech</p>
+      </div>
+    </section>
+
+    <!-- Intro -->
+    <section class="page">
+      <span class="kicker">Before you start</span>
+      <h2>Who this guide is for</h2>
+      <p class="lead">For owners and teams of shops, clinics, restaurants and service businesses who answer the same messages all day, take orders by hand or are not quite sure how much they sold last week.</p>
+      <p>No coding needed. In 7 days, spending 30 to 90 minutes a day, you will:</p>
+      <ul>
+        <li>Know which tasks in your business are worth automating first, with numbers.</li>
+        <li>Have one document with your business information that any AI can use.</li>
+        <li>Test an AI assistant that answers like you, before spending money on tools.</li>
+        <li>Have automatic replies, an order or booking flow and a weekly sales summary running.</li>
+        <li>Decide with good judgment whether off-the-shelf tools are enough or something custom pays off.</li>
+      </ul>
+
+      <h3>Five rules that save you money</h3>
+      <div class="box">
+        <ol>
+          <li><strong>AI does not fix a messy process: it speeds it up.</strong> If orders get lost today, automating without fixing the flow only loses them faster.</li>
+          <li><strong>Start with repetitive, low-risk work.</strong> Answering opening hours or prices, yes. Diagnosing, collecting debts or deciding refunds, not yet.</li>
+          <li><strong>A person can always step in.</strong> Every assistant must be able to hand the conversation to someone on your team.</li>
+          <li><strong>Measure before and after.</strong> If you don't know how long a task takes today, you won't know whether the automation worked.</li>
+          <li><strong>Protect your customers' data.</strong> Follow the data protection law where you operate and never upload sensitive data (health, IDs, cards) to tools you haven't reviewed.</li>
+        </ol>
+      </div>
+
+      <h3>What you need</h3>
+      <ul>
+        <li>A phone or computer with internet.</li>
+        <li>A free Google account (for spreadsheets and documents).</li>
+        <li>An AI assistant account. This guide uses <strong>Claude</strong> (claude.ai), which has a free plan.</li>
+        <li>WhatsApp Business (the free app is enough to start).</li>
+      </ul>
+    </section>
+
+    <!-- Day 1 -->
+    <section class="page">
+      <div class="day"><b>Day 1</b><span class="muted">30 to 45 minutes</span></div>
+      <h2>Take an inventory of your tasks</h2>
+      <p class="goal">Goal: pick one single task to automate this week, based on numbers, not gut feeling.</p>
+      <p>Open a spreadsheet and list every task that repeats in your business. For each one, write how many times a week it happens and how many minutes it takes each time.</p>
+      <table>
+        <tr><th>Task</th><th>Times per week</th><th>Minutes each</th><th>Hours per month</th><th>Risk if it goes wrong</th></tr>
+        <tr><td>Answering "what time do you close?" and prices</td><td>120</td><td>2</td><td>17</td><td>Low</td></tr>
+        <tr><td>Taking WhatsApp orders and writing them down</td><td>60</td><td>5</td><td>21.5</td><td>Medium</td></tr>
+        <tr><td>Confirming and reminding appointments</td><td>40</td><td>3</td><td>8.6</td><td>Low</td></tr>
+        <tr><td>Putting together the weekly sales summary</td><td>1</td><td>90</td><td>6.5</td><td>Low</td></tr>
+      </table>
+      <p class="muted">The numbers in the table are an example: use your own.</p>
+      <div class="box">
+        <h3>The math</h3>
+        <p><strong>Hours per month = times per week × minutes × 4.3 ÷ 60.</strong> 4.3 is the average number of weeks in a month.</p>
+        <p>Multiply those hours by what an hour of yours or your employee's is worth and you'll see what each task costs you today. That is the most it would make sense to pay to automate it.</p>
+      </div>
+      <h3>How to choose</h3>
+      <p>Pick the task with <strong>the most hours per month and low risk</strong>. One of these three almost always wins: answering frequent questions, taking orders or bookings, or reminding customers about appointments and payments.</p>
+      <h3>Ideas by industry</h3>
+      <table>
+        <tr><th>Industry</th><th>To start</th><th>Later</th></tr>
+        <tr><td>Grocery, convenience, butcher shop</td><td>Prices and hours, WhatsApp orders</td><td>Low-stock alerts, updated price lists</td></tr>
+        <tr><td>Clinic or beauty salon</td><td>Bookings and reminders</td><td>Pre-appointment questions</td></tr>
+        <tr><td>Restaurant or take-away</td><td>Menu and orders</td><td>Reservations and delay notices</td></tr>
+        <tr><td>Services (technicians, agencies)</td><td>First contact and quotes</td><td>Customer follow-up</td></tr>
+      </table>
+    </section>
+
+    <!-- Day 2 -->
+    <section class="page">
+      <div class="day"><b>Day 2</b><span class="muted">60 to 90 minutes</span></div>
+      <h2>Write your business's base document</h2>
+      <p class="goal">Goal: have everything the AI needs to know to answer well, in one place.</p>
+      <p>An AI answers with what you give it. If something isn't written down, it will make it up or say it doesn't know. That's why this is the most important step of the week, and it needs no new tool: a Google Doc is enough.</p>
+      <h3>What it should include</h3>
+      <ul>
+        <li><strong>Basics:</strong> name, industry, delivery or service area, opening hours (including holidays), payment methods.</li>
+        <li><strong>What you sell:</strong> products or services with price, size and whether there's stock or availability.</li>
+        <li><strong>Policies:</strong> delivery, wait times, returns, cancellations, deposits.</li>
+        <li><strong>The 20 most frequent questions with their answers.</strong> Pull them from your WhatsApp: look for the ones that repeat the most.</li>
+        <li><strong>What the AI must not do:</strong> for example, promise discounts, give diagnoses or confirm something that's out of stock.</li>
+        <li><strong>When to hand over to a person</strong> and how to tell the customer.</li>
+      </ul>
+      <div class="box green">
+        <h3>Shortcut for the frequent questions</h3>
+        <p>Export a long WhatsApp chat (More options, Export chat, without media), remove customers' names and phone numbers and paste it into Claude with this request:</p>
+        <div class="prompt">These are messages from customers of my business. Make a list of the 20 questions that repeat the most, grouped by topic, and leave a space next to each one for me to write the answer. Don't make up answers.</div>
+      </div>
+      <h3>Prices that change often</h3>
+      <p>If your prices change every week, don't put them in the document: keep them in a separate spreadsheet and write "prices are in the spreadsheet" in the document. That way you update one place.</p>
+      <div class="box warn">
+        <p><strong>Careful:</strong> don't put customer data, passwords or bank details in this document. It's information about the business, not about people.</p>
+      </div>
+    </section>
+
+    <!-- Day 3 -->
+    <section class="page">
+      <div class="day"><b>Day 3</b><span class="muted">45 to 60 minutes</span></div>
+      <h2>Test an assistant without coding</h2>
+      <p class="goal">Goal: check that the AI answers like you before connecting it to customers.</p>
+      <p>In Claude you can create a <strong>Project</strong> with fixed instructions and files. If your plan doesn't include Projects, paste the instructions and the document at the start of a conversation.</p>
+      <ol>
+        <li>Create a Project named after your business.</li>
+        <li>Upload the base document from day 2 (and the price spreadsheet, if you have one).</li>
+        <li>In the Project instructions, paste this template and fill it in:</li>
+      </ol>
+      <div class="prompt">You are the customer service assistant for [BUSINESS NAME], a [INDUSTRY] in [CITY].
+You answer customer messages on WhatsApp.
+
+Rules:
+- Use only the information in the project files. If something isn't there, say you'll check with the team. Never make up prices, stock or opening hours.
+- Write short, warm and clear messages, the way someone from the business would.
+- For orders, ask for: product, quantity, name, address or pick-up, and payment method. At the end, repeat the full order so the customer can confirm it.
+- Hand over to a person if: the customer is upset, asks for something not in the files, has a complaint or a payment problem. Say: "I'm passing you to [NAME], who will reply right away".
+- Don't promise discounts or timelines that aren't written down.</div>
+      <h3>The 20-question test</h3>
+      <p>Ask the assistant 20 real questions copied from your WhatsApp, including 3 or 4 hard ones (a complaint, something you don't sell, an incomplete order). In a spreadsheet, mark each answer as <strong>right</strong>, <strong>partial</strong> or <strong>wrong</strong>.</p>
+      <ul>
+        <li>If it answered wrong because information was missing, complete the base document.</li>
+        <li>If it answered wrong despite having the information, adjust the rules in the instructions.</li>
+        <li>Repeat until it gets 18 out of 20 right. Only then connect it to customers.</li>
+      </ul>
+      <div class="box">
+        <p><strong>Why this free step is worth so much:</strong> you find the mistakes with test questions instead of real customers. And the document and instructions you built work with any tool you choose later.</p>
+      </div>
+    </section>
+
+    <!-- Day 4 -->
+    <section class="page">
+      <div class="day"><b>Day 4</b><span class="muted">45 to 90 minutes</span></div>
+      <h2>Automate your WhatsApp replies</h2>
+      <p class="goal">Goal: simple questions get answered on their own, even after hours.</p>
+      <p>There are three levels. Start with the first one even if you later move to the third.</p>
+      <h3>Level 1: WhatsApp Business (free, no AI)</h3>
+      <ul>
+        <li><strong>Greeting message</strong> with your hours, a link to your catalog and how to order.</li>
+        <li><strong>Away message</strong> after hours: "We'll reply tomorrow from 9 am".</li>
+        <li><strong>Quick replies</strong> for the 10 most frequent questions in your base document (used by typing "/" in the chat).</li>
+        <li><strong>Catalog</strong> with photos and prices, and <strong>labels</strong> to sort chats: new order, awaiting payment, delivered.</li>
+      </ul>
+      <p>This alone gives many businesses back a good part of the time spent answering the same thing.</p>
+      <h3>Level 2: an AI platform connected to WhatsApp</h3>
+      <p>Some services connect an AI assistant to your number through the official WhatsApp Business API. You load the base document and the instructions from day 3. They usually charge a monthly subscription plus message costs. Before signing up, ask for a trial and run the same 20-question test with them.</p>
+      <h3>Level 3: a custom assistant</h3>
+      <p>WhatsApp Cloud API plus an AI model like Claude, connected to your order, inventory or booking system. It pays off when the assistant has to look up live data (stock, calendar, order status) or when your volume makes a platform subscription more expensive than your own system.</p>
+      <div class="box warn">
+        <h3>WhatsApp costs for levels 2 and 3</h3>
+        <p>Meta charges per message depending on the country and message type. Replies to a customer who wrote to you, within 24 hours, generally carry no Meta fee; messages the business starts with templates (reminders, promotions) are charged. Rates change: check the official WhatsApp Business Platform pricing table before deciding.</p>
+      </div>
+      <h3>Always</h3>
+      <ul>
+        <li>Say it's an assistant: "Hi, I'm the [business] assistant. If you'd rather talk to a person, type PERSON".</li>
+        <li>During the first week, review every day the conversations it handled on its own.</li>
+      </ul>
+    </section>
+
+    <!-- Day 5 -->
+    <section class="page">
+      <div class="day"><b>Day 5</b><span class="muted">60 to 90 minutes</span></div>
+      <h2>Paperless orders, bookings and payments</h2>
+      <p class="goal">Goal: every order or booking is recorded in one place, with its payment attached.</p>
+      <h3>If you work with appointments</h3>
+      <ul>
+        <li>Use a calendar with online booking: Google Calendar appointment schedules or Cal.com. Customers pick a free slot and get the confirmation automatically.</li>
+        <li>Turn on email reminders. Ask for a deposit on long appointments.</li>
+        <li>Put the booking link in your WhatsApp greeting, on Instagram and on Google Maps.</li>
+      </ul>
+      <h3>If you work with orders</h3>
+      <p>Set up a Google spreadsheet with these columns and use it as your board:</p>
+      <table>
+        <tr><th>Date</th><th>Customer</th><th>Order</th><th>Total</th><th>Payment</th><th>Status</th></tr>
+        <tr><td>10/14</td><td>Maria</td><td>2 large pizzas, 1 soda</td><td>$ 38</td><td>Link sent</td><td>Preparing</td></tr>
+      </table>
+      <p>The day 3 assistant already repeats the full order at the end of the chat. At first, copy it into the spreadsheet by hand; once the flow works, automate it.</p>
+      <h3>Connect apps without coding</h3>
+      <p>Tools like Zapier, Make or n8n connect apps with "when this happens, do that" rules. Useful examples:</p>
+      <ul>
+        <li>When a new booking comes in, add a row to the spreadsheet and email you.</li>
+        <li>When an order moves to "Ready", message the customer.</li>
+        <li>Every Monday, copy the week's sales into a summary sheet.</li>
+      </ul>
+      <h3>Payments</h3>
+      <p>With a payment link (for example from Stripe, PayPal or Mercado Pago) you can charge over WhatsApp without a card terminal. Track in the spreadsheet which orders have a link sent and which are paid: that column alone prevents most forgotten payments.</p>
+    </section>
+
+    <!-- Day 6 -->
+    <section class="page">
+      <div class="day"><b>Day 6</b><span class="muted">30 to 60 minutes</span></div>
+      <h2>Your numbers and your content with AI</h2>
+      <p class="goal">Goal: understand what sells and what doesn't, and stop struggling with social posts.</p>
+      <h3>Weekly sales summary</h3>
+      <p>Export the week's sales (from your system, the day 5 spreadsheet or your payments account) to a spreadsheet, remove customers' personal data and give it to Claude with this request:</p>
+      <div class="prompt">Here are my business's sales for last week. Tell me in plain language:
+1. How much I sold in total, compared with the previous week.
+2. The 5 products that brought in the most money and the 5 that moved the least.
+3. Which days and times I sold the most.
+4. Three concrete decisions you would make for next week.
+If the data isn't enough to answer something, tell me instead of guessing.</div>
+      <div class="box warn">
+        <p><strong>Check the totals.</strong> AI is very good at finding patterns and explaining them, but check any number against your spreadsheet before making a money decision.</p>
+      </div>
+      <h3>Content for social media and your catalog</h3>
+      <div class="prompt">Write 5 short Instagram posts for [BUSINESS], a [INDUSTRY] in [CITY].
+Tone: friendly, no hype. Each one with a different idea: a product, a real offer this week ([OFFER]), a frequent question, the team and a useful tip for customers.
+Don't make promises I can't keep.</div>
+      <div class="prompt">Write 2-line descriptions for these products in my catalog, clear and with the details that matter when buying (size, use, who it's for): [LIST]</div>
+      <p>Save these templates in your Claude Project: next week you only change the data.</p>
+    </section>
+
+    <!-- Day 7 -->
+    <section class="page">
+      <div class="day"><b>Day 7</b><span class="muted">30 minutes</span></div>
+      <h2>Measure, adjust and choose the next step</h2>
+      <p class="goal">Goal: know with numbers whether it worked and what to do next.</p>
+      <h3>What to measure</h3>
+      <table>
+        <tr><th>Metric</th><th>Before</th><th>After 1 week</th></tr>
+        <tr><td>Hours per month on the chosen task (day 1)</td><td></td><td></td></tr>
+        <tr><td>Messages answered without you</td><td></td><td></td></tr>
+        <tr><td>Wrong or handed-over answers</td><td></td><td></td></tr>
+        <tr><td>Lost or forgotten orders or bookings</td><td></td><td></td></tr>
+        <tr><td>Sales or bookings this week</td><td></td><td></td></tr>
+      </table>
+      <h3>Off-the-shelf tools or something custom?</h3>
+      <p><strong>Stay with off-the-shelf tools if:</strong> your volume is small, questions are always similar and the subscription costs less than the hours it saves you.</p>
+      <p><strong>Consider something custom if:</strong></p>
+      <ul>
+        <li>The assistant needs live data: stock, calendar, order or payment status.</li>
+        <li>You pay for several subscriptions that don't talk to each other and copy data between them.</li>
+        <li>Your message volume makes per-user or per-conversation pricing more expensive than your own system.</li>
+        <li>The way you work is an advantage and generic tools force you to change it.</li>
+      </ul>
+      <div class="box green">
+        <h3>Decision rule</h3>
+        <p>If hours saved per month times the value of your hour comfortably exceeds the monthly cost, keep going. If not, simplify: sometimes the best automation is a good quick reply in WhatsApp Business.</p>
+      </div>
+    </section>
+
+    <!-- Costs -->
+    <section class="page">
+      <span class="kicker">Numbers</span>
+      <h2>What it costs per month</h2>
+      <p>Prices change often: use this page as a way to do the math and confirm every price on the official site before deciding.</p>
+      <table>
+        <tr><th>What</th><th>How it's charged</th><th>For which level</th></tr>
+        <tr><td>WhatsApp Business (app)</td><td>Free</td><td>Level 1</td></tr>
+        <tr><td>Google Docs, Sheets and basic calendar</td><td>Free with a Google account</td><td>All</td></tr>
+        <tr><td>Claude (claude.ai)</td><td>Free plan; paid plans with a monthly per-person subscription</td><td>Testing and internal use</td></tr>
+        <tr><td>WhatsApp assistant platform</td><td>Monthly subscription plus messages</td><td>Level 2</td></tr>
+        <tr><td>AI model API</td><td>Pay per use, in tokens (pieces of text)</td><td>Level 3</td></tr>
+        <tr><td>WhatsApp Business Platform</td><td>Per message, by country and type</td><td>Levels 2 and 3</td></tr>
+        <tr><td>Zapier, Make or n8n</td><td>Limited free plan; then by number of tasks</td><td>Day 5</td></tr>
+      </table>
+      <h3>How to estimate pay-per-use AI costs</h3>
+      <p>APIs charge per million input tokens (what you send: instructions, base document and the question) and output tokens (what it answers). A token is roughly three quarters of a word.</p>
+      <div class="box">
+        <p><strong>Example with assumed prices</strong> of USD 1 per million input tokens and USD 5 per million output tokens:</p>
+        <ul>
+          <li>1,000 requests a month.</li>
+          <li>Each request sends 3,000 tokens (instructions, base document and the chat) and gets 300 back.</li>
+          <li>Input: 1,000 × 3,000 = 3 million tokens → USD 3.</li>
+          <li>Output: 1,000 × 300 = 0.3 million tokens → USD 1.50.</li>
+          <li><strong>Total AI cost: about USD 4.50 a month</strong>, not counting WhatsApp or the server.</li>
+        </ul>
+        <p class="muted">Swap in the current prices of the model you choose. Smaller models cost far less than large ones and are enough for customer service.</p>
+      </div>
+      <p>The conclusion that keeps coming up: <strong>for a small or mid-sized business, the AI itself is usually the cheapest part of the system.</strong> What costs is the time to build it right, connect it to your data and maintain it.</p>
+    </section>
+
+    <!-- Mistakes -->
+    <section class="page">
+      <span class="kicker">What not to do</span>
+      <h2>Seven common mistakes</h2>
+      <ol>
+        <li><strong>Buying the tool before testing.</strong> Do days 2 and 3 first: they're free and tell you what you really need.</li>
+        <li><strong>Automating a process that doesn't work.</strong> If orders get lost today, fix the flow first (day 5).</li>
+        <li><strong>Leaving AI alone with sensitive matters.</strong> Health, money, complaints and legal issues always go through a person.</li>
+        <li><strong>Hiding that it's an assistant.</strong> People notice and get angrier. Say so and offer to talk to someone.</li>
+        <li><strong>Pasting customer data anywhere.</strong> Remove names, phone numbers and IDs before giving information to an AI, and review each tool's privacy policy.</li>
+        <li><strong>Not updating the base document.</strong> If you changed prices or hours and didn't update it, the assistant will give wrong information. Set a weekly reminder.</li>
+        <li><strong>Not measuring.</strong> Without the day 7 table, in a month you won't know if it worked.</li>
+      </ol>
+      <div class="box green">
+        <h3>What does work</h3>
+        <p>Start small, with one task, measure, and only then add the next one. One automation that works every day is worth more than five half-finished ones.</p>
+      </div>
+    </section>
+
+    <!-- Checklist -->
+    <section class="page">
+      <span class="kicker">Print it</span>
+      <h2>7-day checklist</h2>
+      <ul class="check">
+        <li><span><strong>Day 1.</strong> Spreadsheet with tasks, times per week, minutes and hours per month. Chosen task: ____________________</span></li>
+        <li><span><strong>Day 2.</strong> Base document with basics, products, policies, 20 frequent questions and when to hand over.</span></li>
+        <li><span><strong>Day 3.</strong> Claude Project with instructions. 20-question test: ___ of 20 right.</span></li>
+        <li><span><strong>Day 4.</strong> WhatsApp Business with greeting, away message, quick replies, catalog and labels.</span></li>
+        <li><span><strong>Day 4.</strong> Level chosen: 1 / 2 / 3. Assistant notice and option to talk to a person.</span></li>
+        <li><span><strong>Day 5.</strong> Online booking or order spreadsheet running. Payment link ready.</span></li>
+        <li><span><strong>Day 6.</strong> Weekly sales summary done and checked. Content templates saved.</span></li>
+        <li><span><strong>Day 7.</strong> Metrics table complete. Next task to automate: ____________________</span></li>
+        <li><span><strong>Every week.</strong> Update the base document and review 10 assistant conversations.</span></li>
+      </ul>
+    </section>
+
+    <!-- Closing -->
+    <section class="page">
+      <span class="kicker">Next step</span>
+      <h2>If you'd like to build it together</h2>
+      <p class="lead">I'm Gabriel Iturre, an AI Engineer and the founder and CEO of KILO, a management and point-of-sale system for neighborhood stores with an app on Google Play.</p>
+      <p>I built KILO on my own: 1,900+ commits in 10 months. In the 6 weeks since launch, 83 stores signed up, and they record around 700 sales a month (data as of October 18, 2026). Everything in this guide is what I use in real products.</p>
+      <p>I work with businesses and teams that want to take this one step further:</p>
+      <ul>
+        <li>AI assistants connected to WhatsApp and to your real data (stock, calendar, orders).</li>
+        <li>Order, booking and point-of-sale systems, with payments and invoicing.</li>
+        <li>Apps published on Google Play.</li>
+        <li>Before building: what pays off, what it costs per month and what can wait.</li>
+      </ul>
+      <div class="cta">
+        <h3 style="margin-top: 0">Book a 15-minute call</h3>
+        <p>Tell me about your business and I'll tell you what I'd automate first and what it would cost.</p>
+        <p style="margin: 0"><a href="https://gabrieliturre.tech/en/agenda">gabrieliturre.tech/en/agenda</a> · WhatsApp +54 9 388 447-2423</p>
+      </div>
+      <p class="muted" style="margin-top: 8mm">© 2026 Gabriel Iturre · Jujuy, Argentina · gabrieliturre.tech. Feel free to share this guide, unmodified.</p>
+    </section>
+  </body>
+</html>
