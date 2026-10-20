@@ -1259,14 +1259,15 @@
   }
 }
 
-/* El título de la tarjeta del inicio no pasa por debajo del celular decorativo */
-.join-title,
-.join-sub {
-  max-width: 64%;
+/* El título de la tarjeta del inicio queda debajo del celular decorativo */
+@media (min-width: 901px) {
+  .join {
+    min-height: 680px;
+  }
 }
 @media (max-width: 900px) {
   .join-title,
   .join-sub {
-    max-width: 100%;
+    max-width: 62%;
   }
 }
