@@ -57,6 +57,10 @@ async function notify(env, kind, lead) {
 const worker = {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
+    if (url.hostname === 'www.gabrieliturre.tech') {
+      url.hostname = 'gabrieliturre.tech';
+      return Response.redirect(url.toString(), 301);
+    }
     if (!url.pathname.startsWith('/api/')) return env.ASSETS.fetch(request);
 
     const kind = url.pathname === '/api/guia' ? 'guia' : url.pathname === '/api/agenda' ? 'agenda' : null;
