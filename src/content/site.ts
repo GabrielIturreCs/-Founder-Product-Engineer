@@ -683,9 +683,9 @@ export const cv = {
       { g: 'Infra e integraciones', i: 'Docker, Linux, Coolify, Netlify, Cloudflare, Mercado Pago, Stripe, ARCA, WhatsApp API' },
     ],
     background: [
-      { t: 'Fundador y CEO · KILO', p: 'actualidad' },
+      { t: 'Fundador y CEO · KILO', p: '2024 – hoy' },
       { t: 'Full-Stack Engineer · Cheffi', p: '2025 – 2026' },
-      { t: 'Estudio propio · ZonaJujuy', p: 'actualidad' },
+      { t: 'Estudio propio · ZonaJujuy', p: '2024 – hoy' },
       { t: 'Programando desde 2022', p: 'en producción desde 2024' },
       { t: 'Analista Programador · UNJu', p: 'en curso' },
     ],
@@ -739,9 +739,9 @@ export const cv = {
       { g: 'Infra & integrations', i: 'Docker, Linux, Coolify, Netlify, Cloudflare, Stripe, Mercado Pago, WhatsApp API' },
     ],
     background: [
-      { t: 'Founder & CEO · KILO', p: 'now' },
+      { t: 'Founder & CEO · KILO', p: '2024 – now' },
       { t: 'Full-Stack Engineer · Cheffi', p: '2025 – 2026' },
-      { t: 'Own studio · ZonaJujuy', p: 'now' },
+      { t: 'Own studio · ZonaJujuy', p: '2024 – now' },
       { t: 'Coding since 2022', p: 'in production since 2024' },
       { t: 'Programmer Analyst · UNJu', p: 'in progress' },
     ],
