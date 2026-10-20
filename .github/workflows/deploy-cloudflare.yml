@@ -23,7 +23,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 24
-          cache: npm
+          # Sin caché de npm: el .npmrc del repo apunta la caché a un disco local de Windows.
       - run: npm ci
       - name: Build and deploy to Cloudflare
         run: npm run cf:deploy
