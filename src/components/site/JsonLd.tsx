@@ -6,7 +6,7 @@ export function JsonLd({ lang }: { lang: Lang }) {
   const pageUrl = `${SITE_URL}${lang === 'es' ? '/' : '/en'}`;
   const personId = `${SITE_URL}/#gabriel`;
   const serviceId = `${SITE_URL}/#service`;
-  const address = { '@type': 'PostalAddress', addressLocality: contact.city, addressRegion: contact.region, addressCountry: contact.country };
+  const address = { '@type': 'PostalAddress', addressRegion: contact.region, addressCountry: contact.country };
 
   const graph = {
     '@context': 'https://schema.org',
@@ -19,7 +19,7 @@ export function JsonLd({ lang }: { lang: Lang }) {
         image: `${SITE_URL}${contact.photo}`,
         email: `mailto:${contact.email}`,
         telephone: `+${contact.whatsapp}`,
-        jobTitle: lang === 'es' ? 'Desarrollador de software freelance' : 'Freelance software developer',
+        jobTitle: lang === 'es' ? 'AI Engineer y desarrollador full stack' : 'AI Engineer & full stack developer',
         description: cv[lang].summary,
         knowsLanguage: ['es', 'en'],
         address,
@@ -27,13 +27,13 @@ export function JsonLd({ lang }: { lang: Lang }) {
           { '@type': 'Organization', name: 'KILO', url: kiloLinks.site },
           { '@type': 'Organization', name: 'ZonaJujuy', url: contact.agency },
         ],
-        knowsAbout: [...t.tags, 'React', 'Next.js', 'Node.js', 'NestJS', 'TypeScript', 'PostgreSQL', 'Claude', 'Codex'],
+        knowsAbout: [...t.tags, 'AI engineering', 'Anthropic Claude', 'React', 'NestJS', 'TypeScript', 'Codex'],
         sameAs: [contact.linkedin, contact.github, contact.agency, kiloLinks.site],
       },
       {
         '@type': 'ProfessionalService',
         '@id': serviceId,
-        name: lang === 'es' ? 'Gabriel Iturre — Desarrollo de software a medida' : 'Gabriel Iturre — Custom software development',
+        name: lang === 'es' ? 'Gabriel Iturre — AI Engineer: producto con IA de punta a punta' : 'Gabriel Iturre — AI Engineer: end-to-end AI products',
         url: SITE_URL,
         image: `${SITE_URL}${contact.photo}`,
         description: t.description,

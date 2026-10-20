@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono, Instrument_Serif } from 'next/font/google';
 import type { Lang } from '@/content/site';
 import '@/app/globals.css';
+import '@/app/v4.css';
 
 const sans = Geist({ subsets: ['latin'], variable: '--font-sans', display: 'swap' });
 const mono = Geist_Mono({ subsets: ['latin'], variable: '--font-mono', display: 'swap' });

@@ -44,7 +44,7 @@ export async function bookCall(input: BookingInput): Promise<{ ok: boolean }> {
       from: 'Portfolio gabrieliturre.tech <onboarding@resend.dev>',
       to: TO,
       replyTo: email,
-      subject: `📅 Llamada agendada: ${name} — ${date} ${time}`,
+      subject: `Llamada agendada: ${name} — ${date} ${time}`,
       html: `<div style="font-family:system-ui,sans-serif;line-height:1.6;color:#111;max-width:600px">
         <h2 style="margin:0 0 12px">Nueva llamada de 15 min</h2>
         <p><b>Nombre:</b> ${esc(name)}<br/><b>Email:</b> ${esc(email)}<br/>

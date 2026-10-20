@@ -76,7 +76,18 @@ export function Booking({ t }: { t: SiteContent }) {
       lang: t.lang,
     };
     setStatus('sending');
-    const res = await bookCall(data);
+    if (data.company) return setStatus('ok');
+    // Se guarda en Netlify Forms («agenda») y, si RESEND_API_KEY está configurada, también llega por email.
+    const form = new URLSearchParams({ 'form-name': 'agenda', nombre: data.name, email: data.email, mensaje: data.message, fecha: date, hora: `${time} (GMT-3)`, idioma: t.lang });
+    const [saved, mailed] = await Promise.all([
+      fetch('/__forms.html', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: form.toString() })
+        .then((r) => r.ok)
+        .catch(() => false),
+      bookCall(data)
+        .then((r) => r.ok)
+        .catch(() => false),
+    ]);
+    const res = { ok: saved || mailed };
     if (res.ok) {
       firestore()
         .then(({ db, fs }) =>

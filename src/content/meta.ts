@@ -54,13 +54,13 @@ export function pageMetadata(lang: Lang, page: 'home' | 'cv'): Metadata {
   const path = isCv ? (lang === 'es' ? '/cv' : '/en/cv') : lang === 'es' ? '/' : '/en';
   const title = isCv
     ? lang === 'es'
-      ? 'Gabriel Iturre · Perfil profesional — Desarrollo de software a medida'
-      : 'Gabriel Iturre · Profile — Custom software development'
+      ? 'Gabriel Iturre · Perfil — AI Engineer'
+      : 'Gabriel Iturre · Profile — AI Engineer'
     : t.title;
   const description = isCv
     ? lang === 'es'
-      ? 'Perfil de Gabriel Iturre: apps, sistemas y webs a medida. Fundador de KILO y ZonaJujuy. Proyectos en producción, forma de trabajo y tecnologías (Claude, Codex). Descargalo en PDF.'
-      : 'Profile of Gabriel Iturre: custom apps, systems and websites. Founder of KILO and ZonaJujuy. Live projects, process and tech (Claude, Codex). Download the PDF.'
+      ? 'Perfil de Gabriel Iturre, AI Engineer: producto con IA de punta a punta. Fundador y CEO de KILO. Proyectos, forma de trabajo y tecnologías (Claude, Codex). Descargalo en PDF.'
+      : 'Profile of Gabriel Iturre, AI Engineer: end-to-end AI products. Founder and CEO of KILO. Projects, process and tech (Claude, Codex). Download the PDF.'
     : t.description;
 
   return {
