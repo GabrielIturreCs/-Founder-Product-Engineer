@@ -8,8 +8,8 @@ export const SITE_URL = 'https://gabrieliturre.tech';
 export const contact = {
   name: 'Gabriel Iturre',
   email: 'gabriel13iturre@gmail.com',
-  whatsapp: '543884472423',
-  whatsappDisplay: '+54 9 388 447-2423',
+  whatsapp: '5493885877934',
+  whatsappDisplay: '+54 9 388 587-7934',
   linkedin: 'https://www.linkedin.com/in/gabriel-iturre/',
   github: 'https://github.com/GabrielIturreCs',
   agency: 'https://zonajujuy.com',
