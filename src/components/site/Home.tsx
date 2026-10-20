@@ -22,7 +22,7 @@ import {
   IconUsersGroup,
   IconWallet,
 } from '@tabler/icons-react';
-import { content, contact, cvPdf, kiloLinks, whatsappLink, type Lang, type Project } from '@/content/site';
+import { content, contact, cvPdf, kiloLinks, landings, whatsappLink, type Lang, type Project } from '@/content/site';
 import { BookingEmbed } from './BookingEmbed';
 import { Dock } from './Dock';
 import { GuideForm } from './GuideForm';
@@ -387,6 +387,32 @@ export function Home({ lang }: { lang: Lang }) {
               {t.showcase.map((p, i) => (
                 <ProjectStage key={p.slug} p={p} visit={t.work.visit} stepsLabel={p.name} flip={i % 2 === 1} />
               ))}
+            </div>
+
+            <div className="wall g-ink noise reveal">
+              <div className="wall-head">
+                <Title parts={t.work.wallTitle} />
+                <p className="lead">{t.work.wallSub}</p>
+              </div>
+              <div className="wall-stage">
+                <div className="wall-plane">
+                  {[landings.slice(0, 6), landings.slice(6)].map((row, r) => (
+                    <div className={r ? 'wall-row rev' : 'wall-row'} key={r}>
+                      {[...row, ...row].map((l, i) => (
+                        <figure className="wall-card" key={l.name + i} aria-hidden={i >= row.length ? true : undefined}>
+                          <div className="sc-bar">
+                            <i />
+                            <i />
+                            <i />
+                            <span>{l.name}</span>
+                          </div>
+                          <Image src={l.image} alt={i < row.length ? l.name : ''} width={960} height={600} sizes="360px" />
+                        </figure>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
 
             <details className="more-work">

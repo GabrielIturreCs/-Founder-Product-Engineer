@@ -148,6 +148,20 @@ const showcaseEs: Showcase[] = [
     tone: 'orange',
   },
   {
+    slug: 'prometo',
+    name: 'Prometo',
+    kind: 'Pagos entre amigos con IA',
+    year: '2026',
+    status: 'Hackathon',
+    summary: 'Amigos ponen dólares digitales detrás de una meta y los que cumplen se llevan el pozo. Entrás con tu huella, mostrás que cumpliste con una foto que revisa un modelo de visión y el contrato reparte solo.',
+    note: 'Hecho para Monad Metropolis 2026 (Consumer Products & Payments). Corre en testnet. Capturas del video de demo.',
+    tags: ['React', 'Cloudflare Workers', 'Workers AI', 'Solidity'],
+    url: 'https://web.gabriel13iturre.workers.dev',
+    phone: ['/work/prometo/inicio.webp', '/work/prometo/nueva-promesa.webp', '/work/prometo/sala-de-espera.webp', '/work/prometo/check-in.webp', '/work/prometo/pruebas.webp', '/work/prometo/pozo-repartido.webp', '/work/prometo/desafio.webp'],
+    steps: ['Tu saldo en dólares digitales', 'Creás la promesa', 'Tus amigos entran', 'Check-in con foto', 'Las pruebas del grupo', 'Se reparte el pozo', 'Desafío entre amigos'],
+    tone: 'violet',
+  },
+  {
     slug: 'tubondi',
     name: 'Tu Bondi Jujuy',
     kind: 'Transporte en tiempo real',
@@ -197,7 +211,7 @@ const showcaseEs: Showcase[] = [
     phone: ['/work/sudo/login.webp'],
     browser: ['/work/sudo/login-web.webp'],
     steps: ['Cada comercio con su código'],
-    tone: 'violet',
+    tone: 'orange',
   },
   {
     slug: 'zonasalud',
@@ -219,6 +233,13 @@ const showcaseEnPatch: Record<string, Partial<Showcase>> = {
     kind: 'Restaurant SaaS',
     summary: 'Online menu with a cart, WhatsApp orders, a dashboard for the venue and direct printing to the kitchen printer.',
     steps: ['The customer opens the menu', 'Filters by category', 'Picks size and extras', 'Places the order'],
+  },
+  prometo: {
+    kind: 'Payments between friends, with AI',
+    status: 'Hackathon',
+    summary: 'Friends put digital dollars behind a goal and those who follow through take the pool. Sign in with your fingerprint, prove it with a photo reviewed by a vision model and the contract pays out on its own.',
+    note: 'Built for Monad Metropolis 2026 (Consumer Products & Payments). Runs on testnet. Screens from the demo video.',
+    steps: ['Your balance in digital dollars', 'Create the promise', 'Friends join', 'Photo check-in', "The group's proofs", 'The pool is split', 'Challenge between friends'],
   },
   tubondi: {
     name: 'Tu Bondi Jujuy',
@@ -268,6 +289,22 @@ const sitesEnPatch: Record<string, Partial<Project>> = {
 };
 const sitesEn: Project[] = sitesEs.map((p) => ({ ...p, ...sitesEnPatch[p.slug] }));
 
+// Landings y webs publicadas: el muro animado de la sección de proyectos.
+export const landings = [
+  { name: 'somoskilo.com', image: '/work/kilo-web.webp' },
+  { name: 'Gaby Gym', image: '/work/landings/gaby-gym.webp' },
+  { name: 'Peluquería Petit', image: '/work/petit.webp' },
+  { name: 'Hacela corta', image: '/work/landings/hacela-corta.webp' },
+  { name: 'Inti Mates', image: '/work/intimates.webp' },
+  { name: 'Jujuy Gym', image: '/work/landings/jujuy-gym.webp' },
+  { name: 'Aevum', image: '/work/aevum.webp' },
+  { name: 'Viajes con Víctor', image: '/work/victor.webp' },
+  { name: 'Empleo Flash', image: '/work/landings/empleo-flash.webp' },
+  { name: 'La Burguesita', image: '/work/burguesita.webp' },
+  { name: 'Peluquería Palpalá', image: '/work/landings/peluqueria-palpala.webp' },
+  { name: 'ZonaJujuy', image: '/work/zonajujuy.webp' },
+];
+
 export const content = {
   es: {
     lang: 'es' as Lang,
@@ -310,7 +347,7 @@ export const content = {
     },
     tags: ['Claude', 'Agentes de IA', 'Automatización', 'Bots de WhatsApp', 'RAG', 'Apps Android', 'Google Play', 'SaaS', 'MVPs', 'Sistemas de gestión', 'Punto de venta', 'Mercado Pago', 'Facturación ARCA', 'APIs', 'Next.js', 'Node.js', 'PostgreSQL', 'Servidores', 'Modelo de negocio', 'Costos de IA'],
     note:
-      'Soy fundador y CEO de KILO, un sistema de gestión y punto de venta para comercios de barrio con app en Google Play. Lo programé solo: más de 1.900 commits en 10 meses. Trabajás directo conmigo, sin intermediarios.',
+      'Programo desde 2022 y construyo productos en producción desde 2024. Soy fundador y CEO de KILO, un sistema de gestión y punto de venta para comercios de barrio con app en Google Play: lo programé solo, más de 1.900 commits en 10 meses. Trabajás directo conmigo, sin intermediarios.',
     benefits: {
       pill: 'Por qué yo',
       title: ['Domino la IA.', 'Construyo', 'el producto.'],
@@ -346,7 +383,7 @@ export const content = {
       kilo: {
         kind: 'Mi producto · SaaS + app Android',
         title: 'KILO',
-        desc: 'Sistema de gestión y punto de venta para comercios de barrio: caja, stock, reportes, ofertas, tienda online y pedidos. Lo diseñé, lo programé y lo lancé; hoy está en Google Play.',
+        desc: 'Sistema de gestión y punto de venta para comercios de barrio: caja, stock, reportes, ofertas, tienda online y pedidos. Trae a Kilito, un asistente sobre la API de Claude: con una foto carga un producto o actualiza stock y costos desde la factura del proveedor. Lo diseñé, lo programé y lo lancé; hoy está en Google Play.',
         stats: [
           { v: '83', l: 'comercios en 6 semanas' },
           { v: '~700', l: 'ventas por mes' },
@@ -359,6 +396,8 @@ export const content = {
       visit: 'Ver sitio',
       live: 'En producción',
       sitesTitle: 'Webs para clientes',
+      wallTitle: ['Y muchas', 'landings', 'publicadas'],
+      wallSub: 'Sitios y landings que diseñé y puse en línea para negocios de Jujuy y para mis productos.',
       more: 'Ver webs para clientes',
       less: 'Ver menos',
     },
@@ -476,7 +515,7 @@ export const content = {
     },
     tags: ['Claude', 'AI agents', 'Automation', 'WhatsApp bots', 'RAG', 'Android apps', 'Google Play', 'SaaS', 'MVPs', 'Business systems', 'Point of sale', 'Payments', 'E-invoicing', 'APIs', 'Next.js', 'Node.js', 'PostgreSQL', 'Servers', 'Business model', 'AI costs'],
     note:
-      "I'm the founder and CEO of KILO, a management and point-of-sale system for neighborhood stores with an app on Google Play. I built it on my own: 1,900+ commits in 10 months. You work directly with me, no middlemen.",
+      "Coding since 2022, shipping products to production since 2024. I'm the founder and CEO of KILO, a management and point-of-sale system for neighborhood stores with an app on Google Play: I built it on my own, 1,900+ commits in 10 months. You work directly with me, no middlemen.",
     benefits: {
       pill: 'Why me',
       title: ['I master AI.', 'I build', 'the product.'],
@@ -512,7 +551,7 @@ export const content = {
       kilo: {
         kind: 'My product · SaaS + Android app',
         title: 'KILO',
-        desc: 'Management and point of sale for neighborhood stores: cash register, inventory, reports, offers, an online store and orders. I designed, built and launched it; today it is on Google Play.',
+        desc: "Management and point of sale for neighborhood stores: cash register, inventory, reports, offers, an online store and orders. It ships Kilito, an assistant on the Claude API: one photo creates a product or updates stock and costs from a supplier's invoice. I designed, built and launched it; today it is on Google Play.",
         stats: [
           { v: '83', l: 'stores in 6 weeks' },
           { v: '~700', l: 'sales a month' },
@@ -525,6 +564,8 @@ export const content = {
       visit: 'Visit site',
       live: 'Live',
       sitesTitle: 'Client websites',
+      wallTitle: ['And plenty of', 'landing pages', 'shipped'],
+      wallSub: 'Sites and landing pages I designed and put online for businesses in Jujuy and for my own products.',
       more: 'See client websites',
       less: 'See less',
     },
@@ -608,10 +649,10 @@ export type SiteContent = (typeof content)['es'];
 // ---------- CV / perfil para clientes ----------
 export const cv = {
   es: {
-    headline: 'AI Engineer para productos completos',
-    tagline: 'Domino Claude y la IA, y construyo el producto de punta a punta pensando el negocio.',
+    headline: 'AI Engineer de productos con LLM en producción',
+    tagline: 'AI Engineer · Productos con LLM en producción · Fundador y CEO de KILO. Programando desde 2022, en producción desde 2024.',
     summary:
-      'AI Engineer y desarrollador full stack. Fundador y CEO de KILO, sistema de gestión y punto de venta para comercios de barrio con app en Google Play: 83 comercios registrados en las 6 semanas desde el lanzamiento y más de 1.900 commits en 10 meses, todos míos. Construyo apps, sistemas, backend, pagos y automatizaciones con WhatsApp e IA, y ayudo a decidir qué conviene construir y cuánto cuesta.',
+      'AI Engineer y desarrollador full stack: programo desde 2022 y llevo productos a producción desde 2024. Fundador y CEO de KILO, sistema de gestión y punto de venta para comercios de barrio con app en Google Play: 83 comercios registrados en las 6 semanas desde el lanzamiento y más de 1.900 commits en 10 meses, todos míos. Construyo apps, sistemas, backend, pagos y automatizaciones con WhatsApp e IA, y ayudo a decidir qué conviene construir y cuánto cuesta.',
     services: [
       { t: 'Producto con IA', d: 'MVPs, SaaS y apps en Google Play.' },
       { t: 'Automatización con IA', d: 'Asistentes con Claude, WhatsApp y RAG.' },
@@ -625,6 +666,7 @@ export const cv = {
       { n: 'Chefi', u: 'chefi.zonajujuy.com', d: 'SaaS gastronómico: menú online, pedidos por WhatsApp e impresión en comandera.' },
       { n: 'SLOT · ZonaSalud', u: 'slot.zonajujuy.com', d: 'Turnos, ingreso de pacientes por cola y resúmenes clínicos con IA.' },
       { n: 'Aevum', u: 'aevum.zonajujuy.com', d: 'IA (RAG) que responde preguntas sobre los documentos de una empresa.' },
+      { n: 'Prometo', u: 'web.gabriel13iturre.workers.dev', d: 'Hackathon Monad 2026: metas entre amigos con plata en juego, check-in con foto revisado por IA de visión.' },
       { n: 'SUDO · Tu Bondi Jujuy', u: 'sudo.zonajujuy.com', d: 'Ventas sin conexión para supermercados y colectivos en tiempo real (en desarrollo).' },
     ],
     process: ['Llamada de 15 min', 'Propuesta y precio cerrado en 48 h', 'Demos semanales', 'Lanzamiento y soporte'],
@@ -641,8 +683,10 @@ export const cv = {
       { g: 'Infra e integraciones', i: 'Docker, Linux, Coolify, Netlify, Cloudflare, Mercado Pago, Stripe, ARCA, WhatsApp API' },
     ],
     background: [
-      { t: 'Fundador y CEO · KILO', p: '2023 – hoy' },
-      { t: 'Fundador · ZonaJujuy', p: '2022 – hoy' },
+      { t: 'Fundador y CEO · KILO', p: 'actualidad' },
+      { t: 'Full-Stack Engineer · Cheffi', p: '2025 – 2026' },
+      { t: 'Estudio propio · ZonaJujuy', p: 'actualidad' },
+      { t: 'Programando desde 2022', p: 'en producción desde 2024' },
       { t: 'Analista Programador · UNJu', p: 'en curso' },
     ],
     languages: 'Español nativo · Inglés técnico (B1–B2)',
@@ -661,10 +705,10 @@ export const cv = {
     },
   },
   en: {
-    headline: 'AI Engineer for end-to-end products',
-    tagline: 'I master Claude and modern AI, and build the whole product with the business in mind.',
+    headline: 'AI Engineer shipping LLM products to production',
+    tagline: 'AI Engineer · LLM products in production · Founder & CEO of KILO. Coding since 2022, in production since 2024.',
     summary:
-      'AI Engineer and full stack developer. Founder and CEO of KILO, a management and point-of-sale system for neighborhood stores with an app on Google Play: 83 stores signed up in the 6 weeks since launch and 1,900+ commits in 10 months, all mine. I build apps, systems, backend, payments and WhatsApp + AI automations, and help decide what is worth building and what it costs.',
+      'AI Engineer and full stack developer: coding since 2022, shipping to production since 2024. Founder and CEO of KILO, a management and point-of-sale system for neighborhood stores with an app on Google Play: 83 stores signed up in the 6 weeks since launch and 1,900+ commits in 10 months, all mine. I build apps, systems, backend, payments and WhatsApp + AI automations, and help decide what is worth building and what it costs.',
     services: [
       { t: 'AI products', d: 'MVPs, SaaS and Google Play apps.' },
       { t: 'AI automation', d: 'Claude assistants, WhatsApp and RAG.' },
@@ -678,6 +722,7 @@ export const cv = {
       { n: 'Chefi', u: 'chefi.zonajujuy.com', d: 'Restaurant SaaS: online menu, WhatsApp orders and kitchen printing.' },
       { n: 'SLOT · ZonaSalud', u: 'slot.zonajujuy.com', d: 'Booking, patient check-in queues and AI clinical summaries.' },
       { n: 'Aevum', u: 'aevum.zonajujuy.com', d: 'AI (RAG) that answers questions about a company’s documents.' },
+      { n: 'Prometo', u: 'web.gabriel13iturre.workers.dev', d: 'Monad 2026 hackathon: goals between friends with money at stake, photo check-ins reviewed by a vision model.' },
       { n: 'SUDO · Tu Bondi Jujuy', u: 'sudo.zonajujuy.com', d: 'Offline point of sale for supermarkets and real-time buses (in development).' },
     ],
     process: ['15-min call', 'Proposal & fixed price in 48 h', 'Weekly demos', 'Launch & support'],
@@ -694,8 +739,10 @@ export const cv = {
       { g: 'Infra & integrations', i: 'Docker, Linux, Coolify, Netlify, Cloudflare, Stripe, Mercado Pago, WhatsApp API' },
     ],
     background: [
-      { t: 'Founder & CEO · KILO', p: '2023 – now' },
-      { t: 'Founder · ZonaJujuy', p: '2022 – now' },
+      { t: 'Founder & CEO · KILO', p: 'now' },
+      { t: 'Full-Stack Engineer · Cheffi', p: '2025 – 2026' },
+      { t: 'Own studio · ZonaJujuy', p: 'now' },
+      { t: 'Coding since 2022', p: 'in production since 2024' },
       { t: 'Programmer Analyst · UNJu', p: 'in progress' },
     ],
     languages: 'Spanish (native) · English (technical, B1–B2)',

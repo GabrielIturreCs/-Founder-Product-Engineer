@@ -106,6 +106,7 @@ function Steps({ steps, i, setI, running, ms, label }: { steps: string[]; i: num
 // Toques simulados: dónde «toca» el usuario en cada pantalla antes de pasar a la siguiente (% del ancho y alto).
 const TAPS: Record<string, ([number, number] | null)[]> = {
   chefi: [[73, 22], [27, 55], [77, 93], [50, 95]],
+  prometo: [[28, 56], [50, 92], [50, 93], [50, 90], null, null, [50, 88]],
   kilo: [[60, 96], null, [50, 30], null, null, null, [50, 18], null],
 };
 

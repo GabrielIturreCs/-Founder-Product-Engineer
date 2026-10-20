@@ -893,3 +893,81 @@
     animation: none;
   }
 }
+
+/* ---------- Muro de landings ---------- */
+.wall {
+  position: relative;
+  overflow: hidden;
+  margin-top: 22px;
+  border-radius: 28px;
+  color: #fff;
+  padding: 56px 0 0;
+}
+.wall > * {
+  position: relative;
+  z-index: 1;
+}
+.wall-head {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 24px;
+  text-align: center;
+}
+.wall-head .lead {
+  margin-top: 14px;
+  color: rgba(255, 255, 255, 0.65);
+}
+.wall-stage {
+  height: 460px;
+  margin-top: 26px;
+  perspective: 1400px;
+  mask-image: linear-gradient(180deg, #000 72%, transparent);
+  -webkit-mask-image: linear-gradient(180deg, #000 72%, transparent);
+}
+.wall-plane {
+  display: grid;
+  gap: 22px;
+  transform: rotateX(24deg) rotateZ(-7deg) translateY(10px) scale(1.12);
+  transform-origin: 50% 0;
+}
+.wall-row {
+  display: flex;
+  gap: 22px;
+  width: max-content;
+  animation: marquee 70s linear infinite;
+}
+.wall-row.rev {
+  animation-direction: reverse;
+  margin-left: -180px;
+}
+.wall:hover .wall-row {
+  animation-play-state: paused;
+}
+.wall-card {
+  margin: 0;
+  width: 360px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12), 0 30px 60px -24px rgba(0, 0, 0, 0.8);
+}
+.wall-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  height: auto;
+  object-fit: cover;
+  object-position: top;
+}
+@media (max-width: 760px) {
+  .wall {
+    padding-top: 40px;
+  }
+  .wall-stage {
+    height: 340px;
+  }
+  .wall-card {
+    width: 250px;
+  }
+}
