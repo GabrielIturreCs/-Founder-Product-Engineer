@@ -446,7 +446,7 @@ export const content = {
     },
     tags: ['Claude', 'Agentes de IA', 'Automatización', 'Bots de WhatsApp', 'RAG', 'Apps Android', 'Google Play', 'SaaS', 'MVPs', 'Sistemas de gestión', 'Punto de venta', 'Mercado Pago', 'Facturación ARCA', 'APIs', 'Next.js', 'Node.js', 'PostgreSQL', 'Servidores', 'Modelo de negocio', 'Costos de IA'],
     note:
-      'Programo desde 2022 y construyo productos en producción desde 2024. Soy fundador y CEO de KILO, un sistema de gestión y punto de venta para comercios de barrio con app en Google Play: lo programé solo, más de 1.900 commits en 10 meses. Trabajás directo conmigo, sin intermediarios.',
+      'Programo desde 2022 y construyo productos en producción desde 2024. Soy fundador y CEO de KILO, un sistema de gestión y punto de venta para todo tipo de comercio, con multisucursal, multiempleado y app en Google Play: lo programé solo, más de 1.900 commits en 10 meses. Trabajás directo conmigo, sin intermediarios.',
     benefits: {
       pill: 'Por qué yo',
       title: ['No te vendo una idea.', 'Ya funciona', 'en mi propio producto.'],
@@ -483,7 +483,7 @@ export const content = {
       kilo: {
         kind: 'Mi producto · SaaS + app Android',
         title: 'KILO',
-        desc: 'Sistema de gestión y punto de venta para comercios de barrio: caja, stock, reportes, ofertas, tienda online y pedidos. Trae a Kilito, un asistente sobre la API de Claude: con una foto carga un producto o actualiza stock y costos desde la factura del proveedor. Lo diseñé, lo programé y lo lancé; hoy está en Google Play.',
+        desc: 'Sistema de gestión y punto de venta para todo tipo de comercio, con multisucursal y multiempleado: caja, stock, reportes, ofertas, tienda online y pedidos. Trae a Kilito, un asistente sobre la API de Claude: con una foto carga un producto o actualiza stock y costos desde la factura del proveedor. Lo diseñé, lo programé y lo lancé; hoy está en Google Play.',
         stats: [
           { v: '83', l: 'comercios en 6 semanas' },
           { v: '~700', l: 'ventas por mes' },
@@ -661,7 +661,7 @@ export const content = {
     },
     tags: ['Claude', 'AI agents', 'Automation', 'WhatsApp bots', 'RAG', 'Android apps', 'Google Play', 'SaaS', 'MVPs', 'Business systems', 'Point of sale', 'Payments', 'E-invoicing', 'APIs', 'Next.js', 'Node.js', 'PostgreSQL', 'Servers', 'Business model', 'AI costs'],
     note:
-      "Coding since 2022, shipping products to production since 2024. I'm the founder and CEO of KILO, a management and point-of-sale system for neighborhood stores with an app on Google Play: I built it on my own, 1,900+ commits in 10 months. You work directly with me, no middlemen.",
+      "Coding since 2022, shipping products to production since 2024. I'm the founder and CEO of KILO, a management and point-of-sale system for any kind of store, with multi-branch, multi-staff support and an app on Google Play: I built it on my own, 1,900+ commits in 10 months. You work directly with me, no middlemen.",
     benefits: {
       pill: 'Why me',
       title: ["I'm not selling an idea.", 'It already works', 'in my own product.'],
@@ -698,7 +698,7 @@ export const content = {
       kilo: {
         kind: 'My product · SaaS + Android app',
         title: 'KILO',
-        desc: "Management and point of sale for neighborhood stores: cash register, inventory, reports, offers, an online store and orders. It ships Kilito, an assistant on the Claude API: one photo creates a product or updates stock and costs from a supplier's invoice. I designed, built and launched it; today it is on Google Play.",
+        desc: "Management and point of sale for any kind of store, with multi-branch and multi-staff support: cash register, inventory, reports, offers, an online store and orders. It ships Kilito, an assistant on the Claude API: one photo creates a product or updates stock and costs from a supplier's invoice. I designed, built and launched it; today it is on Google Play.",
         stats: [
           { v: '83', l: 'stores in 6 weeks' },
           { v: '~700', l: 'sales a month' },
@@ -805,7 +805,7 @@ export const cv = {
     headline: 'AI Engineer de productos con LLM en producción',
     tagline: 'AI Engineer · Productos con LLM en producción · Fundador y CEO de KILO. Programando desde 2022, en producción desde 2024.',
     summary:
-      'AI Engineer y desarrollador full stack: programo desde 2022 y llevo productos a producción desde 2024. Fundador y CEO de KILO, sistema de gestión y punto de venta para comercios de barrio con app en Google Play: 83 comercios registrados en las 6 semanas desde el lanzamiento y más de 1.900 commits en 10 meses, todos míos. Construyo apps, sistemas, backend, pagos y automatizaciones con WhatsApp e IA, y ayudo a decidir qué conviene construir y cuánto cuesta.',
+      'AI Engineer y desarrollador full stack: programo desde 2022 y llevo productos a producción desde 2024. Fundador y CEO de KILO, sistema de gestión y punto de venta para todo tipo de comercio, con multisucursal, multiempleado y app en Google Play: 83 comercios registrados en las 6 semanas desde el lanzamiento y más de 1.900 commits en 10 meses, todos míos. Construyo apps, sistemas, backend, pagos y automatizaciones con WhatsApp e IA, y ayudo a decidir qué conviene construir y cuánto cuesta.',
     services: [
       { t: 'Producto con IA', d: 'MVPs, SaaS y apps en Google Play.' },
       { t: 'Automatización con IA', d: 'Asistentes con Claude, WhatsApp y RAG.' },
@@ -861,7 +861,7 @@ export const cv = {
     headline: 'AI Engineer shipping LLM products to production',
     tagline: 'AI Engineer · LLM products in production · Founder & CEO of KILO. Coding since 2022, in production since 2024.',
     summary:
-      'AI Engineer and full stack developer: coding since 2022, shipping to production since 2024. Founder and CEO of KILO, a management and point-of-sale system for neighborhood stores with an app on Google Play: 83 stores signed up in the 6 weeks since launch and 1,900+ commits in 10 months, all mine. I build apps, systems, backend, payments and WhatsApp + AI automations, and help decide what is worth building and what it costs.',
+      'AI Engineer and full stack developer: coding since 2022, shipping to production since 2024. Founder and CEO of KILO, a management and point-of-sale system for any kind of store, with multi-branch, multi-staff support and an app on Google Play: 83 stores signed up in the 6 weeks since launch and 1,900+ commits in 10 months, all mine. I build apps, systems, backend, payments and WhatsApp + AI automations, and help decide what is worth building and what it costs.',
     services: [
       { t: 'AI products', d: 'MVPs, SaaS and Google Play apps.' },
       { t: 'AI automation', d: 'Claude assistants, WhatsApp and RAG.' },
