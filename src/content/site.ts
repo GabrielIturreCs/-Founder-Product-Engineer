@@ -157,7 +157,6 @@ const showcaseEs: Showcase[] = [
     year: '2025',
     summary: 'Menú online con carrito, pedidos por WhatsApp, panel para el local e impresión directa en la comandera.',
     tags: ['Next.js', 'NestJS', 'MongoDB', 'Mercado Pago'],
-    url: 'https://chefi.zonajujuy.com',
     phone: ['/work/chefi/menu.webp', '/work/chefi/categoria.webp', '/work/chefi/producto.webp', '/work/chefi/pedido.webp'],
     browser: ['/work/chefi/tienda-web.webp'],
     steps: ['El cliente abre el menú', 'Filtra por categoría', 'Elige tamaño y extras', 'Confirma el pedido'],
@@ -172,7 +171,6 @@ const showcaseEs: Showcase[] = [
     summary: 'Amigos ponen dólares digitales detrás de una meta y los que cumplen se llevan el pozo. Entrás con tu huella, mostrás que cumpliste con una foto que revisa un modelo de visión y el contrato reparte solo.',
     note: 'Hecho para Monad Metropolis 2026 (Consumer Products & Payments). Corre en testnet. Capturas del video de demo.',
     tags: ['React', 'Cloudflare Workers', 'Workers AI', 'Solidity'],
-    url: 'https://web.gabriel13iturre.workers.dev',
     phone: ['/work/prometo/inicio.webp', '/work/prometo/nueva-promesa.webp', '/work/prometo/sala-de-espera.webp', '/work/prometo/check-in.webp', '/work/prometo/pruebas.webp', '/work/prometo/pozo-repartido.webp', '/work/prometo/desafio.webp'],
     steps: ['Tu saldo en dólares digitales', 'Creás la promesa', 'Tus amigos entran', 'Check-in con foto', 'Las pruebas del grupo', 'Se reparte el pozo', 'Desafío entre amigos'],
     tone: 'violet',
@@ -199,7 +197,6 @@ const showcaseEs: Showcase[] = [
     year: '2025',
     summary: 'Agenda y turnos, ingreso de pacientes con cola de espera, resúmenes con IA para el médico y turnos por WhatsApp.',
     tags: ['Next.js', 'Supabase', 'Gemini', 'WhatsApp API'],
-    url: 'https://slot.zonajujuy.com',
     note: 'El ingreso del paciente es una captura real; recepción, fila e historial son pantallas diseñadas a partir de su código.',
     phone: ['/work/slot/ingreso-paciente.webp', '/work/slot/recepcion.webp', '/work/slot/fila.webp', '/work/slot/historial.webp'],
     browser: ['/work/slot/login-web.webp'],
@@ -213,7 +210,6 @@ const showcaseEs: Showcase[] = [
     year: '2026',
     summary: 'Los manuales y documentos de una empresa respondiendo preguntas con IA, con equipos e invitaciones.',
     tags: ['RAG', 'Pinecone', 'Gemini', 'Next.js'],
-    url: 'https://aevum.zonajujuy.com',
     note: 'La landing es real; el chat y la base de conocimiento son pantallas diseñadas a partir de su código.',
     phone: ['/work/aevum/chat.webp', '/work/aevum/conocimiento.webp', '/work/aevum/inicio.webp'],
     scroll: '/work/aevum/landing.webp',
@@ -227,7 +223,6 @@ const showcaseEs: Showcase[] = [
     year: '2025',
     summary: 'Sistema de ventas que sigue funcionando sin internet, con app de escritorio e impresión de tickets térmicos.',
     tags: ['Angular', 'Electron', 'MongoDB', 'ESC/POS'],
-    url: 'https://sudo.zonajujuy.com',
     note: 'La app de escritorio está rediseñada a partir de su código: venta, reportes y cajas usan sus funciones reales con datos de ejemplo.',
     browser: ['/work/sudo/app-venta.webp', '/work/sudo/app-reportes.webp', '/work/sudo/app-caja.webp'],
     frame: 'bare',
@@ -241,7 +236,6 @@ const showcaseEs: Showcase[] = [
     year: '2025',
     summary: 'Turnos, historia clínica, caja con coseguros y recetas por WhatsApp para consultorios médicos.',
     tags: ['Next.js', 'NestJS', 'PostgreSQL'],
-    url: 'https://salud.zonajujuy.com',
     note: 'Pantallas de la app rediseñadas a partir de su código, con datos de ejemplo.',
     phone: ['/work/salud/turnos.webp', '/work/salud/ficha.webp', '/work/salud/caja.webp', '/work/salud/receta-whatsapp.webp'],
     steps: ['Turnos del día', 'Historia clínica del paciente', 'Caja y coseguros', 'Receta por WhatsApp'],
@@ -321,11 +315,11 @@ const showcaseEn: Showcase[] = showcaseEs.map((p) => ({ ...p, ...showcaseEnPatch
 
 // Webs para clientes (se muestran con «Ver más proyectos»).
 const sitesEs: Project[] = [
-  { slug: 'intimates', name: 'Inti Mates', kind: 'E-commerce', year: '2026', summary: 'Tienda online de mates artesanales.', url: 'https://intimatesjujuy.netlify.app', image: '/work/intimates.webp', tags: ['E-commerce', 'Next.js'] },
-  { slug: 'petit', name: 'Peluquería Petit', kind: 'Web + turnos', year: '2025', summary: 'Sitio con SEO local y reservas online.', url: 'https://peluqueriapetit.zonajujuy.com', image: '/work/petit.webp', tags: ['Web', 'SEO local'] },
-  { slug: 'zonajujuy', name: 'ZonaJujuy', kind: 'Agencia de software', year: '2024', summary: 'Mi agencia: sistemas, apps y webs para empresas.', url: 'https://zonajujuy.com', image: '/work/zonajujuy.webp', tags: ['Next.js', 'Branding'] },
-  { slug: 'victor', name: 'Viajes con Víctor', kind: 'Landing de servicios', year: '2025', summary: 'Landing que lleva las consultas a WhatsApp.', url: 'https://victormartinez.zonajujuy.com', image: '/work/victor.webp', tags: ['Landing', 'WhatsApp'] },
-  { slug: 'burguesita', name: 'La Burguesita', kind: 'Web + menú digital', year: '2025', summary: 'Menú online con pedidos directos por WhatsApp.', url: 'https://laburguesita.netlify.app', image: '/work/burguesita.webp', tags: ['Web', 'Menú digital'] },
+  { slug: 'intimates', name: 'Inti Mates', kind: 'E-commerce', year: '2026', summary: 'Tienda online de mates artesanales.', image: '/work/intimates.webp', tags: ['E-commerce', 'Next.js'] },
+  { slug: 'petit', name: 'Peluquería Petit', kind: 'Web + turnos', year: '2025', summary: 'Sitio con SEO local y reservas online.', image: '/work/petit.webp', tags: ['Web', 'SEO local'] },
+  { slug: 'zonajujuy', name: 'ZonaJujuy', kind: 'Agencia de software', year: '2024', summary: 'Mi agencia: sistemas, apps y webs para empresas.', image: '/work/zonajujuy.webp', tags: ['Next.js', 'Branding'] },
+  { slug: 'victor', name: 'Viajes con Víctor', kind: 'Landing de servicios', year: '2025', summary: 'Landing que lleva las consultas a WhatsApp.', image: '/work/victor.webp', tags: ['Landing', 'WhatsApp'] },
+  { slug: 'burguesita', name: 'La Burguesita', kind: 'Web + menú digital', year: '2025', summary: 'Menú online con pedidos directos por WhatsApp.', image: '/work/burguesita.webp', tags: ['Web', 'Menú digital'] },
 ];
 const sitesEnPatch: Record<string, Partial<Project>> = {
   intimates: { summary: 'Online store for handcrafted mate gourds.' },
@@ -336,20 +330,20 @@ const sitesEnPatch: Record<string, Partial<Project>> = {
 };
 const sitesEn: Project[] = sitesEs.map((p) => ({ ...p, ...sitesEnPatch[p.slug] }));
 
-// Más proyectos de GitHub. OpticaVistas va sin link: su acceso público muestra usuarios de demo.
+// Más proyectos de GitHub. Van sin link: los deploys de práctica ya no representan el trabajo actual.
 const extrasEs: Extra[] = [
-  { slug: 'ghostcut', name: 'GhostCut', kind: 'Herramienta web', year: '2025', summary: 'Convierte, recorta y comprime imágenes en el navegador, sin subirlas a ningún servidor.', cover: '/work/portadas/ghostcut.webp', url: 'https://ghostcut.netlify.app' },
-  { slug: 'detaquito', name: 'De Taquito Ligas', kind: 'Ligas de fútbol amateur', year: '2025', summary: 'Partidos con formación en cancha, jugadores y tablas de goleadores, asistencias y tarjetas.', cover: '/work/portadas/de-taquito.webp', url: 'https://futbolformacion.netlify.app' },
-  { slug: 'serenacita', name: 'SerenaCita', kind: 'Turnos online', year: '2025', summary: 'Reserva de turnos en seis pasos con seña del 50% y un panel con agenda, clientes y reportes.', cover: '/work/portadas/serenacita.webp', url: 'https://appturnosonline-c783d.web.app' },
+  { slug: 'ghostcut', name: 'GhostCut', kind: 'Herramienta web', year: '2025', summary: 'Convierte, recorta y comprime imágenes en el navegador, sin subirlas a ningún servidor.', cover: '/work/portadas/ghostcut.webp' },
+  { slug: 'detaquito', name: 'De Taquito Ligas', kind: 'Ligas de fútbol amateur', year: '2025', summary: 'Partidos con formación en cancha, jugadores y tablas de goleadores, asistencias y tarjetas.', cover: '/work/portadas/de-taquito.webp' },
+  { slug: 'serenacita', name: 'SerenaCita', kind: 'Turnos online', year: '2025', summary: 'Reserva de turnos en seis pasos con seña del 50% y un panel con agenda, clientes y reportes.', cover: '/work/portadas/serenacita.webp' },
   { slug: 'opticavistas', name: 'OpticaVistas', kind: 'Gestión para ópticas', year: '2025', summary: 'Ventas con descuentos automáticos por cliente, stock por categoría, egresos y reportes.', cover: '/work/portadas/opticavistas.webp' },
-  { slug: 'empleoflash', name: 'Empleo Flash', kind: 'Bolsa de empleo', year: '2024', summary: 'Sitio con ofertas, postulaciones y registro de candidatos.', cover: '/work/portadas/empleo-flash.webp', url: 'https://empleoflash.netlify.app', label: 'Práctica de curso' },
+  { slug: 'empleoflash', name: 'Empleo Flash', kind: 'Bolsa de empleo', year: '2024', summary: 'Sitio con ofertas, postulaciones y registro de candidatos.', cover: '/work/portadas/empleo-flash.webp' },
 ];
 const extrasEnPatch: Record<string, Partial<Extra>> = {
   serenacita: { kind: 'Online booking', summary: 'Six-step booking with a 50% deposit and a dashboard with schedule, clients and reports.' },
   detaquito: { kind: 'Amateur football leagues', summary: 'Matches with on-pitch line-ups, players and tables for top scorers, assists and cards.' },
   opticavistas: { kind: 'Optician store management', summary: 'Sales with automatic per-customer discounts, stock by category, expenses and reports.' },
   ghostcut: { kind: 'Web tool', summary: 'Convert, crop and compress images in the browser, without uploading them anywhere.' },
-  empleoflash: { kind: 'Job board', summary: 'Website with job offers, applications and candidate sign-up.', label: 'Course project' },
+  empleoflash: { kind: 'Job board', summary: 'Website with job offers, applications and candidate sign-up.' },
 };
 const extrasEn: Extra[] = extrasEs.map((p) => ({ ...p, ...extrasEnPatch[p.slug] }));
 
