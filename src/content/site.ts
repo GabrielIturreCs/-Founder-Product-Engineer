@@ -180,7 +180,6 @@ const showcaseEs: Showcase[] = [
     name: 'Tu Bondi Jujuy',
     kind: 'Transporte en tiempo real',
     year: '2026',
-    status: 'En desarrollo',
     summary: 'Colectivos de Jujuy en el mapa: app del chofer con GPS, app del pasajero con llegada estimada y panel para la flota.',
     note: 'Panel: capturas reales corriendo en local, con datos de ejemplo. App del pasajero: pantallas diseñadas a partir de su código.',
     tags: ['NestJS', 'PostGIS', 'Socket.io', 'Expo'],
@@ -273,7 +272,6 @@ const showcaseEnPatch: Record<string, Partial<Showcase>> = {
   tubondi: {
     name: 'Tu Bondi Jujuy',
     kind: 'Real-time public transit',
-    status: 'In development',
     summary: "Jujuy's buses on a map: a driver app with GPS, a rider app with arrival times and a fleet dashboard.",
     note: 'Dashboard: real screenshots running locally, with sample data. Rider app: screens designed from its code.',
     steps: ['Fleet monitoring', 'Route editor', 'Rider alerts', 'Reports by line'],
@@ -820,7 +818,7 @@ export const cv = {
       { n: 'SLOT · ZonaSalud', u: 'slot.zonajujuy.com', d: 'Turnos, ingreso de pacientes por cola y resúmenes clínicos con IA.' },
       { n: 'Aevum', u: 'aevum.zonajujuy.com', d: 'IA (RAG) que responde preguntas sobre los documentos de una empresa.' },
       { n: 'Prometo', u: 'web.gabriel13iturre.workers.dev', d: 'Hackathon Monad 2026: metas entre amigos con plata en juego, check-in con foto revisado por IA de visión.' },
-      { n: 'SUDO · Tu Bondi Jujuy', u: 'sudo.zonajujuy.com', d: 'Ventas sin conexión para supermercados y colectivos en tiempo real (en desarrollo).' },
+      { n: 'SUDO · Tu Bondi Jujuy', u: 'sudo.zonajujuy.com', d: 'Ventas sin conexión para supermercados y colectivos en tiempo real.' },
     ],
     process: ['Llamada de 15 min', 'Propuesta y precio cerrado en 48 h', 'Demos semanales', 'Lanzamiento y soporte'],
     numbers: [
@@ -876,7 +874,7 @@ export const cv = {
       { n: 'SLOT · ZonaSalud', u: 'slot.zonajujuy.com', d: 'Booking, patient check-in queues and AI clinical summaries.' },
       { n: 'Aevum', u: 'aevum.zonajujuy.com', d: 'AI (RAG) that answers questions about a company’s documents.' },
       { n: 'Prometo', u: 'web.gabriel13iturre.workers.dev', d: 'Monad 2026 hackathon: goals between friends with money at stake, photo check-ins reviewed by a vision model.' },
-      { n: 'SUDO · Tu Bondi Jujuy', u: 'sudo.zonajujuy.com', d: 'Offline point of sale for supermarkets and real-time buses (in development).' },
+      { n: 'SUDO · Tu Bondi Jujuy', u: 'sudo.zonajujuy.com', d: 'Offline point of sale for supermarkets and real-time buses.' },
     ],
     process: ['15-min call', 'Proposal & fixed price in 48 h', 'Weekly demos', 'Launch & support'],
     numbers: [
